@@ -4,7 +4,7 @@ from re import ASCII
 SITENAME = 'Frank Martin'
 SITEURL = 'http://localhost:5000'
 
-AUTHOR = 'ir. Frank Martin'
+AUTHOR = 'Frank Martin'
 HEADLINE = 'Biomedical Engineer &amp; Software Engineer'
 
 PATH = 'content'
