@@ -48,6 +48,7 @@ jobs:
           # PELICAN_THEME_FOLDER: # optional
 
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
