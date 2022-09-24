@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="{{ DEFAULT_LANG }}">
+    <head>
+        <title>{{ SITENAME }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- styles -->
+        {% assets filters="cssmin", output="css/ubuntu-mono.min.css", "css/ubuntu-mono.css" %}
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+        {% endassets %}
+
+        <link rel="stylesheet" href="{{ SITEURL }}/theme/css/font-awesome.min.css">
+        {% assets filters="libsass,cssmin", output="css/main.min.css", "css/main.scss" %}
+        <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+        {% endassets %}
+
+
+        <!-- fav icons -->
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/theme/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ SITEURL }}/theme/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ SITEURL }}/theme/images/favicon-16x16.png">
+        <link rel="manifest" href="{{ SITEURL }}/theme/images/site.webmanifest">
+
+    </head>
+    <body>
+        <!-- top navigation -->
+        <nav class="navigation">
+            <i class="fa-solid fa-compass"></i>
+            <!-- hamburger menu -->
+            <input id="menu-toggle" type="checkbox" />
+            <label class='menu-button-container' for="menu-toggle">
+                <span class='menu-button'></span>
+            </label>
+            <ul class="menu">
+                <li><a href="/">Start</a></li>
+                {% for page in pages %}
+                <li><a href="{{page.url}}">{{page.title}}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <!-- main content -->
+        <main class="wrapper">
+        {% block content %}
+        {% endblock %}
+        </main>
+    </body>
+</html>
