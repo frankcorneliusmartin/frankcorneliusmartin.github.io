@@ -19,17 +19,19 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    
+
       - name: Checkout repo
         uses: actions/checkout@v2
-        
+
       - name: Pelican Build
         # You may pin to the exact commit or the version.
         # uses: nelsonjchen/gh-pages-pelican-action@893b835772c6b3b65286175cd96994154e7db090
         uses: nelsonjchen/gh-pages-pelican-action@0.1.10
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         with:
           # override the default `gh-pages` deployment branch
-          GH_PAGES_BRANCH: main
+          GH_PAGES_BRANCH: build
           # specify the custom domain configured for the output branch
           GH_PAGES_CNAME: frankmartin.nl
           # override the default `pelicanconf.py` config file
@@ -38,4 +40,3 @@ jobs:
           # PELICAN_CONTENT_FOLDER: # optional, default is content
           # setup the theme folder with package.json file, is required if you need install node modules
           # PELICAN_THEME_FOLDER: # optional
-
