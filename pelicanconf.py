@@ -34,7 +34,7 @@ STATIC_PATHS = ['extra/CNAME']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 # Theme
 
-THEME =  Path('.') / 'atom_theme'
+THEME =  Path('.') / 'pelican-atom'
 
 DESCRIPTION = "hello world"
 
