@@ -1,23 +1,6 @@
 {% extends 'base.html' %}
+
 {% block content %}
-
-<article class="identity">
-    <pre class="picture gray">
-{{ ASCII_PICTURE }}
-    </pre>
-    <h1 class="orange">{{ AUTHOR }}</h1>
-    <p>{{ HEADLINE }}</p>
-
-    <nav class="social">
-        {% for platform, link in SOCIALS.items() if link %}
-        <a rel="external" href="{{link}}">
-            <i class="fa-brands fa-{{platform}}"></i>
-        </a>
-        {% endfor %}
-    </nav>
-</article>
-
-<div class="content">
     <div class="masonry-grid">
         {% for article in articles %}
         <article class="masonry-grid__item">
@@ -30,5 +13,4 @@
         </article>
         {% endfor %}
     </div>
-</div>
 {% endblock %}

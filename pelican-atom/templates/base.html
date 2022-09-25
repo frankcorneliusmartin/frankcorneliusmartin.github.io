@@ -25,8 +25,7 @@
         <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
         {% endassets %}
 
-        {% block additional_css %}
-        {% endblock %}
+        {% block additional_css %}{% endblock %}
 
         {% if article %}
         <!-- canonical url of the current page -->
@@ -44,6 +43,7 @@
     <body>
         <!-- top navigation -->
         <nav class="navigation">
+            {% block menu_icon%}{% endblock%}
             <i class="fa-solid fa-compass"></i>
             <!-- hamburger menu -->
             <input id="menu-toggle" type="checkbox" />
@@ -53,15 +53,33 @@
             <ul class="menu">
                 <li><a href="/">Start</a></li>
                 {% for page in pages %}
-                <li><a href="{{page.url}}">{{page.title}}</a></li>
+                <li><a href="/{{page.url}}">{{page.title}}</a></li>
                 {% endfor %}
             </ul>
         </nav>
 
         <!-- main content -->
         <main class="wrapper">
-        {% block content %}
+        {% block sitebar %}
+        <article class="identity">
+            <pre class="picture gray">
+        {{ ASCII_PICTURE }}
+            </pre>
+            <h1 class="orange">{{ AUTHOR }}</h1>
+            <p>{{ HEADLINE }}</p>
+
+            <nav class="social">
+                {% for platform, link in SOCIALS.items() if link %}
+                <a rel="external" href="{{link}}">
+                    <i class="fa-brands fa-{{platform}}"></i>
+                </a>
+                {% endfor %}
+            </nav>
+        </article>
         {% endblock %}
+        <div class="content {% block content_class %}{% endblock%}">
+        {% block content %}{% endblock %}
+        </div>
         </main>
     </body>
 </html>

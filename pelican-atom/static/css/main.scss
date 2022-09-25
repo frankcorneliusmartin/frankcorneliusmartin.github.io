@@ -1,3 +1,5 @@
+@import url("pygment.css");
+
 /* atom material theme colors*/
 $darkgray:  #282c34;
 $gray: #5c6370;
@@ -224,6 +226,48 @@ a.read_more:hover {
     margin-top: 0px;
     transform: rotate(-405deg);
 }
+
+/* page styles */
+.content.page{
+    header{
+        width: 100%;
+    }
+    a{
+        color: $green;
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration:underline;
+    }
+    h1,h2,h3,h4,h5,h6{
+        a{text-decoration:none}
+    }
+
+    h1 a{color: $purple}
+    h2 a{color: $orange}
+
+    ul.auto-toc{
+
+        padding-left:30px;
+        padding-bottom: 30px;
+        padding-top: 30px;
+        border-bottom: 1px $green solid;
+        border-top: 1px $green solid;
+
+        li{
+            list-style: none;
+            line-height:1.5em;
+        }
+    }
+
+    hr{
+        color: $gray;
+        border-style: solid;
+        background-color: $gray;
+    }
+}
+
+
 @media (max-width: 700px) {
     .navigation{
         justify-content: space-between;
@@ -282,6 +326,7 @@ a.read_more:hover {
         padding-top:.8em;
     }
 }
+
 @media (max-width: 800px) {
     .masonry-grid { column-count: 1 }
 }
