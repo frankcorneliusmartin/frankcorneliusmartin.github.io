@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
     <head>
+        {% block title %}
         <title>{{ SITENAME }}</title>
+        {% endblock %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="My personal playground">
+
+        <!-- open graph metadata -->
+        {% block open_graph %}
+        <meta property="og:title" content="FrankMartin.nl" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.frankmartin.nl" />
+        <meta property="og:image" content="https://i0.wp.com/tim.blog/wp-content/uploads/2019/03/clive_blog_post_image.jpg?resize=768%2C512&ssl=1" />
+        {% endblock %}
 
         <!-- styles -->
         {% assets filters="cssmin", output="css/ubuntu-mono.min.css", "css/ubuntu-mono.css" %}
@@ -14,6 +25,13 @@
         <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
         {% endassets %}
 
+        {% block additional_css %}
+        {% endblock %}
+
+        {% if article %}
+        <!-- canonical url of the current page -->
+        <link rel="canonical" href="{{ SITEURL }}/{{ article.url }}" />
+        {% endif%}
 
         <!-- fav icons -->
         <!-- https://favicon.io/favicon-converter/ -->
