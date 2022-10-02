@@ -2,13 +2,13 @@ from pathlib import Path
 from re import ASCII
 
 SITENAME = 'Frank Martin'
-SITEURL = 'http://localhost:5000'
+SITEURL = 'http://localhost:8000'
 
 AUTHOR = 'Frank Martin'
 HEADLINE = 'Biomedical Engineer &amp; Software Engineer'
+DESCRIPTION = "My personal playground"
 
 PATH = 'content'
-
 TIMEZONE = 'Europe/Amsterdam'
 
 DEFAULT_LANG = 'En'
@@ -20,6 +20,11 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
+# metadata for social platforms
+TWITTER = {
+    'handle': 'fcmartin'
+}
+
 # the key of this dict are the font-awesome classname
 SOCIALS = {
     'github': 'https://github.com/frankcorneliusmartin',
@@ -27,6 +32,7 @@ SOCIALS = {
     'facebook': None,
     'pinterest': None
 }
+
 
 DEFAULT_PAGINATION = 10
 
@@ -37,6 +43,8 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 THEME =  Path('.') / 'pelican-atom'
 
 DESCRIPTION = "hello world"
+
+PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
 ASCII_PICTURE = \
 """

@@ -49,8 +49,11 @@ document) like this
 
 .. code-block:: python
 
+    import frank
+
     def look(at: str):
         me = "I am colorized"
+        frank.notify()
         return f"Awesome: {at}"
 
 
