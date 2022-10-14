@@ -119,9 +119,9 @@
         <!-- Javascript -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <script type="text/javascript" src="{{ SITEURL }}/theme/javascript/columnizer-1.6.2.js"></script>
-        {% assets filters="closure_js", output="javascript/main.min.js", "javascript/pagemap-1.4.0.js", "javascript/main.js" %}
-        <script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
-        {% endassets %}
+        <script type="text/javascript" src="{{ SITEURL }}/theme/javascript/pagemap-1.4.0.js"></script>
+        <script type="text/javascript" src="{{ SITEURL }}/theme/javascript/main.js"></script>
+        <!-- todo minify -->
 
         {% block additional_js %}{% endblock %}
     </body>
