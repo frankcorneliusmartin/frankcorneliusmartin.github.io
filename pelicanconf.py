@@ -1,8 +1,9 @@
+from datetime import date
 from pathlib import Path
-from re import ASCII
+
 
 SITENAME = 'Frank Martin'
-SITEURL = 'http://localhost:8000'
+SITEURL = 'http://localhost:5000'
 
 AUTHOR = 'Frank Martin'
 HEADLINE = 'Biomedical Engineer &amp; Software Engineer'
@@ -10,6 +11,7 @@ DESCRIPTION = "My personal playground"
 
 PATH = 'content'
 TIMEZONE = 'Europe/Amsterdam'
+YEAR = date.today().year
 
 DEFAULT_LANG = 'En'
 

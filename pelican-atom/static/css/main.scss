@@ -62,6 +62,19 @@ body {
     margin-top:0;
     margin-bottom:.1em;
 }
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: $darkergray;
+    text-align: right;
+    padding: 0.5em;
+}
+.footer-inner {
+    width:80%;
+    margin-left: 10%;
+}
 
 /*
 * CONTENT
