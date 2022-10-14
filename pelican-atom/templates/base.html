@@ -54,44 +54,60 @@
     </head>
     <body>
         <!-- top navigation -->
-        <nav class="navigation">
-            {% block menu_icon%}{% endblock%}
-            <i class="fa-solid fa-compass"></i>
-            <!-- hamburger menu -->
-            <input id="menu-toggle" type="checkbox" />
-            <label class='menu-button-container' for="menu-toggle">
-                <span class='menu-button'></span>
-            </label>
-            <ul class="menu">
-                <li><a href="/">Start</a></li>
-                {% for page in pages %}
-                <li><a href="/{{page.url}}">{{page.title}}</a></li>
-                {% endfor %}
-            </ul>
-        </nav>
+        <header>
+            <nav class="navigation">
+                {% block menu_icon%}
+                <i class="fa-solid fa-compass"></i>
+                {% endblock%}
+                <!-- hamburger menu -->
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                    <span class='menu-button'></span>
+                </label>
+                <ul class="menu">
+                    <li><a href="/">Start</a></li>
+                    {% for page in pages %}
+                    <li><a href="/{{page.url}}">{{page.title}}</a></li>
+                    {% endfor %}
+                </ul>
+            </nav>
+        </header>
 
         <!-- main content -->
-        <main class="wrapper">
-        {% block sitebar %}
-        <article class="identity">
-            <pre class="picture gray">
-        {{ ASCII_PICTURE }}
-            </pre>
-            <h1 class="orange">{{ AUTHOR }}</h1>
-            <p>{{ HEADLINE }}</p>
+        <main>
+            <!-- mini map scroll bar -->
+            <canvas id="map"></canvas>
+            <div class="wrapper">
+                {% block sitebar %}
+                <article class="identity">
+                    <pre class="picture gray">
+                    <!-- maybe we could add some 'build' animation in here -->
+                    <!-- e.g. there are multiple charaters with the same
+                        intensity, or you can make a typewriter effect -->
+                {{ ASCII_PICTURE }}
+                    </pre>
+                    <h1 class="orange">{{ AUTHOR }}</h1>
+                    <p>{{ HEADLINE }}</p>
 
-            <nav class="social">
-                {% for platform, link in SOCIALS.items() if link %}
-                <a rel="external" href="{{link}}">
-                    <i class="fa-brands fa-{{platform}}"></i>
-                </a>
-                {% endfor %}
-            </nav>
-        </article>
-        {% endblock %}
-        <div class="content {% block content_class %}{% endblock%}">
-        {% block content %}{% endblock %}
-        </div>
+                    <nav class="social">
+                        {% for platform, link in SOCIALS.items() if link %}
+                        <a rel="external" href="{{link}}">
+                            <i class="fa-brands fa-{{platform}}"></i>
+                        </a>
+                        {% endfor %}
+                    </nav>
+                </article>
+                {% endblock %}
+                <div id="content" class="content {% block content_class %}{% endblock%}">
+                    <div id="template" class="generated-page">
+                        <div class="dynamic-content"></div>
+                        <hr>
+                    </div>
+                </div>
+                <div id="hidden-wrapper">
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
         </main>
         <footer>
             <div class="footer-inner">
@@ -99,5 +115,14 @@
                 <i class="fa-solid fa-copyright"></i> {{ YEAR }} {{ SITENAME }}
             </div>
         </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ SITEURL }}/theme/javascript/columnizer-1.6.2.js"></script>
+        {% assets filters="closure_js", output="javascript/main.min.js", "javascript/pagemap-1.4.0.js", "javascript/main.js" %}
+        <script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
+        {% endassets %}
+
+        {% block additional_js %}{% endblock %}
     </body>
 </html>

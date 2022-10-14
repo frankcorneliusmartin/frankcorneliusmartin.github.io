@@ -1,6 +1,7 @@
 @import url("pygment.css");
 
 /* atom material theme colors*/
+$darkergray: #21252b;
 $darkgray:  #282c34;
 $gray: #5c6370;
 $lightgray: #abb2bf;
@@ -25,10 +26,29 @@ $purple: #c678dd;
 * LAYOUT
 */
 body {
-    margin:0;
     font-family: 'Ubuntu Mono';
     background-color: $darkgray;
     color: $lightgray;
+    height: 100%;
+    width: 100%;
+    margin:0;
+    overflow: hidden;
+}
+header {
+    /* fix it */
+}
+
+main {
+    overflow-y: scroll;
+    height: calc(100vh - 80px);
+}
+#map {
+    position: fixed;
+    top: 40px;
+    right: 0;
+    width: 10%;
+    height: 100%;
+    z-index: 100;
 }
 .wrapper {
     display: flex;
@@ -41,11 +61,28 @@ body {
     width: 220px;
     margin-right:30px;
     margin-bottom: 30px;
+    height: 100%;
 }
 .content{
     flex: 1 1 250px;
     min-width: 200px;
+    // columns: 2;
+    // column-rule: 2px solid $gray;
+    // column-gap: 5%;
+
+    // h2{
+    //     -webkit-column-span: all;
+    //     column-span: all;
+    // }
+    .generated-page {
+        display: none; // toggled by js
+    }
+    .column article{
+        padding:10px;
+    }
 }
+
+
 .masonry-grid {
     column-count: 3;
     column-gap: 1rem;
@@ -81,9 +118,12 @@ footer {
 */
 
 /* ascii art */
+$size: calc(220px/55);
 .picture{
-    font-size:4px;
-    line-height:4px;
+    font-size: $size;
+    // line-height:4px;
+    // font-size: 1vw;
+    line-height: $size;
 }
 
 /* identity socials */
@@ -426,7 +466,29 @@ a.read_more:hover {
 
 @media (max-width: 800px) {
     .masonry-grid { column-count: 1 }
+    .identity{
+        width:100%;
+        margin-right: 0 ;
+    }
+    $size: 1.45vw;
+    .picture{
+        font-size: $size;
+        line-height: $size;
+    }
 }
 @media (max-width: 400px) {
     #menu-toggle ~ .menu li { width:100% }
+    .wrapper{
+        margin:2%;
+        width:96%;
+    }
+    $size: 1.75vw;
+    .picture{
+        font-size: $size;
+        line-height: $size;
+    }
+    #map{
+        visibility: hidden;
+    }
+
 }

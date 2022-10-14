@@ -14,7 +14,7 @@ A new home
    :width: 100%
 
 
-.. We want to tell how we setup the project and what we want to do.
+ We want to tell how we setup the project and what we want to do.
 
 .. .. code-block:: python
 
