@@ -23,12 +23,15 @@ function sleepFor(sleepDuration){
 $(function(){
     var n = 1
     function buildPages(){
-
+        page_height = document.querySelector('main').clientHeight - 50;
         if($('#hidden-wrapper').contents().length > 0){
             console.log('tigger')
             // when we need to add a new page, use a jq object for a template
             // or use a long HTML string, whatever your preference
-            template = $("#template").clone().addClass("next"+n).addClass("next").css("display", "block");
+            template = $("#template").clone()
+            template.addClass("next"+n).addClass("next").css("display", "block").css('height', page_height);
+            template.attr('id', 'anchor'+n);
+            template.find("a").attr('href', '#anchor'+(n+1))
             n++;
             $("#content").append(template);
             $('#hidden-wrapper').columnize({
@@ -36,7 +39,7 @@ $(function(){
                 columns: 2,
                 target: ".next:last .dynamic-content",
                 overflow: {
-                    height: document.querySelector('main').clientHeight - 50,
+                    height: page_height,
                     id: "#hidden-wrapper",
                     doneFunc: function(){
                         console.log('next');

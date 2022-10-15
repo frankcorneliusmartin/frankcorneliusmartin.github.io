@@ -22,6 +22,9 @@ $purple: #c678dd;
 .blue   { color: $blue }
 .purple { color: $purple }
 
+.align-left { text-align: left;}
+.align-right{ text-align: right;}
+
 /*
 * LAYOUT
 */
@@ -77,8 +80,28 @@ main {
     .generated-page {
         display: none; // toggled by js
     }
-    .column article{
+    .column article {
         padding:10px;
+    }
+    .page-divider {
+        width:100%;
+        display: flex;
+        color: $blue;
+        margin-bottom: 3em;
+        span {
+            flex: 1;
+            border-width: 2px 0 0 0;
+            border-style: dashed;
+            border-color: $blue;
+            margin-top:0.5em;
+        }
+
+        span.text {
+            text-align: center;
+            border:0;
+            margin:0;
+        }
+        a { color: $blue; }
     }
 }
 
@@ -111,6 +134,8 @@ footer {
 .footer-inner {
     width:80%;
     margin-left: 10%;
+    display: flex;
+    .column{flex:1;}
 }
 
 /*
@@ -365,7 +390,7 @@ a.read_more:hover {
 }
 
 /* page styles */
-.content.page{
+.content{
     header{
         width: 100%;
     }
