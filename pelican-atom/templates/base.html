@@ -99,13 +99,9 @@
                 </article>
                 {% endblock %}
                 <div id="content" class="content {% block content_class %}{% endblock%}">
-                    <div id="template" class="generated-page">
-                        <div class="dynamic-content"></div>
-                        <hr>
-                    </div>
-                </div>
-                <div id="hidden-wrapper">
+                    {% block pre_content %}{% endblock%}
                     {% block content %}{% endblock %}
+                    {% block post_content %}{% endblock %}
                 </div>
             </div>
         </main>
