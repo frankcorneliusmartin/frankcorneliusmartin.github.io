@@ -22,6 +22,11 @@ function sleepFor(sleepDuration){
 
 $(function(){
     var n = 1
+    if (window.clientHeight > 1200) {
+        n_columns = 2;
+    } else {
+        n_columns = 1;
+    }
     function buildPages(){
         page_height = document.querySelector('main').clientHeight - 50;
         if($('#hidden-wrapper').contents().length > 0){
@@ -45,7 +50,7 @@ $(function(){
             $("#content").append(template);
             $('#hidden-wrapper').columnize({
                 buildOnce: true,
-                columns: 2,
+                columns: n_columns,
                 target: ".next:last .dynamic-content",
                 overflow: {
                     height: page_height,
