@@ -25,13 +25,22 @@ $(function(){
     function buildPages(){
         page_height = document.querySelector('main').clientHeight - 50;
         if($('#hidden-wrapper').contents().length > 0){
-            console.log('tigger')
+
             // when we need to add a new page, use a jq object for a template
             // or use a long HTML string, whatever your preference
-            template = $("#template").clone()
+            template = $("#template").clone();
             template.addClass("next"+n).addClass("next").css("display", "block").css('height', page_height);
             template.attr('id', 'anchor'+n);
-            template.find("a").attr('href', '#anchor'+(n+1))
+
+            // up and down navigation
+            template.find(".down a").attr('href', '#anchor'+(n+1));
+            template.find(".up a").attr('href', '#anchor'+(n-1));
+
+            // remove first and last navigation
+            if(n==1) {
+                template.find(".page-divider.up").remove()
+            }
+
             n++;
             $("#content").append(template);
             $('#hidden-wrapper').columnize({
@@ -42,15 +51,16 @@ $(function(){
                     height: page_height,
                     id: "#hidden-wrapper",
                     doneFunc: function(){
-                        console.log('next');
+                        console.log('processing next page');
                         buildPages()
                     }
                 }
             })
-            console.log('done')
+
+            console.log('paginator done')
+        } else {
+            template.find(".page-divider.down").remove()
         }
-
-
     }
     setTimeout(buildPages, 300);
 });

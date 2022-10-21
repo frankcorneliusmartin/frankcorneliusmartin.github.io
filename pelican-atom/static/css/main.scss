@@ -57,7 +57,7 @@ main {
     display: flex;
     flex-wrap: wrap;
     width: 80%;
-    margin-top:30px;
+    margin-top:0;
     margin-left: 10%;
 }
 .identity{
@@ -79,15 +79,18 @@ main {
     // }
     .generated-page {
         display: none; // toggled by js
+        margin-bottom:55px;
+        position: relative;
     }
     .column article {
-        padding:10px;
+        padding:50px 10px 10px 10px;
     }
     .page-divider {
         width:100%;
         display: flex;
         color: $blue;
-        margin-bottom: 3em;
+        position: absolute;
+        bottom: 0;
         span {
             flex: 1;
             border-width: 2px 0 0 0;
@@ -102,6 +105,14 @@ main {
             margin:0;
         }
         a { color: $blue; }
+    }
+    .page-divider.down{ // aka: next
+        margin-top: -1.5 em;
+    }
+    .page-divider.up{
+        margin-bottom: 1em;
+        top:20px;
+        bottom: auto;
     }
 }
 
@@ -505,6 +516,7 @@ a.read_more:hover {
     #menu-toggle ~ .menu li { width:100% }
     .wrapper{
         margin:2%;
+        margin-top:0;
         width:96%;
     }
     $size: 1.75vw;

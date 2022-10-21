@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 SITENAME = 'Frank Martin'
-SITEURL = 'http://localhost:5000'
+SITEURL = 'http://localhost:8000'
 
 AUTHOR = 'Frank Martin'
 HEADLINE = 'Biomedical Engineer &amp; Software Engineer'
