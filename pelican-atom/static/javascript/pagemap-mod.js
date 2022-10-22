@@ -254,6 +254,7 @@ return /******/ (function(modules) { // webpackBootstrap
     draw_rect(rect_rel_to(root_rect, root_rect), settings.back);
     apply_styles(settings.styles);
     draw_rect(rect_rel_to(view_rect, root_rect), drag ? settings.drag : settings.view);
+    console.log('draw minimap complete')
   };
 
   var on_drag = function on_drag(ev) {
@@ -279,6 +280,7 @@ return /******/ (function(modules) { // webpackBootstrap
     off(WIN, 'mousemove', on_drag);
     off(WIN, 'mouseup', on_drag_end);
     on_drag(ev);
+
   };
 
   var on_drag_start = function on_drag_start(ev) {
@@ -302,23 +304,20 @@ return /******/ (function(modules) { // webpackBootstrap
   };
 
   var init = function init() {
+
     canvas.style.cursor = 'pointer';
     on(canvas, 'mousedown', on_drag_start);
-    // on(viewport || WIN , 'load resize scroll', draw);
-    // function scroll(){console.log('scroll')}
-    // function load(){console.log('load')}
-    // function resize(){console.log('resize')}
-    on(WIN , 'load', draw);
-    on(WIN , 'resize', draw);
-    on(viewport, 'scroll', draw);
+    on(viewport || WIN , 'load scroll resize', draw());
 
-    if (settings.interval > 0) {
-      setInterval(function () {
-        return draw();
-      }, settings.interval);
-    }
+
+    // if (settings.interval > 0) {
+    //   setInterval(function () {
+    //     return draw();
+    //   }, settings.interval);
+    // }
 
     draw();
+    console.log('minimap init complete')
   };
 
   init();
