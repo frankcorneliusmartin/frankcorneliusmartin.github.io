@@ -114,7 +114,7 @@ return /******/ (function(modules) { // webpackBootstrap
     viewport: null,
     styles: {
       'header,footer,section,article': black(8),
-      'h1,a': black(10),
+      'pre,h1,a': black(10),
       'h2,h3,h4': black(8)
     },
     back: black(2),
@@ -304,12 +304,8 @@ return /******/ (function(modules) { // webpackBootstrap
   var init = function init() {
     canvas.style.cursor = 'pointer';
     on(canvas, 'mousedown', on_drag_start);
-    // on(viewport || WIN , 'load resize scroll', draw);
-    // function scroll(){console.log('scroll')}
-    // function load(){console.log('load')}
-    // function resize(){console.log('resize')}
     on(WIN , 'load', draw);
-    on(WIN , 'resize', draw);
+    on(WIN , 'resize', draw );
     on(viewport, 'scroll', draw);
 
     if (settings.interval > 0) {

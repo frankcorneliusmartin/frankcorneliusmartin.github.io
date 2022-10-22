@@ -1,16 +1,4 @@
-pagemap(document.querySelector('#map'), {
-    viewport: document.querySelector('main'),
-    styles: {
-        'header,footer,section,article': 'rgba(255,255,255,0.08)',
-        'h1,a': 'rgba(255,255,255,0.10)',
-        'h2,h3,h4': 'rgba(255,255,255,0.08)',
-        'p': 'rgba(255,255,255,0.08)'
-    },
-    back: 'rgba(0,0,0,0.02)',
-    view: 'rgba(255,255,255,0.05)',
-    drag: 'rgba(255,255,255,0.10)',
-    interval: null
-});
+
 
 function sleepFor(sleepDuration){
     var now = new Date().getTime();
@@ -20,12 +8,17 @@ function sleepFor(sleepDuration){
 }
 function buildPages(n, n_columns){
 
-    page_height = document.querySelector('main').clientHeight - 50;
-    if($('#hidden-wrapper').contents().length > 0){
+    page_height = $('main').height() - 50;
+    contents = $('#hidden-wrapper').contents().length;
+    console.log(contents)
+
+    if(contents > 0){
+        console.log('building page n: ' + n)
 
         // when we need to add a new page, use a jq object for a template
         // or use a long HTML string, whatever your preference
         template = $("#template").clone();
+        template.addClass("clone");
         template.addClass("next"+n).addClass("next").css("display", "block").css('height', page_height);
         template.attr('id', 'anchor'+n);
 
@@ -34,16 +27,16 @@ function buildPages(n, n_columns){
         template.find(".up a").attr('href', '#anchor'+(n-1));
 
         // remove first and last navigation
-        console.log('page n: ' + n)
         if(n==1) {
             template.find(".page-divider.up").remove()
         }
 
         $("#content").append(template);
         $('#hidden-wrapper').columnize({
-            buildOnce: true,
+            buildOnce: false,
             columns: n_columns,
             target: ".next:last .dynamic-content",
+            buildOnce: true,
             overflow: {
                 height: page_height,
                 id: "#hidden-wrapper",
@@ -73,8 +66,14 @@ $( document ).ready(function() {
     console.log('window width: ' + wwidth)
     console.log('number of columns: ' + n_columns)
 
+    safe_ = $('#hidden-wrapper').clone();
+    safe_.attr('id', 'hidden-wrapper-2')
+    safe_.css('display', 'none');
+    $("#content").append(safe_);
+
     // build multi-column pages
     setTimeout(buildPages, 300, 1, n_columns);
+
 
     function scroll_to_anchor(){
         // var tag = $("#"+anchor_id);
@@ -86,6 +85,28 @@ $( document ).ready(function() {
     // scroll_to_anchor()
     // setTimeout(scroll_to_anchor, 3000)
 
+    pagemap(document.querySelector('#map'), {
+        viewport: document.querySelector('main'),
+        styles: {
+            'header,footer,section,article': 'rgba(255,255,255,0.08)',
+            'h1,a': 'rgba(255,255,255,0.10)',
+            'h2,h3,h4': 'rgba(255,255,255,0.08)',
+            'p': 'rgba(255,255,255,0.08)'
+        },
+        back: 'rgba(0,0,0,0.02)',
+        view: 'rgba(255,255,255,0.05)',
+        drag: 'rgba(255,255,255,0.10)',
+        interval: null
+    });
 
+    $(window).on('resize', function() {
+        $('#hidden-wrapper').remove()
+        content_clone = $('#hidden-wrapper-2').clone()
+        content_clone.attr("id","hidden-wrapper");
+        $("#content").append(content_clone);
+        $(".clone").remove();
+        buildPages(1, n_columns);
+        // setTimeout(buildPages, 300, 1, n_columns);
+    })
 
 });

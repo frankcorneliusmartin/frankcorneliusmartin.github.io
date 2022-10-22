@@ -97,6 +97,8 @@ well. It provides very good support for including html-links in a
 variety of ways. Any section and subsections defined can be linked to,
 as well.
 
+Henk
+~~~~
 Enumerated list and descriptive lists are supported as
 well. It provides very good support for including html-links in a
 variety of ways. Any section and subsections defined can be linked to,

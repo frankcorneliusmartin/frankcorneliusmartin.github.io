@@ -1,7 +1,7 @@
 // version 1.6.2
 // http://welcome.totheinter.net/columnizer-jquery-plugin/
 // created by: Adam Wulf @adamwulf, adam.wulf@gmail.com
-
+console.log('hi');
 (function($){
     var DATA_ORIGINAL_DOM_KEY = 'columnizer-original-dom';
 
@@ -211,13 +211,15 @@
 
 		columnizeIt();
 
+
 		if(!options.buildOnce){
 			$(window).on('resize', function() {
+                console.log('column resize event')
 				if(!options.buildOnce){
 					if($inBox.data("timeout")){
 						clearTimeout($inBox.data("timeout"));
 					}
-					$inBox.data("timeout", setTimeout(columnizeIt, 200));
+					$inBox.data("timeout", setTimeout(columnizeIt, 300));
 				}
 			});
 		}
@@ -495,7 +497,7 @@
 			$inBox.data("columnizing", false);
 
 			if(options.overflow && options.overflow.doneFunc){
-				options.overflow.doneFunc();
+				options.overflow.doneFunc(1, 1);
 			}
 			options.doneFunc();
 		}
@@ -526,12 +528,13 @@
 		}
 
 		function columnizeIt() {
+            // console.log($inBox)
 			//reset adjustment var
 			adjustment = 0;
 			if(lastWidth == $inBox.width()) return;
 			lastWidth = $inBox.width();
 
-			var numCols = Math.round($inBox.width() / options.width);
+			// var numCols = Math.round($inBox.width() / options.width);
 			var optionWidth = options.width;
 			var optionHeight = options.height;
 			if(options.columns) numCols = options.columns;
@@ -543,9 +546,16 @@
 //			if ($inBox.data("columnized") && numCols == $inBox.children().length) {
 //				return;
 //			}
-			if(numCols <= 1 && ! options.disableSingle){
-				return singleColumnizeIt();
-			}
+            // TODO make number of columns responsive
+			// if(numCols <= 1 && ! options.disableSingle){
+			// 	return singleColumnizeIt();
+			// }
+            if( $(window).width() > 1200 ){
+                numCols = 2;
+            } else {
+                // numCols = 1;
+                return singleColumnizeIt();
+            }
 			if($inBox.data("columnizing")) return;
 			$inBox.data("columnized", true);
 			$inBox.data("columnizing", true);
@@ -558,9 +568,9 @@
 			$inBox.empty();
 
 			var targetHeight = maxHeight / numCols;
-			var firstTime = true;
 			var maxLoops = 3;
 			var scrollHorizontally = false;
+
 			if(options.overflow){
 				maxLoops = 1;
 				targetHeight = options.overflow.height;
@@ -588,6 +598,7 @@
 					$destroyable = $cache.clone();
 				}
 				$destroyable.css("visibility", "hidden");
+
 				// create the columns
 				for (var i = 0; i < numCols; i++) {
 					/* create column */
@@ -599,6 +610,7 @@
 
 				// fill all but the last column (unless overflowing)
 				i = 0;
+
 				while(i < numCols - (options.overflow ? 0 : 1) || scrollHorizontally && $destroyable.contents().length){
 					if($inBox.children().length <= i){
 						// we ran out of columns, make another
@@ -759,9 +771,9 @@
 			$inBox.data("columnizing", false);
 
 			if(options.overflow){
-				options.overflow.doneFunc();
+				options.overflow.doneFunc(1, numCols);
 			}
-			options.doneFunc();
+			//options.doneFunc();
 		}
     });
  };
