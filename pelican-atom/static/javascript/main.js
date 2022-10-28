@@ -1,4 +1,4 @@
-
+var current_page = 1;
 
 function sleepFor(sleepDuration){
     var now = new Date().getTime();
@@ -6,6 +6,14 @@ function sleepFor(sleepDuration){
         /* Do nothing */
     }
 }
+
+/*
+    - [x] automatic scrolling
+    - [ ] manual scrolling should snap (mobile?)
+    - [ ] check how it is without pagination on mobile
+
+*/
+var n_of_pages = 0;
 function buildPages(n, n_columns){
 
     page_height = $('main').height() - 50;
@@ -15,6 +23,9 @@ function buildPages(n, n_columns){
     if(contents > 0){
         console.log('building page n: ' + n)
 
+        // be careful this is updated in the recursion
+        n_of_pages = n;
+
         // when we need to add a new page, use a jq object for a template
         // or use a long HTML string, whatever your preference
         template = $("#template").clone();
@@ -23,8 +34,8 @@ function buildPages(n, n_columns){
         template.attr('id', 'anchor'+n);
 
         // up and down navigation
-        template.find(".down a").attr('href', '#anchor'+(n+1));
-        template.find(".up a").attr('href', '#anchor'+(n-1));
+        template.find(".down a").attr('onclick', "go_to_page("+(n+1)+")");
+        template.find(".up a").attr('onclick', "go_to_page("+(n-1)+")");
 
         // remove first and last navigation
         if(n==1) {
@@ -52,9 +63,32 @@ function buildPages(n, n_columns){
     }
 }
 
+var scrolling = false;
+
+function go_to_page(page){
+    current_page = page;
+    scroll_to_anchor();
+}
+
+function scroll_to_anchor(){
+    // var tag = $("#"+anchor_id);
+    // if (scrolling){ return }
+    scrolling = true;
+    var tag = $('#anchor'+current_page);
+    console.log('anchor: '+current_page);
+    console.log('tag position: '+tag.position().top)
+    console.log('top offset: '+tag.offsetTop)
+    console.log('wrapper offset: '+$('.wrapper').offset().top)
+    console.log('main offset: '+$('main').offset().top)
+    $('main').animate({'scrollTop': tag.position().top - $('.wrapper').offset().top}, 200);
+    $('main').promise().done(function(){
+        scrolling = false;
+    });
+    console.log('animation done')
+
+}
 
 $( document ).ready(function() {
-
 
     // determine number of columns
     wwidth = $(window).width()
@@ -72,16 +106,22 @@ $( document ).ready(function() {
     $("#content").append(safe_);
 
     // build multi-column pages
-    setTimeout(buildPages, 300, 1, n_columns);
+    var pages = new Promise(resolve => {
+        setTimeout(function () {
+            buildPages(1, n_columns)
+            resolve();
+        }, 300);
+    });
+
+    Promise.all([pages]).then( () => {
+        console.log('number of pages:' + n_of_pages)
+    });
+
+    $('main').css('overflow', 'hidden')
 
 
-    function scroll_to_anchor(){
-        // var tag = $("#"+anchor_id);
-        tag = $('#anchor2');
-        console.log(tag.offset().top);
-        $('main').animate({scrollTop: tag.offset().top}, 'slow');
-        console.log('animation done')
-    }
+
+
     // scroll_to_anchor()
     // setTimeout(scroll_to_anchor, 3000)
 
@@ -108,5 +148,27 @@ $( document ).ready(function() {
         buildPages(1, n_columns);
         // setTimeout(buildPages, 300, 1, n_columns);
     })
+
+    $('main').bind('mousewheel DOMMouseScroll', (event) => {
+        console.log('scroll on main event')
+        if (!scrolling){
+            old_page = current_page;
+        if (event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) {
+            current_page -= 1;
+            if (current_page < 1) { current_page = 1}
+        }
+        else {
+            current_page += 1;
+            if (current_page > n_of_pages) { current_page = n_of_pages}
+        }
+        console.log('current page: '+current_page);
+        if (current_page != old_page){
+            scroll_to_anchor('anchor'+current_page);
+        }
+        }
+
+    })
+
+
 
 });
