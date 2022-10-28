@@ -52,7 +52,7 @@
         <link rel="manifest" href="{{ SITEURL }}/theme/images/site.webmanifest">
 
     </head>
-    <body>
+    <body class="{% block body_class %}{% endblock%}">
         <!-- top navigation -->
         <header>
             <nav class="navigation">
@@ -106,7 +106,7 @@
             </div>
         </main>
         <footer>
-            <div class="footer-inner">
+            <div class="inner">
                 <div class="column align-left">
                     <i class="fa-brands fa-github"></i> My own pelican Atom theme
                 </div>
