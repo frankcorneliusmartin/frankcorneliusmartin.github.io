@@ -8,8 +8,8 @@ function sleepFor(sleepDuration){
 }
 
 /*
-    - [ ] remove pages from single column layout
     - [ ] make snapped scroll optional
+    - [ ] snap minimap scroll to anchor
 */
 var n_of_pages = 0;
 function buildPages(n, n_columns){
@@ -94,6 +94,7 @@ function build_body() {
     console.log('window width: ' + view_width)
 
     var use_columns = view_width > 1200;
+    use_columns = false;
     console.log('use column layout: ' + use_columns)
 
     // keep hidden copy for resize events
@@ -101,19 +102,8 @@ function build_body() {
 
     if ( use_columns ) {
         // build columns and pages
-        // var pages = new Promise(resolve => {
-        //     setTimeout(function () {
-        //         buildPages(1, 2)
-        //         resolve();
-        //     }, 300);
-        // });
-
-        // Promise.all([pages]).then( () => {
-        //     console.log('number of pages:' + n_of_pages)
-        // });
-
         buildPages(1,2);
-        replace_scroll_event()
+        replace_scroll_event();
 
     } else {
         $('#hidden-wrapper').css('display', 'block');

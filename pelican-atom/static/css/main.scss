@@ -69,7 +69,8 @@ main::-webkit-scrollbar {
 
 .identity{
     width: 220px;
-    margin-right:30px;
+    margin-top: 20px;
+    margin-right: 30px;
     margin-bottom: 30px;
     height: 100%;
 }
@@ -149,6 +150,7 @@ footer {
     }
 
     .masonry-grid {
+        margin-top:20px;
         column-count: 3;
         column-gap: 1rem;
         column-width: 250px;
@@ -168,12 +170,15 @@ footer {
 }
 
 /* ascii art */
-$size: calc(220px/55);
+$size: calc(220px/60);
 .picture{
     font-size: $size;
     // line-height:4px;
     // font-size: 1vw;
     line-height: $size;
+    line-height: 2px;
+    margin:0;
+
 }
 
 /* identity socials */
@@ -337,6 +342,9 @@ a.read_more:hover {
 .content {
 
     .highlight {
+
+            overflow-y: hidden;
+            overflow-x: auto;
 
             background-color: $darkgray;
             border-color: $lightgray;
