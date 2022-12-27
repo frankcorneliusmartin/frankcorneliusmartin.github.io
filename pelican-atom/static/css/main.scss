@@ -21,6 +21,10 @@ $purple: #c678dd;
 .blue   { color: $blue }
 .purple { color: $purple }
 
+h1 { color: $azure }
+h2 { color: $green }
+h3 { color: $purple }
+
 .align-left { text-align: left;}
 .align-right{ text-align: right;}
 
@@ -210,7 +214,7 @@ $size: calc(220px/60);
 
 }
 
-/* blog styles */
+/* blog index styles */
 p{ line-height: 22px }
 p.timestamp{ margin:0; }
 h1 a{
@@ -337,6 +341,30 @@ a.read_more:hover {
     }
 }
 
+/* cutom scrollbar (for code snippets) */
+/* https://dev.to/xtrp/how-to-create-a-beautiful-custom-scrollbar-for-your-site-in-plain-css-1mjg */
+::-webkit-scrollbar {
+    width: 20px;
+}
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $gray;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 20px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: $gray;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: $lightgray;
+  }
 
 /* code blocks */
 .content {
@@ -345,6 +373,7 @@ a.read_more:hover {
 
             overflow-y: hidden;
             overflow-x: auto;
+
 
             background-color: $darkgray;
             border-color: $lightgray;
@@ -461,6 +490,21 @@ a.read_more:hover {
         border-style: solid;
         background-color: $gray;
     }
+
+    .figure{
+
+        &.align-center img{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .caption{
+            text-align: center;
+            font-size: 0.8em;
+            color: $gray;
+        }
+    }
 }
 
 
@@ -527,13 +571,18 @@ a.read_more:hover {
     .masonry-grid { column-count: 1 }
     .identity{
         width:100%;
-        margin-right: 0 ;
+        margin-right: 0;
+        text-align: center;
+        .picture{
+            width:220px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
     }
-    $size: 1.45vw;
-    .picture{
-        font-size: $size;
-        line-height: $size;
-    }
+
+
 }
 @media (max-width: 400px) {
     #menu-toggle ~ .menu li { width:100% }
@@ -541,11 +590,6 @@ a.read_more:hover {
         margin:2%;
         margin-top:0;
         width:96%;
-    }
-    $size: 1.75vw;
-    .picture{
-        font-size: $size;
-        line-height: $size;
     }
     #map{
         visibility: hidden;

@@ -1,6 +1,4 @@
-ASCII picture
-=============
-
+:title: ASCII picture for this blog
 :date: 2022-12-23 00:22
 :tags: www
 :category: tech
@@ -8,17 +6,9 @@ ASCII picture
 :authors: Frank Martin
 :summary: How I created the ascii picture using Python for this space.
 
+ASCII picture
+=============
 
-
-.. sectnum::
-
-.. contents::
-   :depth: 2
-   :local:
-
-
-Motivation
-----------
 
 When I started designing my blog I wanted create a look and feel of a
 code editor. So instead of a regular picture I wanted to have a ascii
@@ -27,6 +17,13 @@ version of myself.
 At first I used an online tool to generate the picture. While it was
 good enough to decide that that was indeed a good idea, I felt I did
 not have anough control over the results. So I decided to write my own.
+
+.. figure:: {filename}/images/me.jpg
+   :alt: original picture
+   :width: 400px
+   :align: center
+
+   Original picture that I want to convert to an ASCII version.
 
 Algorithm
 ---------

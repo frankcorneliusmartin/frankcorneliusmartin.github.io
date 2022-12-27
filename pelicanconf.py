@@ -38,7 +38,7 @@ SOCIALS = {
 
 DEFAULT_PAGINATION = 10
 
-STATIC_PATHS = ['extra/CNAME']
+STATIC_PATHS = ['images', 'extra/CNAME']
 EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 # Theme
 
