@@ -493,6 +493,8 @@ a.read_more:hover {
 
     .figure{
 
+        overflow-x: scroll;
+
         &.align-center img{
             margin-left: auto;
             margin-right: auto;
