@@ -27,17 +27,17 @@ not have anough control over the results. So I decided to write my own.
 
 Algorithm
 ---------
-I remembered an algorithm which I have seen during a computing course.
-Which computed the average intensity of a section in the picture and
-then matched it to a character with the same intentsity.
+I remembered an algorithm which I have seen during a computer vision
+course. Which computed the average intensity of a section in the
+picture and then matched it to a character with the same intentsity.
 
 I used the Python package Pillow (which is an python implementation of
 PIL) for most of the image processing tools.
 
-Preprocessing the image
+Preprocessing the Image
 -----------------------
 The box on my webpage is 220x220 pixels. So I cropped the image to a
-square so that it mathes this shape.
+square so that it mathes the shape.
 
 .. code-block:: python
 
@@ -47,17 +47,17 @@ square so that it mathes this shape.
    # (left, upper, right, lower)
    im.crop((500, 100, 1500, 1100))
 
-We want a single value per image segment. In a color image we have three
-values per pixel: red, green and blue. A first step would be to convert
-the image to a grayscale image. This can be easily achieved by computing
-average of the three color channels per pixel.
+We want a (single) intesity value per image segment. In a color image
+we have three values per pixel: red, green and blue. A first step would
+be to convert the image to a grayscale image. This can be easily
+achieved by computing average of the three color channels per pixel.
 
 .. code-block:: python
 
    # convert to grayscale
    im = im.convert("L")
 
-I also normalized the grayscale image to use the full range 0-255 to
+Then, I normalized the grayscale image to use the full range 0-255 to
 maximize the contrast between segments.
 
 .. code-block:: python
@@ -67,7 +67,52 @@ maximize the contrast between segments.
    im = ImageOps.autocontrast(im)
 
 
-Computing letter intensities
+Segmenting Picture
+------------------
+In order to compute the intensity per segment we need to split the
+image into segments. I decided to use a grid to use 110 segments in x
+and y direction. So every segment is 2x2 pixels in the final resulting
+assci-picture.
+
+.. code-block:: python
+
+   n_segments = 110
+   (width, height) = im.size
+   # compute the width (and height since we have a square image) of a
+   # segment
+   dw = width // n_segments
+
+To visualize the segments I created a new image and drew the segments:
+
+.. container:: toggle
+
+   .. container:: header
+
+         **Show code**
+
+   .. code-block:: python
+
+      # make a copy of the image, as we do not want to have the
+      # segmentation gizmo in the final image
+      im_ = im.copy()
+
+      d = ImageDraw.Draw(im_)
+      for i in range(1, n_segments):
+         d.line((0, i*dw, img_h, i*dw), fill=255)
+         d.line((i*dw, 0, i*dw, img_h), fill=255)
+
+      display(im_processed2)
+
+.. figure:: {filename}/images/segmented-image.png
+   :alt: Segmented picture
+   :width: 400px
+   :align: center
+
+   The original image with the segmentation lines.
+
+
+
+Computing Letter Intensities
 ----------------------------
 Before we can match the segments to letters we need to compute the
 intensity per letter. This intensity is dependant on the font that is
@@ -87,8 +132,6 @@ which is the same font as this page uses.
    # load the mono-spaced font
    fnt = ImageFont.truetype("fonts/UbuntuMono-Regular.ttf", size=font_size)
 
-Segmenting picture
-------------------
 
 Match letters to segments
 -------------------------
