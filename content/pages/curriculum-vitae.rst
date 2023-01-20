@@ -1,5 +1,5 @@
-About me
-========
+Curriculum Vitae
+================
 
 Very interesting story I am sure.. Let's test some styles.
 
