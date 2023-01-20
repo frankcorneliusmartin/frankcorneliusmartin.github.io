@@ -1,0 +1,3 @@
+[submodule "pelican-atom"]
+	path = pelican-atom
+	url = https://github.com/frankcorneliusmartin/pelican-atom
