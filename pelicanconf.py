@@ -3,7 +3,7 @@ from pathlib import Path
 
 
 SITENAME = 'Frank Martin'
-SITEURL = 'http://localhost:5000'
+SITEURL = 'http://localhost:8000'
 
 AUTHOR = 'Frank Martin'
 HEADLINE = 'Biomedical Engineer &amp; Software Engineer'
@@ -45,7 +45,7 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 THEME =  Path('.') / 'pelican-atom'
 
 DESCRIPTION = "hello world"
-
+TAGS_URL = 'tags.html'
 PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
 ASCII_PICTURE = \
