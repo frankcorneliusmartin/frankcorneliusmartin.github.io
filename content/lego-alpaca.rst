@@ -1,13 +1,14 @@
-:title: ASCII picture for this blog
-:date: 2022-12-23 00:22
-:tags: www
-:category: tech
-:slug: assci-picture
-:authors: Frank Martin
-:summary: How I created the ascii picture using Python for this space.
 
-ASCII picture
-=============
+Lego Alpaca
+===========
+
+:title: Lego Alpaca
+:date: 2023-01-01 9:00
+:tags: lego, alpaca, design
+:category: lego
+:slug: lego-alpaca
+:authors: Frank Martin
+:summary: A lego alpaca I reverse engineered and built.
 
 
 When I started designing my blog I wanted create a look and feel of a
