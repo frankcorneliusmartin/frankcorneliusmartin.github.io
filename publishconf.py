@@ -8,6 +8,12 @@ from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 SITEURL = 'https://frankmartin.nl'
+MENU_ITEMS = (
+    ('Blog', SITEURL),
+    ('Curriculum Vitae', f'{SITEURL}/pages/curriculum-vitae.html'),
+    ('Topics', f'{SITEURL}/{TAGS_URL}'),
+    ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
+)
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
