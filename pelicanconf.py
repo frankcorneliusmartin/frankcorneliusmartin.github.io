@@ -45,7 +45,28 @@ EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
 THEME =  Path('.') / 'pelican-atom'
 
 DESCRIPTION = "hello world"
+
+# Disable the use of tags, these are shown for each post on the index
+# pages (e.g home and the tags page) and shown above each post on the
+# post page.
+SHOW_TAGS = True
+
+# Disable the use of categories, these are shown for each post on the
+# index pages (e.g home and the tags page) and shown above each post on
+# the post page.
+SHOW_CATEGORIE = True
+
+# default tags url
 TAGS_URL = 'tags.html'
+CATEGORIES_URL = 'categories.html'
+
+MENU_ITEMS = (
+    ('Blog', SITEURL),
+    ('Curriculum Vitae', f'{SITEURL}/pages/curriculum-vitae.html'),
+    ('Topics', f'{SITEURL}/{TAGS_URL}'),
+    ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
+)
+
 PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
 ASCII_PICTURE = \
