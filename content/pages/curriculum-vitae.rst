@@ -1,15 +1,17 @@
 Curriculum Vitae
 ================
 
+*I am a software engineer specialized in privacy enhanching techniques.
+I have a passion for both the technical and creative sides of
+problem-solving, and enjoy building with legos in my free time.*
 
 .. sectnum::
 
-.. contents:: On this page
+.. contents::
 
 
-Personal Information
+Personal Details
 --------------------
-
 
 .. container:: cv-table
 
