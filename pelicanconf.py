@@ -2,7 +2,7 @@ from datetime import date
 from pathlib import Path
 
 
-SITENAME = 'Frank Martin'
+SITENAME = 'Franky.Codes'
 SITEURL = 'http://localhost:8000'
 
 AUTHOR = 'Frank Martin'
@@ -22,11 +22,6 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# metadata for social platforms
-TWITTER = {
-    'handle': 'fcmartin'
-}
-
 # the key of this dict are the font-awesome classname
 SOCIALS = {
     'github': 'https://github.com/frankcorneliusmartin',
@@ -39,7 +34,10 @@ SOCIALS = {
 DEFAULT_PAGINATION = 10
 
 STATIC_PATHS = ['images', 'extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'},}
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+    'images/favicon': {'path': 'favicon/'}
+}
 # Theme
 
 THEME =  Path('.') / 'pelican-atom'
