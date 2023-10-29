@@ -23,6 +23,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # the key of this dict are the font-awesome classname
+# TODO convert these to a list of tuples
 SOCIALS = {
     'github': 'https://github.com/frankcorneliusmartin',
     'linkedin': 'https://www.linkedin.com/in/frankcorneliusmartin',
@@ -61,8 +62,8 @@ CATEGORIES_URL = 'categories.html'
 MENU_ITEMS = (
     ('Blog', SITEURL),
     ('Curriculum Vitae', f'{SITEURL}/pages/curriculum-vitae.html'),
-    ('Topics', f'{SITEURL}/{TAGS_URL}'),
-    ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
+    # ('Topics', f'{SITEURL}/{TAGS_URL}'),
+    # ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
 )
 
 PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
