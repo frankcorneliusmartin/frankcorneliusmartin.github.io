@@ -16,10 +16,16 @@ YEAR = date.today().year
 DEFAULT_LANG = 'En'
 
 # Feed generation is usually not desired when developing
-FEED_ALL_ATOM = None
-CATEGORY_FEED_ATOM = None
+FEED_ALL_ATOM = 'feeds/all.atom.xml'
+CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+TAG_FEED_ATOM = 'feeds/tag.{slug}.atom.xml'
+
 TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
+
+FEED_ALL_RSS = 'feeds/all.rss.xml'
+CATEGORY_FEED_RSS = 'feeds/{slug}.rss.xml'
+TAG_FEED_RSS = 'feeds/tag.{slug}.rss.xml'
 AUTHOR_FEED_RSS = None
 
 # the key of this dict are the font-awesome classname
@@ -69,6 +75,17 @@ MENU_ITEMS = (
     # ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
     ('Hire Me', f'{SITEURL}/pages/hire-me.html'),
 )
+
+# By default the 32x32 favicon is used. In case you want to use a
+# different one, provide the path to a (square) image.
+# MENU_ICON = 'images/me.jpg'
+
+# In case you want a font-awesome icon to be displayed next to the menu
+# item, provide the name of the icon here.
+# FA_MENU_ICON = 'home'
+
+
+
 
 PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
