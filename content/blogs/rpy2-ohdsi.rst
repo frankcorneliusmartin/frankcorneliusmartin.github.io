@@ -8,6 +8,7 @@ Python wrapper for OHDSI tools
 :slug: python-wrapper-for-ohdsi-tools
 :author: Frank Martin
 :summary: Python wrapper for OHDSI tools
+:status: draft
 
 For the vantage6 project I created a python wrapper for the OHDSI tools. This
 ...

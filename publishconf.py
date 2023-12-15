@@ -11,8 +11,9 @@ SITEURL = 'https://franky.codes'
 MENU_ITEMS = (
     ('Blog', SITEURL),
     ('Curriculum Vitae', f'{SITEURL}/pages/curriculum-vitae.html'),
-    ('Topics', f'{SITEURL}/{TAGS_URL}'),
-    ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
+    # ('Topics', f'{SITEURL}/{TAGS_URL}'),
+    # ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
+    ('Hire Me', f'{SITEURL}/pages/hire-me.html'),
 )
 RELATIVE_URLS = False
 

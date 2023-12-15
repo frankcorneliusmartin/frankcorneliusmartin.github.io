@@ -9,6 +9,7 @@ Lego Alpaca
 :authors: Frank Martin
 :summary: A lego alpaca I reverse engineered and built.
 :cover: /images/lego-alpaca/my-alpaca.png
+:status: draft
 
 
 For the birthday of my girlfriend I was looking for a LEGO alpaca since
