@@ -84,9 +84,6 @@ MENU_ITEMS = (
 # item, provide the name of the icon here.
 # FA_MENU_ICON = 'home'
 
-
-
-
 PYGMENTS_RST_OPTIONS = {'linenos': 'table'}
 
 # Show cover pictures in the blog index. This requires the use of the

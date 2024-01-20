@@ -40,4 +40,4 @@ If you are interested in hiring me, please contact me at
     | IBAN: `NL71 BUNQ 2102 2859 95 <https://bunq.me/FrankyCodes>`_
     | BTW-ID: NL865864640B01
     | MAIL: `mail@franky.codes <mailto:mail@franky.codes>`_
-    | TEL: `+31 6 29 04 60 61 <tel:+31629046061>`_
+    | TEL: `+31 6 27 57 80 73 <tel:+31627578073>`_
