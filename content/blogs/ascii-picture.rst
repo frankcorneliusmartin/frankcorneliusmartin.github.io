@@ -13,11 +13,11 @@ ASCII picture
 
 When I started designing my blog I wanted create a look and feel of a
 code editor. So instead of a regular picture I wanted to have a ascii
-version of myself.
+version.
 
 At first I used an online tool to generate the picture. While it was
-good enough to decide that that was indeed a good idea, I felt I did
-not have anough control over the results. So I decided to write my own.
+good enough to decide that I liked it, I felt it did not gave me enough
+control over the result. So I decided to write my own in Python.
 
 .. figure:: {static}/images/me.jpg
    :alt: original picture
@@ -29,16 +29,16 @@ not have anough control over the results. So I decided to write my own.
 Algorithm
 ---------
 I remembered an algorithm which I have seen during a computer vision
-course. Which computed the average intensity of a section in the
-picture and then matched it to a character with the same intentsity.
+course. Which computed the average intensity of a segment in the
+picture and then matched it to a character with the same intensity.
 
 I used the Python package Pillow (which is an python implementation of
-PIL) for most of the image processing tools.
+PIL) for most of the image processing tasks.
 
 Preprocessing the Image
 -----------------------
-The box on my webpage is 220x220 pixels. So I cropped the image to a
-square so that it mathes the shape.
+The identity box on my website is 220x220 pixels. The first step would
+be to crop the image to a square.
 
 .. code-block:: python
 
@@ -48,18 +48,19 @@ square so that it mathes the shape.
    # (left, upper, right, lower)
    im.crop((500, 100, 1500, 1100))
 
-We want a (single) intesity value per image segment. In a color image
+We want a (single) intensity value per image segment. In a color image
 we have three values per pixel: red, green and blue. A first step would
-be to convert the image to a grayscale image. This can be easily
-achieved by computing average of the three color channels per pixel.
+be to convert the image to a gray scale image. There are many ways to
+do this, but I decided to use the average intensity of the three color
+channels.
 
 .. code-block:: python
 
    # convert to grayscale
    im = im.convert("L")
 
-Then, I normalized the grayscale image to use the full range 0-255 to
-maximize the contrast between segments.2
+Then, I normalized the gray scale image to use the full range 0-255 to
+maximize the contrast between segments.
 
 .. code-block:: python
 
@@ -93,11 +94,11 @@ maximize the contrast between segments.2
             The square cropped image
 
         - .. figure:: {static}/images/grayscale.png
-            :alt: grayscale picture
+            :alt: gray scale picture
             :width: 180px
             :align: center
 
-            The grayscale image
+            The gray scale image
 
         - .. figure:: {static}/images/normalized.png
             :alt: normalized picture
@@ -107,12 +108,12 @@ maximize the contrast between segments.2
             The normalized image
 
 
-Segmenting Picture
-------------------
-In order to compute the intensity per segment we need to split the
-image into segments. I decided to use a grid to use 110 segments in x
-and y direction. So every segment is 2x2 pixels in the final resulting
-assci-picture.
+Segmenting the Picture
+----------------------
+Before we can compute the intensity per segment we need to split the
+image into segments. I decided to use a grid to use 110 segments in ``x``
+and ``y`` direction. So every segment is 2x2 pixels in the final
+resulting ASCII-picture.
 
 .. code-block:: python
 
@@ -122,7 +123,7 @@ assci-picture.
    # segment
    dw = width // n_segments
 
-To visualize the segments I created a new image and drew the segments:
+The cropped image with the grid looks like this:
 
 .. container:: toggle
 
@@ -148,10 +149,11 @@ To visualize the segments I created a new image and drew the segments:
    :width: 400px
    :align: center
 
-   The original image with the segmentation lines.
+   The original image with the segmentation grid.
 
 
-To actually segment the picture I used:
+I used the ``crop`` function of the ``Image`` class to split the image
+into segments:
 
 .. code-block:: python
 
@@ -201,15 +203,15 @@ To actually segment the picture I used:
 
 Computing Letter Intensities
 ----------------------------
-Before we can match the segments to letters we need to compute the
-intensity per letter. This intensity is dependant on the font that is
+Before we can match the each segment to a character we need to compute the
+intensity for each character. This intensity is dependant on the font that is
 used. I used the `Ubunto Mono font <https://fonts.google.com/specimen/Ubuntu+Mono>`_,
-which is the same font as this page uses. This code only works for
+which is the same font as this website. This code only works for
 mono-spaced fonts. If the font is not mono-spaced the algorithm will
-be much more complicated, as the final ASCII image is not a grid.
+be much more complicated, as the final ASCII image is not a grid in that case.
 
-The font size is not important when computing the intensities, as they
-are relative to each other.
+The font size is not important when computing the intensities for each character, as
+we are computing the average pixel intensity of the character box.
 
 .. container:: toggle
 
@@ -232,16 +234,16 @@ are relative to each other.
          return avg_intensity
 
 The function ``compute_letter_intensity`` returns the average pixel
-intensity of the letter. I.e. it sums the pixel values and divides
-them by the number of pixels.
+intensity of a character. In other words, it sums the pixel values and divides
+them by the number of pixels that are in the character box.
 
-We want to match every segment in our preprocessed image to a letter.
-So we need to compute the letter intensity for all charaters we want to
+We want to match every segment in our preprocessed image to a character.
+So we need to compute the letter intensity for all characters we want to
 use in out final ASCII image.
 
-
 I used a selection of letters, digits and symbols. Symbols like ``"``,
-``'`` and ``/`` are not included, as they have a meaning within HTML.
+``'`` and ``/`` are not included, as they have a meaning within HTML. Another option
+would be to escape these characters, but I decided to leave them out.
 
 .. code-block:: python
 
@@ -407,3 +409,6 @@ Making our final result:
    ??||||||||||;.-````````````````````````-..,,,,,,,,,,,~!+ljwE9ddKKKKKKpppKdH6z|||iicv7?i:~1t1zzxzxxllxllllll7cv
    </pre>
    </div>
+
+   Funny enough, I did not use this image in the final version of this website. But I
+    still like it, so I decided to include it here.
