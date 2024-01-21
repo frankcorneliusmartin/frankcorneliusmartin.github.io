@@ -28,7 +28,7 @@ Ready to discuss your next project or how we can work together?
 
 If you are interested in hiring me, please contact me at
 `mail@franky.codes <mailto:mail@franky.codes>`_ or give me a call at
-`+31 6 123 456 78 <tel:+31612345678>`_.
+`+31 6 27 57 80 73 <tel:+31627578073>`_.
 
 .. container:: call-out
 
