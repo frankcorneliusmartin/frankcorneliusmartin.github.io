@@ -41,3 +41,5 @@ If you are interested in hiring me, please contact me at
     | BTW-ID: NL865864640B01
     | MAIL: `mail@franky.codes <mailto:mail@franky.codes>`_
     | TEL: `+31 6 27 57 80 73 <tel:+31627578073>`_
+
+`Terms and Conditions <terms-and-conditions.html>`_

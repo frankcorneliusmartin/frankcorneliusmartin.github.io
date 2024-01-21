@@ -193,7 +193,7 @@ To actually segment the picture I used:
 
       display_many(segments, (n_segments, n_segments))
 
-   .. figure:: {filename}/images/segmented-image2.png
+   .. figure:: {static}/images/segmented-image2.png
       :alt: Segmented picture
       :width: 400px
       :align: center
