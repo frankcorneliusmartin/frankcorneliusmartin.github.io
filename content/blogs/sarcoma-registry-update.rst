@@ -8,7 +8,7 @@ A new approach for the BlueBerry registry using vantage7
 :slug: sarcoma-registry-update
 :authors: Frank Martin
 :summary: A new approach for the BlueBerry registry using vantage6
-:cover: /images/lego-alpaca/my-alpaca.png
+:cover: /images/sarcoma/cover_1.jpeg
 
 
 .. sectnum::
@@ -135,27 +135,27 @@ and I don't have to consider other projects when adding new features.
     official vantage6 UI is still available for the BlueBerry registry. It is possible
     to switch between the two UIs.
 
-    For example, the official vantage6 UI is still used for the management of the
+    For instance, the official vantage6 UI is still used for the management of the
     collaborations and studies.
 
 
-To improve the development speed, I used `Streamlit <https://streamlit.io/>`_. This
-framework brought the following advantages:
+To accelerate development, I used `Streamlit <https://streamlit.io/>`_. This framework
+brought the following advantages:
 
-* I (mostly) do not have to worry about front-end code as the front-end code is
+* It minimizes the need to write front-end code as the front-end code, as it is
   generated from Python code.
-* It comes with a lot of built-in data science components like tables, graphs, controls,
-  etc.
+* It includes numerous built-in data science components like tables, graphs and
+  controls.
 
-It does, however, create an additional backend component, the one that renders the
-front end. And of course, the way the app looks needs to be something that you like,
-although there are possibilities to customize it a little.
+However, it introduces an additional backend component, the one that renders the front
+end. The app's appearance and components can be customized, however the customization
+is very different from front-end frameworks like React or Angular.
 
-This newly developed UI should support the workflow of the researcher in a better way.
-The first thing after logging in is to select the collaboration and optionally the
-study it wants to work with. Once the collaboration/study is selected, the user can view
-the online organizations within the collaboration or study. The user is at this point
-able to create sub selections of the organizations it wants to work with.
+This newly developed UI aims to better support the researcher's workflow. The first
+thing after logging in is to select the collaboration and optionally the study it wants
+to work with. Once the collaboration/study is selected, the user can view the online
+organizations within the collaboration or study. The user is at this point able to
+create sub selections of the organizations it wants to work with.
 
 .. container:: scrollx
 
@@ -164,7 +164,7 @@ able to create sub selections of the organizations it wants to work with.
       :header-rows: 1
       :align: center
 
-      * - Collaboration & Study selection
+      * - Collaboration & Study Selection
         - Node status
       * - .. figure:: {static}/images/sarcoma/collaboration_and_study.jpeg
             :alt: users can select their collaboration and study
