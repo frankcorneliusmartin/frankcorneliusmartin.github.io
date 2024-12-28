@@ -7,7 +7,7 @@ SITEURL = "http://localhost:8000"
 
 AUTHOR = "Frank Martin"
 HEADLINE = "Biomedical Engineer &amp; Software Engineer"
-DESCRIPTION = "My personal playground"
+DESCRIPTION = ""
 
 PATH = "content"
 TIMEZONE = "Europe/Amsterdam"
@@ -36,6 +36,7 @@ SOCIALS = {
     "facebook": None,
     "pinterest": None,
 }
+
 
 
 DEFAULT_PAGINATION = 10
