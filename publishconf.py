@@ -3,26 +3,27 @@
 
 import os
 import sys
+
 sys.path.append(os.curdir)
 from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
-SITEURL = 'https://franky.codes'
+SITEURL = "https://franky.codes"
 MENU_ITEMS = (
-    ('Blog', SITEURL),
-    ('Curriculum Vitae', f'{SITEURL}/pages/curriculum-vitae.html'),
+    ("Projects", SITEURL),
+    ("Curriculum Vitae", f"{SITEURL}/pages/curriculum-vitae.html"),
     # ('Topics', f'{SITEURL}/{TAGS_URL}'),
     # ('Categories', f'{SITEURL}/{CATEGORIES_URL}'),
-    ('Hire Me', f'{SITEURL}/pages/hire-me.html'),
+    ("Hire Me", f"{SITEURL}/pages/hire-me.html"),
 )
 RELATIVE_URLS = False
 
-FEED_ALL_ATOM = 'feeds/all.atom.xml'
-CATEGORY_FEED_ATOM = 'feeds/{slug}.atom.xml'
+FEED_ALL_ATOM = "feeds/all.atom.xml"
+CATEGORY_FEED_ATOM = "feeds/{slug}.atom.xml"
 
 DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-#DISQUS_SITENAME = ""
-#GOOGLE_ANALYTICS = ""
+# DISQUS_SITENAME = ""
+# GOOGLE_ANALYTICS = ""
