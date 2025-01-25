@@ -68,7 +68,7 @@ TAGS_URL = "tags.html"
 CATEGORIES_URL = "categories.html"
 
 MENU_ITEMS = (
-    ("Blog", SITEURL),
+    ("Projects", SITEURL),
     ("Curriculum Vitae", f"{SITEURL}/pages/curriculum-vitae.html"),
     ("Voorwaarden", f"{SITEURL}/pages/terms-and-conditions.html"),
     # ('Topics', f'{SITEURL}/{TAGS_URL}'),

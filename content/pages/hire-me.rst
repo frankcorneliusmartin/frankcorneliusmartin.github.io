@@ -14,11 +14,12 @@ Ready to discuss your next project or how we can work together?
         <li><a data-weight="2">Consultancy</a></li>
         <li><a data-weight="4">vantage6</a></li>
         <li><a data-weight="4">Federated Learning (FL)</a></li>
+        <li><a data-weight="4">Privacy Enhancing Technologies (PETs)</a></li>
         <li><a data-weight="3">Algorithms</a></li>
         <li><a data-weight="3">Designer</a></li>
         <li><a data-weight="2">Multi-Party Computation (MPC)</a></li>
         <li><a data-weight="1">Git</a></li>
-        <li><a data-weight="2">Mathmatics</a></li>
+        <li><a data-weight="2">Mathematics</a></li>
         <li><a data-weight="2">Health</a></li>
         <li><a data-weight="3">Containers</a></li>
         <li><a data-weight="2">CI/CD</a></li>
@@ -42,4 +43,4 @@ If you are interested in hiring me, please contact me at
     | MAIL: `mail@franky.codes <mailto:mail@franky.codes>`_
     | TEL: `+31 6 27 57 80 73 <tel:+31627578073>`_
 
-`Terms and Conditions <terms-and-conditions.html>`_
+`Terms and Conditions <terms-and-conditions>`_
