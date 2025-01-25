@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Franky.Codes - alpaca</title><link href="https://franky.codes/" rel="alternate"></link><link href="https://franky.codes/feeds/tag.alpaca.atom.xml" rel="self"></link><id>https://franky.codes/</id><updated>2024-01-01T09:00:00+01:00</updated><entry><title>Lego Alpaca</title><link href="https://franky.codes/lego-alpaca.html" rel="alternate"></link><published>2024-01-01T09:00:00+01:00</published><updated>2024-01-01T09:00:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2024-01-01:/lego-alpaca.html</id><summary type="html">&lt;p class="first last"&gt;A lego alpaca I reverse engineered and built.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;For the birthday of my girlfriend I was looking for a LEGO alpaca since she loves
+alpacas. (Un)fortunately, I could not find any LEGO alpaca set. (except for the
+&lt;a class="reference external" href="https://www.bricklink.com/v2/catalog/catalogitem.page?P=65405pb03&amp;amp;name=Alpaca%20/%20Llama,%20Friends%20with%20Dark%20Azure%20Eyes,%20Black%20Nose,%20and%20Tan%20Muzzle%20Pattern&amp;amp;category=%5BAnimal,%20Land%5D#T=C"&gt;minifig sized one&lt;/a&gt;,
+but that was not what I was looking for) So I decided to build one myself. Since I had
+limited time (her birthday was coming up), I decided to reverse engineer an
+existing alpaca. I found a good looking one on
+&lt;a class="reference external" href="https://www.reddit.com/r/lego/comments/lkb669/alpaca_forever/"&gt;Reddit&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="Lego Alpaca" src="/images/lego-alpaca/alpaca1.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The original alpaca I found on Reddit.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;After some fiddling around with Lego studio, I came up with the following design:&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="My Lego Alpaca" src="/images/lego-alpaca/my-alpaca.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The alpaca I built.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;You can download the instructions and the LEGO studio file here:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://franky.codes/downloads/paca-lego.pdf"&gt;Instruction [PDF]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://franky.codes/downloads/paca-lego.io"&gt;LEGO studio file [IO]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><category term="lego"></category><category term="lego"></category><category term="alpaca"></category><category term="design"></category></entry></feed>
