@@ -8,7 +8,7 @@ Atom Blog Theme
 :slug: atom-theme
 :authors: Frank Martin
 :summary: I've made the theme that I created for this blog open source.
-:cover: /images/atom-theme/cover.jpeg
+:cover: /images/atom-theme/pelican-logo.png
 
 .. sectnum::
 
