@@ -1,0 +1,480 @@
+<!--
+    TODO
+        - dynamic open graph and twitter metadata, based on articles and pages
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Franky.Codes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=hello world>
+
+        <!-- open graph metadata for facebook/twitter -->
+
+<meta property="og:title" content="Atom Blog Theme" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://franky.codes/atom-theme.html" />
+<meta property="og:image" content="/images/atom-theme/pelican-logo2.png" />
+<meta property="og:description" content="I've made the theme that I created for this blog open source." />
+
+
+        <!-- styles -->
+        <link rel="stylesheet" href="https://franky.codes/theme/css/ubuntu-mono.min.css?5329fd52">
+
+        <link rel="stylesheet" href="https://franky.codes/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://franky.codes/theme/css/main.min.css?802a27f9">
+
+
+        <!-- canonical url of the current page -->
+        <link rel="canonical" href="https://franky.codes/atom-theme.html" />
+
+        <!-- fav icons -->
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link rel="apple-touch-icon" sizes="180x180" href="https://franky.codes/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://franky.codes/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://franky.codes/favicon/favicon-16x16.png">
+        <link rel="manifest" href="https://franky.codes/favicon/site.webmanifest">
+
+        <link
+            href="https://franky.codes/feeds/all.atom.xml"
+            type="application/atom+xml" rel="alternate" title="Franky.Codes Atom Feed" />
+        <link
+            href="https://franky.codes/feeds/all.rss.xml"
+            type="application/rss+xml" rel="alternate" title="Franky.Codes RSS Feed" />
+
+    </head>
+    <body class="">
+
+        <!-- top navigation -->
+        <header>
+            <nav class="navigation">
+                <i class="fa-solid">
+                    <img src="https://franky.codes/favicon/favicon-32x32.png"
+                         alt="menu icon"
+                         class="menu-icon"
+                         width="16"
+                         height="16">
+                </i>
+
+                <span class="site-name">
+                    Franky.Codes
+                </span>
+
+                <!-- hamburger menu -->
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                    <span class='menu-button'></span>
+                </label>
+                <ul class="menu">
+                    <li><a href="https://franky.codes" title="Projects">Projects</a></li>
+                    <li><a href="https://franky.codes/pages/curriculum-vitae.html" title="Curriculum Vitae">Curriculum Vitae</a></li>
+                    <li><a href="https://franky.codes/pages/hire-me.html" title="Hire Me">Hire Me</a></li>
+                </ul>
+                <ul class="feeds tablet-hidden">
+                    <li>
+                        <a href="https://franky.codes/feeds/all.atom.xml"
+                           type="application/atom+xml"
+                           title="Franky.Codes Atom Feed">
+                            <i class="fa-solid fa-atom"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://franky.codes/feeds/all.rss.xml"
+                           type="application/rss+xml"
+                           title="Franky.Codes RSS Feed">
+                            <i class="fa-solid fa-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <main>
+            <!-- mini map scroll bar -->
+            <canvas id="map"></canvas>
+            <div class="wrapper">
+                <article class="identity">
+                    <img
+                        src="https://franky.codes/images/me.jpg"
+                        alt="picture of Frank Martin"
+                        class="profile-picture">
+                    <h1>Frank Martin</h1>
+                    <p>Biomedical Engineer &amp; Software Engineer</p>
+
+                    <nav class="social">
+                        <a
+                            rel="external"
+                            href="https://github.com/frankcorneliusmartin"
+                            title="My github page">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            rel="external"
+                            href="https://www.linkedin.com/in/frankcorneliusmartin"
+                            title="My linkedin page">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </nav>
+                </article>
+                <div id="content" class="content ">
+    <!-- TODO: make this a template html element -->
+    <div id="template" class="generated-page">
+        <div class="page-divider up">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+                <a href="#">previous page</a>
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+        <div class="dynamic-content"></div>
+        <div class="page-divider down">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+                <a href="#">next page</a>
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+    </div>
+    <div id="hidden-wrapper">
+<header>
+<h1 class="purple">
+    <a href="https://franky.codes/atom-theme.html" id="page-title">Atom Blog Theme</a>
+</h1>
+</header>
+<article>
+    <div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#basic-settings" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Basic settings</a></li>
+<li><a class="reference internal" href="#about" id="toc-entry-2">2&nbsp;&nbsp;&nbsp;About</a></li>
+<li><a class="reference internal" href="#menu-bar" id="toc-entry-3">3&nbsp;&nbsp;&nbsp;Menu bar</a></li>
+<li><a class="reference internal" href="#rss-and-atom-feed" id="toc-entry-4">4&nbsp;&nbsp;&nbsp;RSS and Atom feed</a></li>
+<li><a class="reference internal" href="#homepage-tiles" id="toc-entry-5">5&nbsp;&nbsp;&nbsp;Homepage tiles</a></li>
+</ul>
+</div>
+<p>When I started this blog I first looked for a static site generator. A static
+website generator is useful for generating static html from text files. As I was
+already familiar with Python and
+<a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText">rst</a> I found that
+<a class="reference external" href="https://getpelican.com/">Pelican</a> suited my needs. The only issue I had with
+it where the very basic themes which did not fit my brand. This is why I decided
+to write my own theme and why not share it with others.</p>
+<div class="scrollx docutils container">
+<div class="figure align-center">
+<img alt="atom theme" src="https://raw.githubusercontent.com/pelican-themes/atom/main/showcase2.png" style="width: 600px;" />
+<p class="caption">It's a responsive theme</p>
+</div>
+</div>
+<p>In this short blogpost I will highlight the available options in the theme. You
+can find the source code of this theme on the official Pelican
+<a class="reference external" href="https://github.com/pelican-themes/atom">Github</a>, feel free to use and/or
+modify it.</p>
+<div class="section" id="basic-settings">
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Basic settings</a></h2>
+<p>These are the mandatory basic settings used by the theme, this can be combined
+with the
+<a class="reference external" href="https://docs.getpelican.com/en/latest/settings.html#basic-settings">Pelican settings</a></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Used by other settings and used to generate absolute paths for images, so</span>
+<span class="c1"># make sure this is the public site URL</span>
+<span class="n">SITEURL</span> <span class="o">=</span> <span class="s2">&quot;http://localhost:8000&quot;</span>
+
+
+<span class="c1"># This theme supports writing you blog in multiple languages. This</span>
+<span class="c1"># specifies the default language when opening the blog for the first time.</span>
+<span class="n">DEFAULT_LANG</span> <span class="o">=</span> <span class="s2">&quot;En&quot;</span>
+
+<span class="c1"># Displayed as the title of the website both in the browser tab and in the</span>
+<span class="c1"># top menu bar of the blog.</span>
+<span class="n">SITENAME</span> <span class="o">=</span> <span class="s2">&quot;Franky.Codes&quot;</span>
+
+<span class="c1"># In case you want to show some ascii art in the left bar you can use the</span>
+<span class="c1"># following. You can see this blog post how to create such a picture</span>
+<span class="c1"># yourself:</span>
+<span class="c1"># https://franky.codes/ascii-picture.html</span>
+<span class="c1"># with open(&#39;content/extra/me.txt&#39;, &#39;r&#39;) as f:</span>
+<span class="c1">#     ASCII_PICTURE = f.read()</span>
+
+<span class="c1"># How many blog items should be displayed on the home page.</span>
+<span class="n">DEFAULT_PAGINATION</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Used in embeddings when you share a link on social media and in the meta</span>
+<span class="c1"># data of your website. It is not shown anywhere in the frontend.</span>
+<span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="s2">&quot;hello world&quot;</span>
+
+<span class="c1"># Used in the copyright notification in the bottom bar, leaving it like this</span>
+<span class="c1"># will always use the year of the latest builds, however you are free to</span>
+<span class="c1"># define it statically.</span>
+<span class="n">YEAR</span> <span class="o">=</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">()</span><span class="o">.</span><span class="n">year</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="about">
+<h2><a class="toc-backref" href="#toc-entry-2">2&nbsp;&nbsp;&nbsp;About</a></h2>
+<p>These are all the options for the about section of the blog. The about section
+is in the left bar. Containing a picture (or ASCII art), your name, a single
+line of text and some icons to link to your socials.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># In case ASCII_PICTURE is not defined you can also provide an image to be</span>
+<span class="c1"># shown in the left bar..</span>
+<span class="n">PICTURE</span> <span class="o">=</span> <span class="s2">&quot;images/me.jpg&quot;</span>
+
+<span class="c1"># Used in the left bar underneath the author image.</span>
+<span class="n">AUTHOR</span> <span class="o">=</span> <span class="s2">&quot;Frank Martin&quot;</span>
+
+<span class="c1"># Used in the left bar underneath the author</span>
+<span class="n">HEADLINE</span> <span class="o">=</span> <span class="s2">&quot;Biomedical Engineer &amp;amp; Software Engineer&quot;</span>
+
+<span class="c1"># Used in the left bar underneath the headline. It shows as a list of icons.</span>
+<span class="c1"># The keys of this dictionary are the names of font-awesome class names.</span>
+<span class="n">SOCIALS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;github&quot;</span><span class="p">:</span> <span class="s2">&quot;https://github.com/frankcorneliusmartin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;linkedin&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.linkedin.com/in/frankcorneliusmartin&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;facebook&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="s2">&quot;pinterest&quot;</span><span class="p">:</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="menu-bar">
+<h2><a class="toc-backref" href="#toc-entry-3">3&nbsp;&nbsp;&nbsp;Menu bar</a></h2>
+<p>These settings control the top menu bar. You can create a link to basically
+anywhere. In the example bellow the default <em>tag</em> and <em>category</em> pages from
+pelican are shown.</p>
+<p>By default a Franky Codes icon is shown in the menu bar, you can change this
+with a <a class="reference external" href="https://fontawesome.com/">font-awesome</a> or custom icon.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Setting this to true wil display the `SITENAME` in the header next to</span>
+<span class="c1"># the logo.</span>
+<span class="n">DISLAY_SITE_NAME_IN_HEADER</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># The items shown in the top menu bar.</span>
+<span class="c1"># TAGS_URL = &quot;tags.html&quot;</span>
+<span class="c1"># CATEGORIES_URL = &quot;categories.html&quot;</span>
+<span class="n">MENU_ITEMS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="s2">&quot;Projects&quot;</span><span class="p">,</span> <span class="n">SITEURL</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Curriculum Vitae&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">SITEURL</span><span class="si">}</span><span class="s2">/pages/curriculum-vitae.html&quot;</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">&quot;Voorwaarden&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">SITEURL</span><span class="si">}</span><span class="s2">/pages/terms-and-conditions.html&quot;</span><span class="p">),</span>
+    <span class="c1"># (&#39;Topics&#39;, f&#39;{SITEURL}/{TAGS_URL}&#39;),</span>
+    <span class="c1"># (&#39;Categories&#39;, f&#39;{SITEURL}/{CATEGORIES_URL}&#39;),</span>
+    <span class="p">(</span><span class="s2">&quot;Hire Me&quot;</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">SITEURL</span><span class="si">}</span><span class="s2">/pages/hire-me.html&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># By default the 32x32 favicon is used. In case you want to use a</span>
+<span class="c1"># different one, provide the path to a (square) image.</span>
+<span class="c1"># MENU_ICON = &#39;images/me.jpg&#39;</span>
+
+<span class="c1"># In case you want a font-awesome icon to be displayed next to the menu</span>
+<span class="c1"># item, provide the name of the icon here.</span>
+<span class="c1"># FA_MENU_ICON = &#39;home&#39;</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="rss-and-atom-feed">
+<h2><a class="toc-backref" href="#toc-entry-4">4&nbsp;&nbsp;&nbsp;RSS and Atom feed</a></h2>
+<p>It is possible to define custom endpoints for your RSS and Atom feeds.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Relative urls to the generated atom feeds. ALL contains all blog post</span>
+<span class="c1"># and the CATEGORY and TAG contains filtered list of blogs linked to the</span>
+<span class="c1"># category or tag.</span>
+<span class="n">FEED_ALL_ATOM</span> <span class="o">=</span> <span class="s2">&quot;feeds/all.atom.xml&quot;</span>
+<span class="n">CATEGORY_FEED_ATOM</span> <span class="o">=</span> <span class="s2">&quot;feeds/</span><span class="si">{slug}</span><span class="s2">.atom.xml&quot;</span>
+<span class="n">TAG_FEED_ATOM</span> <span class="o">=</span> <span class="s2">&quot;feeds/tag.</span><span class="si">{slug}</span><span class="s2">.atom.xml&quot;</span>
+
+<span class="c1"># Relative urls to the generated RSS feeds. ALL contains all blog post</span>
+<span class="c1"># and the CATEGORY and TAG contains filtered list of blogs linked to the</span>
+<span class="c1"># category or tag.</span>
+<span class="n">FEED_ALL_RSS</span> <span class="o">=</span> <span class="s2">&quot;feeds/all.rss.xml&quot;</span>
+<span class="n">CATEGORY_FEED_RSS</span> <span class="o">=</span> <span class="s2">&quot;feeds/</span><span class="si">{slug}</span><span class="s2">.rss.xml&quot;</span>
+<span class="n">TAG_FEED_RSS</span> <span class="o">=</span> <span class="s2">&quot;feeds/tag.</span><span class="si">{slug}</span><span class="s2">.rss.xml&quot;</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="homepage-tiles">
+<h2><a class="toc-backref" href="#toc-entry-5">5&nbsp;&nbsp;&nbsp;Homepage tiles</a></h2>
+<p>Each blogpost gets a tile on the homepage. These tiles can be customized. For
+example each post can have an optional cover image with a certain hover effect.
+The category and all the tags can also be hidden on the tiles.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># Disable the use of tags, these are shown for each post on the index</span>
+<span class="c1"># pages (e.g home and the tags page) and shown above each post on the</span>
+<span class="c1"># post page.</span>
+<span class="n">SHOW_TAGS</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Disable the use of categories, these are shown for each post on the</span>
+<span class="c1"># index pages (e.g home and the tags page) and shown above each post on</span>
+<span class="c1"># the post page.</span>
+<span class="n">SHOW_CATEGORIE</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Show cover pictures in the blog index. This requires the use of the</span>
+<span class="c1"># `cover`` metadata in the post. In case you do not provide it a placeholder</span>
+<span class="c1"># will be shown.</span>
+<span class="n">SHOW_COVERS</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Apply a css filter to the cover image. You can use &quot;grayscale&quot;,</span>
+<span class="c1"># &quot;grayscale-75&quot;, &quot;grayscale-50&quot; and &quot;opacity&quot;</span>
+<span class="n">COVER_FILTER</span> <span class="o">=</span> <span class="s2">&quot;opacity&quot;</span>
+</pre></div></td></tr></table></div>
+</div>
+
+</article>
+
+<p id="post-share-links" class="social call-out">
+
+    <span class="share-label">Share this post</span>
+
+    <a href="mailto:?subject=Atom%20Blog%20Theme&amp;body=https%3A//franky.codes/atom-theme.html" title="Share via Email">
+        <i class="fa fa-envelope"></i>
+    </a>
+
+    <a href="https://sharetodiaspora.github.io/?title=Atom%20Blog%20Theme&url=https%3A//franky.codes/atom-theme.html" title="Share on Diaspora">
+        <i class="fa-brands fa-diaspora"></i>
+    </a>
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//franky.codes/atom-theme.html" title="Share on Facebook">
+        <i class="fa-brands fa-facebook"></i>
+    </a>
+
+    <a href="https://news.ycombinator.com/submitlink?t=Atom%20Blog%20Theme&u=https%3A//franky.codes/atom-theme.html" title="Share on Hacker News">
+        <i class="fa-brands fa-hacker-news"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//franky.codes/atom-theme.html&title=Atom%20Blog%20Theme&summary=I%27ve%20made%20the%20theme%20that%20I%20created%20for%20this%20blog%20open%20source.&source=https%3A//franky.codes/atom-theme.html" title="Share on LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+    </a>
+
+    <a href="https://toot.kytta.dev/?text=Atom%20Blog%20Theme%0D%0Ahttps%3A//franky.codes/atom-theme.html%0D%0A%23python %23pelican %23html" title="Share on Mastodon">
+        <i class="fa-brands fa-mastodon"></i>
+    </a>
+
+    <a href="https://www.reddit.com/submit?url=https%3A//franky.codes/atom-theme.html&title=Atom%20Blog%20Theme" title="Share via Reddit">
+        <i class="fa-brands fa-reddit"></i>
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?text=Atom%20Blog%20Theme&url=https%3A//franky.codes/atom-theme.html&hashtags=python,pelican,html" title="Share on Twitter">
+        <i class="fa-brands fa-twitter"></i>
+    </a>
+
+</p>    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="column align-left">
+                    <a
+                        href="https://github.com/pelican-themes/atom"
+                        title="Source code of this Pelican theme">
+                        <i class="fa-brands fa-github"></i>
+                        Atom theme
+                    </a>
+                </div>
+                <div class="column">
+                    <i class="fa-solid fa-copyright"></i>
+                    2025 <span class="mobile-hidden">Franky.Codes</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/pagemap-1.4.0.js"></script>
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/main.js"></script>
+        <!-- todo minify -->
+
+    </body>
+</html>

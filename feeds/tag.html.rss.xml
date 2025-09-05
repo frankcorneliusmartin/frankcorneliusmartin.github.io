@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0"><channel><title>Franky.Codes - html</title><link>https://franky.codes/</link><description></description><lastBuildDate>Mon, 01 Sep 2025 09:00:00 +0200</lastBuildDate><item><title>Atom Blog Theme</title><link>https://franky.codes/atom-theme.html</link><description>&lt;p class="first last"&gt;I've made the theme that I created for this blog open source.&lt;/p&gt;
+</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Frank Martin</dc:creator><pubDate>Mon, 01 Sep 2025 09:00:00 +0200</pubDate><guid isPermaLink="false">tag:franky.codes,2025-09-01:/atom-theme.html</guid><category>tech</category><category>python</category><category>pelican</category><category>html</category></item></channel></rss>
