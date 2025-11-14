@@ -1,0 +1,215 @@
+<!--
+    TODO
+        - dynamic open graph and twitter metadata, based on articles and pages
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Franky.Codes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=hello world>
+
+        <!-- open graph metadata for facebook/twitter -->
+
+        <meta property="og:title" content="Franky.Codes" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://franky.codes" />
+        <meta property="og:description" content="hello world" />
+        <meta property="og:image" content="https://franky.codes/images/me.jpg" />
+
+
+        <!-- styles -->
+        <link rel="stylesheet" href="https://franky.codes/theme/css/ubuntu-mono.min.css?5329fd52">
+
+        <link rel="stylesheet" href="https://franky.codes/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://franky.codes/theme/css/main.min.css?802a27f9">
+
+
+
+        <!-- fav icons -->
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link rel="apple-touch-icon" sizes="180x180" href="https://franky.codes/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://franky.codes/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://franky.codes/favicon/favicon-16x16.png">
+        <link rel="manifest" href="https://franky.codes/favicon/site.webmanifest">
+
+        <link
+            href="https://franky.codes/feeds/all.atom.xml"
+            type="application/atom+xml" rel="alternate" title="Franky.Codes Atom Feed" />
+        <link
+            href="https://franky.codes/feeds/all.rss.xml"
+            type="application/rss+xml" rel="alternate" title="Franky.Codes RSS Feed" />
+
+    </head>
+    <body class="">
+
+        <!-- top navigation -->
+        <header>
+            <nav class="navigation">
+                <i class="fa-solid">
+                    <img src="https://franky.codes/favicon/favicon-32x32.png"
+                         alt="menu icon"
+                         class="menu-icon"
+                         width="16"
+                         height="16">
+                </i>
+
+                <span class="site-name">
+                    Franky.Codes
+                </span>
+
+                <!-- hamburger menu -->
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                    <span class='menu-button'></span>
+                </label>
+                <ul class="menu">
+                    <li><a href="https://franky.codes" title="Projects">Projects</a></li>
+                    <li><a href="https://franky.codes/pages/curriculum-vitae.html" title="Curriculum Vitae">Curriculum Vitae</a></li>
+                    <li><a href="https://franky.codes/pages/hire-me.html" title="Hire Me">Hire Me</a></li>
+                </ul>
+                <ul class="feeds tablet-hidden">
+                    <li>
+                        <a href="https://franky.codes/feeds/all.atom.xml"
+                           type="application/atom+xml"
+                           title="Franky.Codes Atom Feed">
+                            <i class="fa-solid fa-atom"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://franky.codes/feeds/all.rss.xml"
+                           type="application/rss+xml"
+                           title="Franky.Codes RSS Feed">
+                            <i class="fa-solid fa-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <main>
+            <!-- mini map scroll bar -->
+            <canvas id="map"></canvas>
+            <div class="wrapper">
+                <article class="identity">
+                    <img
+                        src="https://franky.codes/images/me.jpg"
+                        alt="picture of Frank Martin"
+                        class="profile-picture">
+                    <h1>Frank Martin</h1>
+                    <p>Biomedical Engineer &amp; Software Engineer</p>
+
+                    <nav class="social">
+                        <a
+                            rel="external"
+                            href="https://github.com/frankcorneliusmartin"
+                            title="My github page">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            rel="external"
+                            href="https://www.linkedin.com/in/frankcorneliusmartin"
+                            title="My linkedin page">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </nav>
+                </article>
+                <div id="content" class="content page">
+    <!-- TODO: make this a template html element -->
+    <div id="template" class="generated-page">
+        <div class="page-divider up">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+                <a href="#">previous page</a>
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+        <div class="dynamic-content"></div>
+        <div class="page-divider down">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+                <a href="#">next page</a>
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+    </div>
+    <div id="hidden-wrapper">
+<header>
+<h1 class="purple">
+    <a href="https://franky.codes/pages/hire-me.html" id="page-title">Hire Me</a>
+</h1>
+</header>
+<article>
+    <p>Ready to discuss your next project or how we can work together?</p>
+<ul class="cloud" role="list" aria-label="Webdev tag cloud">
+
+    <li><a data-weight="4">Python</a></li>
+    <li><a data-weight="1">DevOps</a></li>
+    <li><a data-weight="2">PETOps</a></li>
+    <li><a data-weight="1">Pipelines</a></li>
+    <li><a data-weight="2">Consultancy</a></li>
+    <li><a data-weight="4">vantage6</a></li>
+    <li><a data-weight="4">Federated Learning (FL)</a></li>
+    <li><a data-weight="4">Privacy Enhancing Technologies (PETs)</a></li>
+    <li><a data-weight="3">Algorithms</a></li>
+    <li><a data-weight="3">Designer</a></li>
+    <li><a data-weight="2">Multi-Party Computation (MPC)</a></li>
+    <li><a data-weight="1">Git</a></li>
+    <li><a data-weight="2">Mathematics</a></li>
+    <li><a data-weight="2">Health</a></li>
+    <li><a data-weight="3">Containers</a></li>
+    <li><a data-weight="2">CI/CD</a></li>
+
+</ul><p>If you are interested in hiring me, please contact me at
+<a class="reference external" href="mailto:mail&#64;franky.codes">mail&#64;franky.codes</a> or give me a call at
+<a class="reference external" href="tel:+31627578073">+31 6 27 57 80 73</a>.</p>
+<div class="call-out docutils container">
+<div class="line-block">
+<div class="line"><strong>Franky.Codes BV</strong></div>
+<div class="line"><br /></div>
+<div class="line">Verdunplein 17, UNIT A2834n</div>
+<div class="line">5627 SZ Eindhoven</div>
+<div class="line">KVK: <a class="reference external" href="https://www.kvk.nl/bestellen/#/92047629000057694621">92047629</a></div>
+<div class="line">IBAN: <a class="reference external" href="https://bunq.me/FrankyCodes">NL71 BUNQ 2102 2859&nbsp;95</a></div>
+<div class="line">BTW-ID: NL865864640B01</div>
+<div class="line">MAIL: <a class="reference external" href="mailto:mail&#64;franky.codes">mail&#64;franky.codes</a></div>
+<div class="line">TEL: <a class="reference external" href="tel:+31627578073">+31 6 27 57 80 73</a></div>
+</div>
+</div>
+<p><a class="reference external" href="terms-and-conditions">Terms and Conditions</a></p>
+
+</article>
+    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="column align-left">
+                    <a
+                        href="https://github.com/pelican-themes/atom"
+                        title="Source code of this Pelican theme">
+                        <i class="fa-brands fa-github"></i>
+                        Atom theme
+                    </a>
+                </div>
+                <div class="column">
+                    <i class="fa-solid fa-copyright"></i>
+                    2025 <span class="mobile-hidden">Franky.Codes</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/pagemap-1.4.0.js"></script>
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/main.js"></script>
+        <!-- todo minify -->
+
+    </body>
+</html>

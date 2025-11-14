@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Franky.Codes - ascii</title><link href="https://franky.codes/" rel="alternate"></link><link href="https://franky.codes/feeds/tag.ascii.atom.xml" rel="self"></link><id>https://franky.codes/</id><updated>2022-12-23T00:22:00+01:00</updated><entry><title>ASCII picture for this blog</title><link href="https://franky.codes/ascii-picture.html" rel="alternate"></link><published>2022-12-23T00:22:00+01:00</published><updated>2022-12-23T00:22:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2022-12-23:/ascii-picture.html</id><summary type="html">&lt;p class="first last"&gt;How I created the ascii picture using Python for this space.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;When I started designing my blog I wanted create a look and feel of a
+code editor. So instead of a regular picture I wanted to have a ascii
+version.&lt;/p&gt;
+&lt;p&gt;At first I used an online tool to generate the picture. While it was
+good enough to decide that I liked it, I felt it did not gave me enough
+control over the result. So I decided to write my own in Python.&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="original picture" src="https://franky.codes/images/me.jpg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Original picture that I want to convert to an ASCII version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="algorithm"&gt;
+&lt;h2&gt;Algorithm&lt;/h2&gt;
+&lt;p&gt;I remembered an algorithm which I have seen during a computer vision
+course. Which computed the average intensity of a segment in the
+picture and then matched it to a character with the same intensity.&lt;/p&gt;
+&lt;p&gt;I used the Python package Pillow (which is an python implementation of
+PIL) for most of the image processing tasks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="preprocessing-the-image"&gt;
+&lt;h2&gt;Preprocessing the Image&lt;/h2&gt;
+&lt;p&gt;The identity box on my website is 220x220 pixels. The first step would
+be to crop the image to a square.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;input.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# I found this a nice cutout.&lt;/span&gt;
+&lt;span class="c1"&gt;# (left, upper, right, lower)&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;crop&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;We want a (single) intensity value per image segment. In a color image
+we have three values per pixel: red, green and blue. A first step would
+be to convert the image to a gray scale image. There are many ways to
+do this, but I decided to use the average intensity of the three color
+channels.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# convert to grayscale&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;L&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Then, I normalized the gray scale image to use the full range 0-255 to
+maximize the contrast between segments.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ImageOps&lt;/span&gt;
+&lt;span class="c1"&gt;# normalize the image&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageOps&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autocontrast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="25%" /&gt;
+&lt;col width="25%" /&gt;
+&lt;col width="25%" /&gt;
+&lt;col width="25%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Original&lt;/th&gt;
+&lt;th class="head"&gt;Cropped&lt;/th&gt;
+&lt;th class="head"&gt;Grayscale&lt;/th&gt;
+&lt;th class="head"&gt;Normalized&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="original picture" src="https://franky.codes/images/me.jpg" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The original loaded image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="cropped picture" src="https://franky.codes/images/cropped.png" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The square cropped image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="gray scale picture" src="https://franky.codes/images/grayscale.png" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The gray scale image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="normalized picture" src="https://franky.codes/images/normalized.png" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The normalized image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="segmenting-the-picture"&gt;
+&lt;h2&gt;Segmenting the Picture&lt;/h2&gt;
+&lt;p&gt;Before we can compute the intensity per segment we need to split the
+image into segments. I decided to use a grid to use 110 segments in &lt;tt class="docutils literal"&gt;x&lt;/tt&gt;
+and &lt;tt class="docutils literal"&gt;y&lt;/tt&gt; direction. So every segment is 2x2 pixels in the final
+resulting ASCII-picture.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;110&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+&lt;span class="c1"&gt;# compute the width (and height since we have a square image) of a&lt;/span&gt;
+&lt;span class="c1"&gt;# segment&lt;/span&gt;
+&lt;span class="n"&gt;dw&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;The cropped image with the grid looks like this:&lt;/p&gt;
+&lt;div class="toggle docutils container"&gt;
+&lt;div class="header docutils container"&gt;
+&lt;strong&gt;Visualization code&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# make a copy of the image, as we do not want to have the&lt;/span&gt;
+&lt;span class="c1"&gt;# segmentation gizmo in the final image&lt;/span&gt;
+&lt;span class="n"&gt;im_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageDraw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Draw&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;im_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;fill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_h&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;fill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;im_processed2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="Segmented picture" src="https://franky.codes/images/segmented-image.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The original image with the segmentation grid.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I used the &lt;tt class="docutils literal"&gt;crop&lt;/tt&gt; function of the &lt;tt class="docutils literal"&gt;Image&lt;/tt&gt; class to split the image
+into segments:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;
+&lt;span class="normal"&gt;8&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;im_part&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;segments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="n"&gt;segments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;im_part&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;crop&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+      &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="toggle docutils container"&gt;
+&lt;div class="header docutils container"&gt;
+&lt;strong&gt;Draw images segments&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;display_many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+           &lt;span class="n"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+   &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Thats not a grid&amp;#39;&lt;/span&gt;
+   &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dim&lt;/span&gt;
+   &lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+
+   &lt;span class="n"&gt;new_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;L&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;new_image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new_image&lt;/span&gt;
+
+&lt;span class="n"&gt;display_many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;segments&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="Segmented picture" src="https://franky.codes/images/segmented-image2.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The segmented pictures displayed in a grid.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="computing-letter-intensities"&gt;
+&lt;h2&gt;Computing Letter Intensities&lt;/h2&gt;
+&lt;p&gt;Before we can match the each segment to a character we need to compute the
+intensity for each character. This intensity is dependant on the font that is
+used. I used the &lt;a class="reference external" href="https://fonts.google.com/specimen/Ubuntu+Mono"&gt;Ubunto Mono font&lt;/a&gt;,
+which is the same font as this website. This code only works for
+mono-spaced fonts. If the font is not mono-spaced the algorithm will
+be much more complicated, as the final ASCII image is not a grid in that case.&lt;/p&gt;
+&lt;p&gt;The font size is not important when computing the intensities for each character, as
+we are computing the average pixel intensity of the character box.&lt;/p&gt;
+&lt;div class="toggle docutils container"&gt;
+&lt;div class="header docutils container"&gt;
+&lt;strong&gt;compute_letter_intensity(letter: str)&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_letter_intensity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+   &lt;span class="n"&gt;img_dims2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;font_size&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;font_size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;L&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_dims2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;black&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageDraw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Draw&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fnt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;center&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+   &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getdata&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+   &lt;span class="n"&gt;n_of_pixels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img_dims2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;avg_intensity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n_of_pixels&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;avg_intensity&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The function &lt;tt class="docutils literal"&gt;compute_letter_intensity&lt;/tt&gt; returns the average pixel
+intensity of a character. In other words, it sums the pixel values and divides
+them by the number of pixels that are in the character box.&lt;/p&gt;
+&lt;p&gt;We want to match every segment in our preprocessed image to a character.
+So we need to compute the letter intensity for all characters we want to
+use in out final ASCII image.&lt;/p&gt;
+&lt;p&gt;I used a selection of letters, digits and symbols. Symbols like &lt;tt class="docutils literal"&gt;&amp;quot;&lt;/tt&gt;,
+&lt;tt class="docutils literal"&gt;'&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;/&lt;/tt&gt; are not included, as they have a meaning within HTML. Another option
+would be to escape these characters, but I decided to leave them out.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# define the characters to use&lt;/span&gt;
+&lt;span class="n"&gt;charactersList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_letters&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; \
+   &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;(&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;[&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;]&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;{&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;|&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;=&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;+&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;amp;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;@&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;~&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;`&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# load the mono-spaced font&lt;/span&gt;
+&lt;span class="n"&gt;fnt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageFont&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;truetype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fonts/UbuntuMono-Regular.ttf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                         &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;font_size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# compute the intensity of each letter&lt;/span&gt;
+&lt;span class="n"&gt;intensities&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;char&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;charactersList&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+   &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;compute_letter_intensity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# normalize values between 0 - 1&lt;/span&gt;
+&lt;span class="n"&gt;low&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="n"&gt;high&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+   &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;high&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="match-letters-to-segments"&gt;
+&lt;h2&gt;Match letters to segments&lt;/h2&gt;
+&lt;p&gt;For each segment we match the letter with the most similar intensity:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;chars&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;objective&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;segment_average&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+   &lt;span class="n"&gt;chosen_char&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;
+   &lt;span class="n"&gt;distance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;intensity&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+       &lt;span class="n"&gt;di&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;objective&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;intensity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+       &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;di&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+           &lt;span class="n"&gt;chosen_char&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;char&lt;/span&gt;
+           &lt;span class="n"&gt;distance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;di&lt;/span&gt;
+   &lt;span class="n"&gt;chars&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chosen_char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# merge chars into strings of length n_segments&lt;/span&gt;
+&lt;span class="n"&gt;result_string&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chars&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;
+&lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;result_string&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result_string&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Making our final result:&lt;/p&gt;
+&lt;div class="identity align-center"&gt;
+&lt;pre class="picture gray"&gt;
+rrrrr++r++++++*****==============??????????????????||||?||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrr+++++++++*********==========??????????????????|?|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrrr++++++++*****===========????????????????????????|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrr++++++++**+***=*=====?====??????????????????==*??|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrr+++++++++**+*==========??=????????????????+++=*+rr=||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrr++++++++*****=========????????????=*+++^:!:::::!!!r?|????|||||||||||||||||||||||||||||||||||||||||||||||
+rrrr++++++++++***=*========????????????==+r;:,,..,~~~~:!!!r^^*?|||||||||||||||||||||||||||||||||||||||||||||||
+rrr+r++++*++++***=*=======?=???????????=r!,....,.,_,~,,~_!!:::*|||||||||||||||||ii||||||||i|||||||||||||||||||
+r+r++++++*+********=====?===??????????=!,.-````----...,~~~::~,!=?||||||||||i||i||i||||||i||||||i||||||||||||||
+r+++++++++**+**=*=*======????????????+!.``````````-..,,::_:::,:+=*||||||ii|||||||iiii||iii||||i|||||||||||||||
+r++++++++*****=*=*=======??????????*^:.`````````-......,,~:!!!:~!:=??|||iiiiiii|i|iiiii|i|iii|iiii||i|||||i|||
+r+++r++++*+***=*=========?????????=!.`````````````-.,,,,~:!::^!:::r?|?||iiiiiiii||iiiiiiiiiiiiiiiiii|i|i||||||
+++++++++******==========?????????*~-``````````````-..,,:::~,~!r^:,,!++^=iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii|||
+++++++++******======????=???????+,````````````````-.,...,,::~,:::!,._:::|||iiiiiiiiiiiiiiiiiiiiiiiii|iiii|i|||
+r++++++******=======?=?=???????r,```````-````--....,.,,~,.,::_:!!,:~._,,r|||iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
++++++++***=*=*========???????=+,````````````---`-.,,,,,,,:~~,,,,:*_~:,::_||||iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+++++*+****==*=======????????*+:-``````````....```-.,,~:::_::::::,_^:,:,~:!?i|iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii|
++++++*****==*=====?????????==^.``````````..-`````-.,~!+=??|||i??*!,!~,,.,,+i|iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+++++*****=*=======????????=?*,`````````-.,``````..,:!=|/7i/Tzzxxz(r~:,-.,.:riiiiiLiiiiLiiLiiiiiiiiiiiiiiiiiiii
++++******========??????????=~```````` `...````...,~!*|ivliiTxlxsfjn?~:..,._?|iiiiiiiiiLiLLLLiiiiiiL/Liiiiiiiii
++****=*=======?=??????????=,```  ``` `.--,``-..,,,:;=i/77/|)tYIjySwS|:_..,::=|iiLiL/LLLL//LLLLLLiL//LiiLLiiiii
+++****=*===?=?????????????:```   ``  -.-.~-..,,,,:!+|)7lx)/zJ{y5emhhSl!,...,!?iii///L/L///L/L/LLLL//LLL/LLiLii
+******======?????????????r-``       `..-~...,,:::!^?i(c(viTJ{j54khhkmaJ:,..,,!*|ii/)/)L//L////////////L/i/iLii
+*******=======??????????*.``        `-`.,..,~_:!:^=|)v)/vxtfjoSeEAAEEEmc,...,.:+iiL))/)/)L///L//)///)//////iLL
+****=*======?????????|?=!``         `-`...,,~::!^+?|c7vTzzIj3ZmhUU6UUU64*.--.,,!|///())(////)///)()))/)/)/////
+*****========??????????r:`         ````..,,,::!^+=|iv7v1Juy4mEAAqKKKpKKE5_---...r|/ccccc)())c()))c)))))())))//
+*=*=======??????????|??+,`         ```-..,,~::!r?|i)vTzIuySmEU69KKdbdddKA|.-.....+icccc))c((vcc)cvvcc/ccc(/(/(
+***======??????????||??r-``        ```..,,,~:!!r?|iLTxFuj5VkE66qKKdODOOdUj:.-..-.~?vcv7c(cvv7vvv7vvvc)(cccc)/(
+=*======?????????|||||?~`         ```-..,,,~:!!r=|/lxtfjy5whhE6qKdODMMROdm?,`..-.,:)vvvvv77777TTv77vvvvvvccccc
+*=======?????????|||||=.         ```-..,,,,~:!;r*|ilzt[y5SeemXAqdHRRWgWRHEl:.-..-~,!7777777TTTTTT7TTTvv7vcvvvv
+=======????????|?|||||!`        ``-..,,,,,,~!!!^*|/lxJ[jyyyy5kUKdRMMg08MDh1^,-..-.:~vTlvl77TlllTT7TTTvTT7vv77v
+======?????????||||||?:`        `..,,,,,,,,~!!^^+|cxx1n[{ssj5hUdDRM0NN00MAJ?^..,.-,!LlllTllllllllTlTlTT77TTTTT
+====????????|||||||||!,        `-.,,,,,,,,,~:!r+*|cxxzIsxt{5kUdDDMgN&amp;&amp;&amp;NgKs|r,-,...!|TlllxxlxxxlxlllllTllTTlTT
+=====????????|||||||?,`   ``  ``..,,,,,,,,,,:;+=?7xzxzx11C5mUdDMRM0&amp;&amp;&amp;&amp;&amp;ND5=r!-....++Tlxllxxxxxxxllllxxlllllll
+===?????????|?||||||*:````    ``.,,,,,,,,,,~:^+?izJYtzl1I5kUKOg000&amp;&amp;&amp;&amp;&amp;&amp;&amp;86i:!.-...r+7xzxxxxxxxxlxxxxxxlllllll
+=?=????????|||||||||+;``` `   ``.,,,,,,,,,,,:^+=c1{{[11tok6dHRN#####NN0&amp;NNOt:~,....;?Lxxxzzxxzxxxxxxxxxxxlxllx
+=???????????||||||||r!`-` `   ``.,,,,,,,,,,,:^r=)1jjysJ{wUdOH0&amp;###&amp;0g0ggNN8k:.,...,!|cxxzzzzxzzzzxxxxxzxxlxxxl
+???????????|||||||||=!`-``    ``.,,,,,,,,,,,:^r=i1jS5js[mEKddMMM8RRdAhK80&amp;gd^.,.,.,!|7xzzzzzzzzzzxxxxxxxxzxxxx
+?????????|||||||||||?!`-```   `-.,,,,....,,,:!r?i1[Z5y{s2kkZmEj7i|i11x15dN0D=-.-...!ixzzzzzzzzzzzzzxzxzzzzzzxx
+????????|||||||||||||;.```    `...,,..-----.~!^r|)t5jyytj5ySyjirr;r;r|itnURD=``..,,;Tzzzz11zzzzzzzzzzxzxzzzzxz
+?????????||||||||||||=~````   `....-````````-.,:r?LnC[ys[Syntx?:!ri[S4jzLiKR|-`,.~,?lzzz1111zz11zzzzzzzzzzzzzz
+???????|||||||||||||||^-```   `....`````---`---,~;=|xCSSyjj5[r?tY11yKDMOdkzG1`-,.:!?xzz1111111111zzzzzzzzzzzzz
+??????|?|||||||||||||||,```   `...-``..~:_~,,,,.-,:!r1mmjmh{rYi^^=cnjPKOOdh{1`.:.!:|xzzz11111111111zzzzzzzzzzz
+???????|||||||||||||iii!```   `..---.....,:_,..,.-...~:::+Sr1+~:!!!*it5mU9Gm*,^:,;,izz111111111t11z1zzzzzzzzzz
+????????||||||||||||iii!```   `..-....--.,,::,-...``.r[1AK!|r~!!_,,!+*^|JjSm*~+r,:,?x111t11111t111zzzzzzzzzzzz
+????????||||||||||||iii;```   `-.....---````.,.-..,,,?kkmD|Y!r^!:,.I=mc?kdRW{:!^,,.+z11111t11111111z1zzzzzzzzz
+??????|||||||||||||||iir```   ``.,,..--.-``.,.`-...,,=ZKkH7ux|:!:!_^YE4IER&amp;Nj=|:,.-!zz1111t11z1111111zzz1xzzzz
+??????|||||||||||||iiii*````  `.,,,..`-.-.```.`-..-.,?odKXTuv^!+?=?IEmEAdMNNyJ*!,-`:x111t11t11111111zzzz1zzzzz
+????||?||||||||||||iiii?.```  `..,,,.--...--..`-..`-~?jOW5v!|^!^*|{e6AdORW&amp;Njk;,.``,x11111111t111111z1zzzzz1zz
+?????|||||||||||||iiiii|~``` ``..~,,.........-`--.`.:?SONEj^J|rr?z[kU6ORM0NNjd!,-``,/z1111tt1t1111111z1zzzzzzz
+?????|?|||||||||||iiiiii!``````,.,,,,.......-``--.`.~?5Kg05TXj1vcJjemqR0ggNph%^.``-.i11111tt111t11111111zzzzz1
+????|||||||||||||||iiiii?.`````,,,,,.......-------`.,=2qRNR{Y6SySmEp6R&amp;NNgNjgR=,`-,,v111t111t1111111z1111zzzzz
+??????|?||||||||||||iiii|~````-,,.,,.,.....----..`..,r5KD0NAlP9EEA6K6DNgggAP0%L..,!!zzz11t111111tt11z1zz111z11
+??????|?||||||||||i|iiiii;````-,,.,,,,,..........-..,^yKHRNgjiAKqUq9kdRMMEyN0Dx-,;**z1111111t11111t1z1zz1zzzzz
+?????|?||||||||||||iiiiii?.````,,,.,,,,,........-...,^[UdR8&amp;Hti5qAhE4qOdnk&amp;NNRl,+{itz11t111t1t1t1111111zzzzzzz
+??????||||||||||||i|iiiii|,-```,,,,.,,,........`...,,;FEKORg0KCi|)xxv1s28&amp;&amp;&amp;N%z=1kj5z1t1tt11tt1ttt11111z11zzzz
+?????|?||||||||||iiiiiiiii~.```,,,,,........---....,,^zEKHHR08HEwS4X6b%M0NNN0D4ElSdPt111tttt1ttt1t111111z1zzzz
+????|?|||||||||||iiiiiiiii_.```,,,,,,,....--.......,,rzEdOHHR%bKKKKddDM0N&amp;#&amp;NOdHvGgKt11ttttt1ttttttt1111zz1zzz
+????|?||||||||||i|iiiiiiii,.``..,,,,,,,,,..........,~=zkMOROHdqUKKddHM0##&amp;&amp;&amp;NDDK)K0d11ttttt1ttttttt1t1111111zz
+???|?||||||||||i||iiiiiiii,.`-,.,,,,,,,,.,,........,~?tmdddRH$hXEUdHRg&amp;##&amp;N&amp;0DMG9gMdtttttttttttt1tttt1111z11zz
+??|??||||||||||||iiiiiiiii~,.`,,,,,,,,,,,,,.....-...,?sZA^*$O6hkXUbDMNN##&amp;&amp;Ng%WKRNMUttttttttttttttttt111t111zz
+??|??||||||||||||iiiiiiiiL:.,..,,,,,,,,,,,,.....-.- `!13t.,3OhEUAUdDMNN##&amp;&amp;NgDD#B#getttttJttttJtttttt1z1t1111z
+??||||||||||||||iiiiiiiiii^,,,.,,,,,,,,,,,,.....-.-``,?3El?5pmAdbKd%RgN&amp;&amp;NNNRRg#B&amp;MCtttttJtJtttttttttt1ttt111z
+??|||||||||||||iiiiiiiiLLi|,,,,,,,,,,,,,,,,......--`..;xliJm4mqDRDO%RM0NNNN0MDNB#NXJttttJttJJJtJttttttttttt11z
+?|?|?||||||||i||iiiiiiLiLLi!,,,,,,,,,,,,,........-`-,:!::!|iJ36ORMRRRgNNNNNNWORNgEJttttttJttttJJJttttt11ttt1zz
+???|?|||||||||||iiiiiiiiL/L|_,,,,,,,,,,,,.......-``-.,...:+?i146dRMMW00N000N8DyyntJttttttJJtJJttJttttttt11tt1z
+???|||||||||||iiiiiiiiiiLL/)|:,,,,,,,,,.,......-```--.,-.~^!!i1nkUdM880N0N&amp;NgDsJJJJttttJtJJJJJJJJJttttttttt111
+?||||||||||||||iiiiiiiiiLL////|r~,,,,,,,,....-``````-,.-.!^r^||TFjmKRg0NNNNNgHJJJJttJJJttJJJYJtJJttttt1tttt111
+|??|||||||||||iiiiiiiiiiLiLL)/L|r,,,,,,,...-```````.,:_~!/xi*r=l)7jXKgN&amp;NNNg8dJttJJtJJttJtJJJJJtJJJJttttttt111
+|?|||||||||||||iiiiiiiiiLL/)/)))/!,,,,,,,.-``````-..,:^i7tnj[sxtl||z2d0&amp;&amp;NN0M6JtJJtJJJJtJJJJJJJttJJJttttttt111
+||||||||||||iiiiiiiiLiLLLL/)/))/)+,,,,,,,.`````-......_=?(JuIJj5ji||yd0NN008MkJttttJJtttJJJJJJJJJJJJttttttt11t
+?|??|||||||||iiiiiiiiiLiL////)()ci,,,,,,,.-``------...~**iJyjFnIi:^|Z%gNN00WRoJttJJJJJtJJtJJJJJJJtJJJtttttt111
+|||||||||||iiiiiiiiiiLL/L///))))(c:,,,,,,..-``````--.,!:!^is3jjSey^76%000NgMOFttJJJJttJJJJJJtJJJJJJtttttttt111
+||||||||||||iiiiiiiiiLL///(/))(/ccr,,,,,,,..-..---..~;?=?LI4k4wEDD5J6OW000M%htttJtJYttJJJJJtJJJJJJJJJttttttt11
+?|||||||||||iiiiiiiiiLiLLL/)))vvcci,,,,,,,........-.,!+*?Ts55ZEdDRKEpdRWWgRbjJJJtJtJtJtJJJJJJJtJttJttttttttt11
+|||||||||||||iiiiiiiiLLL////c(cvcvv!,,,,,,,..........:!r*izjZX9bD%OKKHDRMDOEJttttJJJJJJJJJJJJJJJttJtJtttttt111
+?|||||||||||iiiiiiiiiL////))())ccv7|,,,,,,,......-`-.,,,:!*|x{6ODDOHddO%RHKEJJJttJJJJJJJJJJJJJJJJJJJttJtttt11t
+?|||||||||||iiiiiiiiLiLL///)()cc(cvc~,,,,,,.......-```-.,.:?nEqOODR%OHOD%KK6YttJJJJJJJJJYJJtJJJJJJJJtttt1tt1t1
+||||||||||||iiiiiiiiLLL///)))(cc(cvv!,,,,,,...,,,...--`-.:=jApdD%DRRDOH%dKD9JJtJJJJJJJJJJYYJJJJtJJJtJtJttttt1t
+||||||||||||iiiiiiiLLL/////))cccccvv!,,,,,,...,,......,~^|IEKdHO%RMMR%OHpORKsJtJJJJJJJJJJJtJJJJJJJJttJttt111t1
+||||||||||iiiiiiiiiiLL///)))cvvcvvvvr,,,,,,,.,,......,!*|x2UKH%DRMMRROdqHRMKJJJJtJJJJYtJJJJJtJJJJJJJJJJttttttt
+||||||||||i|iiiiiiiiLL///)()vccccvvT=,,,,,,,,,,,....,~;+?ty54UdMM8ROOd9KRMWdYJttJtJJJYYJJJYJJYJJJJJJJJtJtt1ttt
+|||||||||||iiiiiiiii/L//)//cccvcvvvv?,,,,,,,,,.,..-..~:!+?tn5SqKOHKdqU9%WggOYttJJJJJJJJYJYJJYYJJJtJJJJJtJtt11t
+|||||||||i|iiiiiiiii/////)/))(ccvvv7|,,,,,,,......`-.,,_;+i1JykE6PXUhAHM800DYJJYYJJJJYYJsJJJJYJJJYJJJtJttttttt
+|||||||||i|iiiiiiiiiL///)())c)ccvcvvi,,,,,,,..----``.,.,:!+=?z353J2kEK%g0N0DstJYJYJJJJJYYsJJJJJtJJJJJttJJtJtt1
+|||||||||i||iiiiiiL/L/)//)c(c(cvvvvv/,,,,,,,,.---````.,,,:!*?|)1i=lhqbRW00gDIJJYJYJYJJJYYYJYYJYJJJJJJJJJJJtt1t
+||||||||||ii|iiiiiLiL////))cvvcvcvvTc,,,,,,,,,..--```-...,:;;*rr^i4UKOW0NNg%nJJJJYJJJJYJJYJJsJJJJJJJYJJJJttttt
+|||||||||||iiiiiiiiiLL///((c)vvvvv77v,,,,,,,,,,..--`---.-.~:::!rce6KOR8gNN0RfYYJJJJJJJJJJYJJYJtJJJtJJJJJJtJt1t
+|||||||||i|iiiiiiiLi////)))))vcvcTv7v~,,,,,,,,,.,..-......,,!+?J4E$dRWg00NgRjYYsYJYYJJJJJYYYYJJJJJJJJJtttJJt11
+|||||||||iiiiiiiLiLiL/)))(c)c(c77v7TT:,,,,,,,,,,,,,,,,,,,_:^|YjVEUKDMWg00NgR3JJsYsYJJJYJJYYJJJJJJJJYJJtJJttttt
+|||||||||i|iiiiiLiLL/L)))cv(ccv77Tv77:,,,,,,,,,,,,,,,,~:!^=ctn5hUdORWWgg000MmYsYYYsJJYYJJJJJJYJJYJJJJJJJJttttt
+|||||||||iiiiiiiiiLLL////(c)ccv7TvTlT:,,,,,,,,,,,,,,,,~:!r|ljZEqdDRMRgg0M8gMEYYJJYJYYYJJYJJJJJJJJJYYJJJJtJtttt
+|||||||||i|iiiiiiLiL////)c(cvcvv777TT:,,,,,,,,,,,,,,,~:!r?T{ShKORRMWM0000N08KssYYsYYYJJJsJJJJJJJJJYYJJJtJJtttt
+|||||||||iiiiiiiLiiiL//)ccccvccvTcTT7:,,,,,,,,,,,,,,,:!*)s3k6d%MWMW8gg00NN0gOssYYssYYJYYYYJJJJJJYJYYYJJtJttttt
+|||||||||iiiiiiiiLLL//L))ccvvvvv7vTTl_,,,,,,,,,,,,,,_!*vC2G$dDM8gggMRggg0NNNMjsYssJYYYYsYJJJYJJJJJYYYJtJJJtttt
+|||||||||iiiiiiiiiiLL//))(cvcvvcvv77T_,,,,,,,,,,,,,,:^|tykUdDRMg00gWMWW0NN&amp;NWA[lltJYsYJJYJJYJYJJJJJJtJJtJttttJ
+||||||||||iiiiiiiiL/////)c)cvvcc7v)?;,,,,,,,,,,,,,,~!*)CSPKORgg000gMRM8gNNN&amp;gdEj!!itYYJYJJJJJYYJtJJJJJJJJJtttJ
+||||||||||iiiiiiiiLL//////)(ccv/?!.` .,,,,,,,,,,,,,~!?lfVEdRg0g0g08MRRgg0N&amp;&amp;0OpUXi,!lttYYJJJJJJJJJJJJJtJJttttt
+||||||||iiiiiiiiiii///////((ci!.-`  -,,,,,,,,,,,,,,:^?vjmAdRWgg00gMRRRW80N&amp;&amp;NRdp6EY.izxxtJJJJJtJJJJJYJJttttttt
+|||||||||iiiiiiLiLLLLL/)/)/i;.--`  -,,,,,,,,,,,,,,,,!?TuV6HRRMM88MR%%RMWgN&amp;NNMHdK9E!i11T?^)1JJJJJtJJJYJJtttttt
+|||||||||i|iiiiiiiiLi/L/LL^.``````-.,,,,,,,,,,,,,,,,:=LYSUODDRRRRR%ODRM8g00NNgOHKKA^i1txi:|7x1tttJJJJJJttttttt
+||||||||||iiiiiiiLiiL///i:-```````-.,,,,,,,,,,,,,,,,,^|zZKHHO%DRDDOODRMggg0NNgDHdKkrcztzc^LlllxtJJJJJJJttttttt
+||||||||||||iiiiiiiiiL/?,-````````-.,,,,,,,,,,,,,,,,,:+cSKdddOO%DOHOORMW8800N0RObdt|zzt1i?vz1zxlzttJtJtttttt1t
+||||||||||||iiiiiiiLii!.```````````..,,,,,,,,,,,,,,,,,^iVKdKdO%%DHddHDRMgM8g0gROdK|vzz11?izz1zxxlTzttJtttJt1tt
+|||||||||||||iiiiiii=,`````````````..,,,,,,,,,,,,,,,,,:?y9KdHDRDOdddODbRMMWMgMRHOIilxxzz=l1ttzzxTvTx1ttttttttt
+|||||||||||i|iiiii|:.```````````````..,,,,,,,,,,,,,,,,_rsk6KdODDHdKdHddORMMMMRRH5ivlxlzL|zttt11zzxxl7lztttt1tt
+||||||||||||i||ii^.-````````````````-.,,,,,,,,,,,,,,,,~^zSh9KHOOdKKKddHODRRRRRRe|cllTcx=l1t1t11zxxllllTx111111
+|||||||||||||||+,-```````````````````-..,,,,,,,,,,,,,,:rxyk6KdHHKKKKKdddOOODD%m|/TTTTT||zYJt11zxxllxzxllvTzz11
+?||||||||||||?:-``````````````````````-..,,,,,,,,,,,,,:rlymEqdddKKKpKKKddOOOOy|i/()vl7=?^Ytt1zxxxxxlllTlll7vlz
+??||||||||||;.-````````````````````````-..,,,,,,,,,,,~!+ljwE9ddKKKKKKpppKdH6z|||iicv7?i:~1t1zzxzxxllxllllll7cv
+&lt;/pre&gt;
+&lt;/div&gt;
+
+Funny enough, I did not use this image in the final version of this website. But I
+ still like it, so I decided to include it here.&lt;/div&gt;
+</content><category term="tech"></category><category term="www"></category><category term="python"></category><category term="ascii"></category><category term="image processing"></category></entry></feed>

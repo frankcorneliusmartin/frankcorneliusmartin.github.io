@@ -1,0 +1,229 @@
+<!--
+    TODO
+        - dynamic open graph and twitter metadata, based on articles and pages
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Franky.Codes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=hello world>
+
+        <!-- open graph metadata for facebook/twitter -->
+
+        <meta property="og:title" content="Franky.Codes" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://franky.codes" />
+        <meta property="og:description" content="hello world" />
+        <meta property="og:image" content="https://franky.codes/images/me.jpg" />
+
+
+        <!-- styles -->
+        <link rel="stylesheet" href="https://franky.codes/theme/css/ubuntu-mono.min.css?5329fd52">
+
+        <link rel="stylesheet" href="https://franky.codes/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://franky.codes/theme/css/main.min.css?802a27f9">
+
+
+
+        <!-- fav icons -->
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link rel="apple-touch-icon" sizes="180x180" href="https://franky.codes/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://franky.codes/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://franky.codes/favicon/favicon-16x16.png">
+        <link rel="manifest" href="https://franky.codes/favicon/site.webmanifest">
+
+        <link
+            href="https://franky.codes/feeds/all.atom.xml"
+            type="application/atom+xml" rel="alternate" title="Franky.Codes Atom Feed" />
+        <link
+            href="https://franky.codes/feeds/all.rss.xml"
+            type="application/rss+xml" rel="alternate" title="Franky.Codes RSS Feed" />
+
+    </head>
+    <body class="">
+
+        <!-- top navigation -->
+        <header>
+            <nav class="navigation">
+                <i class="fa-solid">
+                    <img src="https://franky.codes/favicon/favicon-32x32.png"
+                         alt="menu icon"
+                         class="menu-icon"
+                         width="16"
+                         height="16">
+                </i>
+
+                <span class="site-name">
+                    Franky.Codes
+                </span>
+
+                <!-- hamburger menu -->
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                    <span class='menu-button'></span>
+                </label>
+                <ul class="menu">
+                    <li><a href="https://franky.codes" title="Projects">Projects</a></li>
+                    <li><a href="https://franky.codes/pages/curriculum-vitae.html" title="Curriculum Vitae">Curriculum Vitae</a></li>
+                    <li><a href="https://franky.codes/pages/hire-me.html" title="Hire Me">Hire Me</a></li>
+                </ul>
+                <ul class="feeds tablet-hidden">
+                    <li>
+                        <a href="https://franky.codes/feeds/all.atom.xml"
+                           type="application/atom+xml"
+                           title="Franky.Codes Atom Feed">
+                            <i class="fa-solid fa-atom"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://franky.codes/feeds/all.rss.xml"
+                           type="application/rss+xml"
+                           title="Franky.Codes RSS Feed">
+                            <i class="fa-solid fa-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <main>
+            <!-- mini map scroll bar -->
+            <canvas id="map"></canvas>
+            <div class="wrapper">
+                <article class="identity">
+                    <img
+                        src="https://franky.codes/images/me.jpg"
+                        alt="picture of Frank Martin"
+                        class="profile-picture">
+                    <h1>Frank Martin</h1>
+                    <p>Biomedical Engineer &amp; Software Engineer</p>
+
+                    <nav class="social">
+                        <a
+                            rel="external"
+                            href="https://github.com/frankcorneliusmartin"
+                            title="My github page">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            rel="external"
+                            href="https://www.linkedin.com/in/frankcorneliusmartin"
+                            title="My linkedin page">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </nav>
+                </article>
+                <div id="content" class="content ">
+<h1>Topic <span>ascii<span></h1>
+
+<div class="feeds">
+    <div>
+
+        <a
+            href="https://franky.codes/feeds/tag.ascii.atom.xml"
+            type="application/atom+xml" rel="alternate"
+            title="Franky.Codes ascii Atom Feed">
+            <i class="fa-solid fa-atom"></i>
+        </a>
+
+        <a
+            href="https://franky.codes/feeds/tag.ascii.rss.xml"
+            type="application/atom+xml" rel="alternate"
+            title="Franky.Codes ascii RSS Feed">
+            <i class="fa-solid fa-rss"></i>
+        </a>
+
+    </div>
+</div>
+
+<div class="masonry-grid">
+    <article class="masonry-grid__item">
+        <img class="cover" src="https://franky.codes/theme/images/not-found.png" alt="ASCII picture for this blog">
+<h1>
+    <a
+        class="purple"
+        href="https://franky.codes/ascii-picture.html"
+        title="ASCII picture for this blog"
+        >
+        ASCII picture for this blog
+    </a>
+</h1>
+<time class="timestamp gray">
+    23 December 2022
+</time>
+<div class="labels">
+    <a
+        href="https://franky.codes/category/tech.html"
+        class="category purple"
+        title="Category: tech">
+        tech
+    </a>
+    <a
+        href="https://franky.codes/tag/www.html"
+        class="tag"
+        title="Tag: www">
+        www
+    </a>
+    <a
+        href="https://franky.codes/tag/python.html"
+        class="tag"
+        title="Tag: python">
+        python
+    </a>
+    <a
+        href="https://franky.codes/tag/ascii.html"
+        class="tag"
+        title="Tag: ascii">
+        ascii
+    </a>
+    <a
+        href="https://franky.codes/tag/image-processing.html"
+        class="tag"
+        title="Tag: image processing">
+        image processing
+    </a>
+</div>
+<p class="first last">How I created the ascii picture using Python for this space.</p>
+
+<a
+    role="button"
+    class="read_more"
+    href="https://franky.codes/ascii-picture.html"
+    title="Read More">
+    &#10095; Read more
+</a>
+
+    </article>
+</div>
+
+
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="column align-left">
+                    <a
+                        href="https://github.com/pelican-themes/atom"
+                        title="Source code of this Pelican theme">
+                        <i class="fa-brands fa-github"></i>
+                        Atom theme
+                    </a>
+                </div>
+                <div class="column">
+                    <i class="fa-solid fa-copyright"></i>
+                    2025 <span class="mobile-hidden">Franky.Codes</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/pagemap-1.4.0.js"></script>
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/main.js"></script>
+        <!-- todo minify -->
+
+    </body>
+</html>
