@@ -8,6 +8,7 @@ From Docker to Kubernetes
 :slug: from-docker-to-kubernetes
 :authors: Frank Martin
 :summary: Why we are moving from Docker to Kubernetes in version 5
+:cover: /images/docker-to-kubernetes.png
 
 
 The vantage6 infrastructure has a tight coupling with Docker since the beginning of vantage6 in 2017. The node component relies on the Docker API to start the containers that do the computation on the privacy sensitive data. At the time, Docker was a solid choice as it had development tooling and was free to use even for big commercial projects. Since then a few things have changed:
