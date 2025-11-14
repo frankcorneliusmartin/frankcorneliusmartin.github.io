@@ -18,7 +18,7 @@ The vantage6 infrastructure has a tight coupling with Docker since the beginning
 
 Back in 2017 we also considered using the Kubernetes API instead of the Docker API for starting the computation containers. In this case, we still would have used the Docker engine for running the containers, but Kubernetes would be the interface for managing them (starting, stopping, etc.). This would have been a valid choice, however it was not implemented at the time as there were more pressing things on the roadmap.
 
-Since 2017, vantage6 itself has also changed considerably. Where once every major component (client, node, server) consisted of one component it now consists of several. In the future, more components will be added in a similar way. Working with a microservice architecture has many advantages (if you are interested, they are listed here).
+Since 2017, vantage6 itself has also changed considerably. Where once every major component (client, node, server) consisted of one component it now consists of several. In the future, more components will be added in a similar way. Working with a microservice architecture has many advantages (if you are interested, they are listed `here <https://about.gitlab.com/blog/2022/09/29/what-are-the-benefits-of-a-microservices-architecture/>`_).
 
 Challenges
 ----------
@@ -28,7 +28,7 @@ Security
 ~~~~~~~~
 In the vantage6 node, we mount the Docker socket so that we can create containers that perform the computation from the vantage6 node application. The Docker daemon process on the host runs as root. This effectively means that the vantage6 node has root access to the host machine. This security issue should be considered by data parties when setting up a vantage6 node.
 
-The necessity for root access could be dropped by using Docker's rootless mode, but that requires more complex configuration steps during node installation, and the vantage6 node will still have unlimited permissions to create containers.
+The necessity for root access could be dropped by using Docker's `rootless mode <https://docs.docker.com/engine/security/rootless/>`_, but that requires more complex configuration steps during node installation, and the vantage6 node will still have unlimited permissions to create containers.
 
 .. note::
 
