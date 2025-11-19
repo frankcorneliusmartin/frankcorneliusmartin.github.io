@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Franky.Codes - html</title><link href="https://franky.codes/" rel="alternate"></link><link href="https://franky.codes/feeds/tag.html.atom.xml" rel="self"></link><id>https://franky.codes/</id><updated>2025-09-01T09:00:00+02:00</updated><entry><title>Atom Blog Theme</title><link href="https://franky.codes/atom-theme.html" rel="alternate"></link><published>2025-09-01T09:00:00+02:00</published><updated>2025-09-01T09:00:00+02:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2025-09-01:/atom-theme.html</id><summary type="html">&lt;p class="first last"&gt;I've made the theme that I created for this blog open source.&lt;/p&gt;
+</summary><content type="html">&lt;div class="contents topic" id="contents"&gt;
+&lt;p class="topic-title"&gt;Contents&lt;/p&gt;
+&lt;ul class="auto-toc simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#basic-settings" id="toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Basic settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#about" id="toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;About&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#menu-bar" id="toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Menu bar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#rss-and-atom-feed" id="toc-entry-4"&gt;4&amp;nbsp;&amp;nbsp;&amp;nbsp;RSS and Atom feed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#homepage-tiles" id="toc-entry-5"&gt;5&amp;nbsp;&amp;nbsp;&amp;nbsp;Homepage tiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;When I started this blog I first looked for a static site generator. A static
+website generator is useful for generating static html from text files. As I was
+already familiar with Python and
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;rst&lt;/a&gt; I found that
+&lt;a class="reference external" href="https://getpelican.com/"&gt;Pelican&lt;/a&gt; suited my needs. The only issue I had with
+it where the very basic themes which did not fit my brand. This is why I decided
+to write my own theme and why not share it with others.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="atom theme" src="https://raw.githubusercontent.com/pelican-themes/atom/main/showcase2.png" style="width: 600px;" /&gt;
+&lt;p class="caption"&gt;It's a responsive theme&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In this short blogpost I will highlight the available options in the theme. You
+can find the source code of this theme on the official Pelican
+&lt;a class="reference external" href="https://github.com/pelican-themes/atom"&gt;Github&lt;/a&gt;, feel free to use and/or
+modify it.&lt;/p&gt;
+&lt;div class="section" id="basic-settings"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Basic settings&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These are the mandatory basic settings used by the theme, this can be combined
+with the
+&lt;a class="reference external" href="https://docs.getpelican.com/en/latest/settings.html#basic-settings"&gt;Pelican settings&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;
+&lt;span class="normal"&gt;25&lt;/span&gt;
+&lt;span class="normal"&gt;26&lt;/span&gt;
+&lt;span class="normal"&gt;27&lt;/span&gt;
+&lt;span class="normal"&gt;28&lt;/span&gt;
+&lt;span class="normal"&gt;29&lt;/span&gt;
+&lt;span class="normal"&gt;30&lt;/span&gt;
+&lt;span class="normal"&gt;31&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Used by other settings and used to generate absolute paths for images, so&lt;/span&gt;
+&lt;span class="c1"&gt;# make sure this is the public site URL&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://localhost:8000&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# This theme supports writing you blog in multiple languages. This&lt;/span&gt;
+&lt;span class="c1"&gt;# specifies the default language when opening the blog for the first time.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;En&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Displayed as the title of the website both in the browser tab and in the&lt;/span&gt;
+&lt;span class="c1"&gt;# top menu bar of the blog.&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Franky.Codes&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# In case you want to show some ascii art in the left bar you can use the&lt;/span&gt;
+&lt;span class="c1"&gt;# following. You can see this blog post how to create such a picture&lt;/span&gt;
+&lt;span class="c1"&gt;# yourself:&lt;/span&gt;
+&lt;span class="c1"&gt;# https://franky.codes/ascii-picture.html&lt;/span&gt;
+&lt;span class="c1"&gt;# with open(&amp;#39;content/extra/me.txt&amp;#39;, &amp;#39;r&amp;#39;) as f:&lt;/span&gt;
+&lt;span class="c1"&gt;#     ASCII_PICTURE = f.read()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# How many blog items should be displayed on the home page.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in embeddings when you share a link on social media and in the meta&lt;/span&gt;
+&lt;span class="c1"&gt;# data of your website. It is not shown anywhere in the frontend.&lt;/span&gt;
+&lt;span class="n"&gt;DESCRIPTION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the copyright notification in the bottom bar, leaving it like this&lt;/span&gt;
+&lt;span class="c1"&gt;# will always use the year of the latest builds, however you are free to&lt;/span&gt;
+&lt;span class="c1"&gt;# define it statically.&lt;/span&gt;
+&lt;span class="n"&gt;YEAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;today&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="about"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;About&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These are all the options for the about section of the blog. The about section
+is in the left bar. Containing a picture (or ASCII art), your name, a single
+line of text and some icons to link to your socials.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# In case ASCII_PICTURE is not defined you can also provide an image to be&lt;/span&gt;
+&lt;span class="c1"&gt;# shown in the left bar..&lt;/span&gt;
+&lt;span class="n"&gt;PICTURE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;images/me.jpg&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the left bar underneath the author image.&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Frank Martin&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the left bar underneath the author&lt;/span&gt;
+&lt;span class="n"&gt;HEADLINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Biomedical Engineer &amp;amp;amp; Software Engineer&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the left bar underneath the headline. It shows as a list of icons.&lt;/span&gt;
+&lt;span class="c1"&gt;# The keys of this dictionary are the names of font-awesome class names.&lt;/span&gt;
+&lt;span class="n"&gt;SOCIALS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;github&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://github.com/frankcorneliusmartin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;linkedin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.linkedin.com/in/frankcorneliusmartin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;facebook&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;pinterest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="menu-bar"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Menu bar&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These settings control the top menu bar. You can create a link to basically
+anywhere. In the example bellow the default &lt;em&gt;tag&lt;/em&gt; and &lt;em&gt;category&lt;/em&gt; pages from
+pelican are shown.&lt;/p&gt;
+&lt;p&gt;By default a Franky Codes icon is shown in the menu bar, you can change this
+with a &lt;a class="reference external" href="https://fontawesome.com/"&gt;font-awesome&lt;/a&gt; or custom icon.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Setting this to true wil display the `SITENAME` in the header next to&lt;/span&gt;
+&lt;span class="c1"&gt;# the logo.&lt;/span&gt;
+&lt;span class="n"&gt;DISLAY_SITE_NAME_IN_HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# The items shown in the top menu bar.&lt;/span&gt;
+&lt;span class="c1"&gt;# TAGS_URL = &amp;quot;tags.html&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# CATEGORIES_URL = &amp;quot;categories.html&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;MENU_ITEMS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Projects&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Curriculum Vitae&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pages/curriculum-vitae.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Voorwaarden&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pages/terms-and-conditions.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="c1"&gt;# (&amp;#39;Topics&amp;#39;, f&amp;#39;{SITEURL}/{TAGS_URL}&amp;#39;),&lt;/span&gt;
+    &lt;span class="c1"&gt;# (&amp;#39;Categories&amp;#39;, f&amp;#39;{SITEURL}/{CATEGORIES_URL}&amp;#39;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hire Me&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pages/hire-me.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# By default the 32x32 favicon is used. In case you want to use a&lt;/span&gt;
+&lt;span class="c1"&gt;# different one, provide the path to a (square) image.&lt;/span&gt;
+&lt;span class="c1"&gt;# MENU_ICON = &amp;#39;images/me.jpg&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# In case you want a font-awesome icon to be displayed next to the menu&lt;/span&gt;
+&lt;span class="c1"&gt;# item, provide the name of the icon here.&lt;/span&gt;
+&lt;span class="c1"&gt;# FA_MENU_ICON = &amp;#39;home&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="rss-and-atom-feed"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;4&amp;nbsp;&amp;nbsp;&amp;nbsp;RSS and Atom feed&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;It is possible to define custom endpoints for your RSS and Atom feeds.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Relative urls to the generated atom feeds. ALL contains all blog post&lt;/span&gt;
+&lt;span class="c1"&gt;# and the CATEGORY and TAG contains filtered list of blogs linked to the&lt;/span&gt;
+&lt;span class="c1"&gt;# category or tag.&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/all.atom.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.atom.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;TAG_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/tag.&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.atom.xml&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Relative urls to the generated RSS feeds. ALL contains all blog post&lt;/span&gt;
+&lt;span class="c1"&gt;# and the CATEGORY and TAG contains filtered list of blogs linked to the&lt;/span&gt;
+&lt;span class="c1"&gt;# category or tag.&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/all.rss.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.rss.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;TAG_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/tag.&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.rss.xml&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="homepage-tiles"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;5&amp;nbsp;&amp;nbsp;&amp;nbsp;Homepage tiles&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Each blogpost gets a tile on the homepage. These tiles can be customized. For
+example each post can have an optional cover image with a certain hover effect.
+The category and all the tags can also be hidden on the tiles.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Disable the use of tags, these are shown for each post on the index&lt;/span&gt;
+&lt;span class="c1"&gt;# pages (e.g home and the tags page) and shown above each post on the&lt;/span&gt;
+&lt;span class="c1"&gt;# post page.&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_TAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Disable the use of categories, these are shown for each post on the&lt;/span&gt;
+&lt;span class="c1"&gt;# index pages (e.g home and the tags page) and shown above each post on&lt;/span&gt;
+&lt;span class="c1"&gt;# the post page.&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_CATEGORIE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Show cover pictures in the blog index. This requires the use of the&lt;/span&gt;
+&lt;span class="c1"&gt;# `cover`` metadata in the post. In case you do not provide it a placeholder&lt;/span&gt;
+&lt;span class="c1"&gt;# will be shown.&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_COVERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Apply a css filter to the cover image. You can use &amp;quot;grayscale&amp;quot;,&lt;/span&gt;
+&lt;span class="c1"&gt;# &amp;quot;grayscale-75&amp;quot;, &amp;quot;grayscale-50&amp;quot; and &amp;quot;opacity&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;COVER_FILTER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;opacity&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="tech"></category><category term="python"></category><category term="pelican"></category><category term="html"></category></entry></feed>

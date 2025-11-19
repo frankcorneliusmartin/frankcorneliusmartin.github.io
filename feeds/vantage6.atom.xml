@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Franky.Codes - vantage6</title><link href="https://franky.codes/" rel="alternate"></link><link href="https://franky.codes/feeds/vantage6.atom.xml" rel="self"></link><id>https://franky.codes/</id><updated>2024-12-20T09:00:00+01:00</updated><entry><title>A new approach for the BlueBerry registry using vantage6</title><link href="https://franky.codes/sarcoma-registry-update.html" rel="alternate"></link><published>2024-12-20T09:00:00+01:00</published><updated>2024-12-20T09:00:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2024-12-20:/sarcoma-registry-update.html</id><summary type="html">&lt;p class="first last"&gt;A new approach for the BlueBerry registry using vantage6&lt;/p&gt;
+</summary><content type="html">&lt;div class="contents topic" id="contents"&gt;
+&lt;p class="topic-title"&gt;Contents&lt;/p&gt;
+&lt;ul class="auto-toc simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#local-data-storage" id="toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Local Data Storage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#researcher-user-interface" id="toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;Researcher User Interface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#future-work" id="toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Future work&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://euracan.eu/registries/blueberry/"&gt;BlueBerry project&lt;/a&gt; was a two-year
+initiative to develop a blueprint for a sustainable, scalable, and impactful data
+infrastructure for rare cancers in Europe. In the context of
+&lt;a class="reference external" href="https://iknl.nl/en/news/blueberry-is-now-really-taking-off!-building-a-blu"&gt;IKNL&lt;/a&gt;, I
+have been involved in extending the &lt;a class="reference external" href="https://vantage6.ai"&gt;vantage6&lt;/a&gt; software to be
+able to connect to &lt;a class="reference external" href="https://www.ohdsi.org/data-standardization/"&gt;OMOP data sources&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When the project finished in September 2024, it was decided to continue with the
+registry to use it for research. However, several challenges needed to be addressed
+before it could be used for research:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The user interface that has been developed for vantage6 lacked the components that
+made working with the OMOP data source easy. It still required an engineer to operate
+the system.&lt;/li&gt;
+&lt;li&gt;The computation of the output was rather slow as the original data source was visited
+for each computation call. This included creating the cohort and querying the selected
+features.&lt;/li&gt;
+&lt;li&gt;Only &lt;a class="reference external" href="https://github.com/IKNL/v6-crosstab-on-ohdsi-py"&gt;Crosstabulation&lt;/a&gt; and
+&lt;a class="reference external" href="https://github.com/IKNL/v6-kaplan-meier-on-ohdsi-py"&gt;Kaplan-Meier curve&lt;/a&gt; have been
+extended to work in the registry. There were some experiments with the OHDSI tools,
+but these were difficult to operate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I was asked to work together with &lt;a class="reference external" href="https://www.biomeris.it/en/"&gt;BIOMERIS&lt;/a&gt; on
+addressing these issues to enable researchers using the platform for gaining meaningful
+insights.&lt;/p&gt;
+&lt;p&gt;In this blog post, I will explain first how I address performance issue as this
+influences how the user interface is designed. Then, I will explain how the user
+interface is designed to support the workflow of the researcher.&lt;/p&gt;
+&lt;div class="section" id="local-data-storage"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Local Data Storage&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Typically in vanilla vantage6, the data is fetched from the data source for each
+computation call. This made computations slow as the OMOP query was typically time
+consuming. To speed up the computations, I decided to fetch the data once for each
+cohort and store it local in the vantage6 node.&lt;/p&gt;
+&lt;div class="uml docutils container"&gt;
+&lt;pre class="code literal-block"&gt;
+┌──────────┐   ┌────────────┐   ┌────────────┐
+│ OMOP     │   │ Query      │   │ Local DB   │
+│ Database ├──►│ Algorithm  ├──►│ Parquet    │
+└──────────┘   └────────────┘   └────────────┘
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;Query Algorithm&lt;/tt&gt; is a vantage6 algorithm that is responsible for fetching the
+data from the OMOP database. It creates the ATLAS cohort and reads the patient features.
+The data is stored by this algorithm in a &lt;a class="reference external" href="https://parquet.apache.org/"&gt;Parquet&lt;/a&gt; file.
+This Parquet file is then used by the other algorithms to perform the analytics.&lt;/p&gt;
+&lt;div class="uml docutils container"&gt;
+&lt;pre class="code literal-block"&gt;
+┌────────────┐   ┌────────────┐   ┌───────────┐
+│ Local DB   │   │ vantage6   │   │ Algorithm │
+│ Parquet    ├──►│ Algorithm  ├──►│ Output    │
+└────────────┘   └────────────┘   └───────────┘
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;In the future, I would like to extend the system so that these Parquet files can also be
+modified by the user. For example, the user can create new variables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;There are some challenges with this approach:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;When a node is offline when a new cohort is created it will not be able to fetch the
+data. In this case, the node will create the cohort data it comes online. The user
+can work with the other nodes in the meantime.&lt;/li&gt;
+&lt;li&gt;When the data source is updated, the Parquet files need to be updated as well. This
+is currently a manual process as the user needs to trigger the Query Algorithm to
+fetch the data again.&lt;/li&gt;
+&lt;li&gt;The Parquet files need to have the same variables and the same value types for these
+variables. This should be guaranteed by the &lt;tt class="docutils literal"&gt;Query Algorithm&lt;/tt&gt;. Especially when the
+cohorts are not created at the same time (e.g. when a node was offline when it was
+created).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When a node is offline when a new cohort is created it will not be able to fetch the
+data. In this case, the node will create the cohort data it comes online. The user can
+work with the other nodes in the meantime.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;An additional benefit of this approach is that algorithms do no longer have the
+logic to fetch the data from the OMOP database. So the vantage6 community algorithms
+can be used without (much) modification.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="researcher-user-interface"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;Researcher User Interface&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The official vantage6 User Interface (UI) is developed as a general-purpose vantage6 UI.&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="vantage6 user interface" src="https://franky.codes/images/sarcoma/screenshots-v6-ui.png" style="width: 800px;" /&gt;
+&lt;p class="caption"&gt;The official vantage6 user interface from vantage6 (from &lt;a class="reference external" href="https://vantage6.ai"&gt;https://vantage6.ai&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;If a new feature is to be added in this interface, it needs to be compatible with other
+projects from the community as well. This has two major disadvantages:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It feels overcomplicated for the user as it contains features that are not relevant
+for the BlueBerry registry and it is not tailored to the workflow of the researcher.&lt;/li&gt;
+&lt;li&gt;Adding new features to the UI is time-consuming as it needs to be compatible with
+other projects and requires approval from the vantage6 community.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For these two reasons, I decided it would be better to create a separate, dedicated UI
+for the BlueBerry registry. This way, I can tailor the workflow exactly as it should be
+and I don't have to consider other projects when adding new features.&lt;/p&gt;
+&lt;div class="admonition important"&gt;
+&lt;p class="first admonition-title"&gt;Important&lt;/p&gt;
+&lt;p&gt;As the proposed dedicated UI is aimed to support the workflow of the researcher, it
+is not going to contain all the features that the official vantage6 UI has. The
+official vantage6 UI is still available for the BlueBerry registry. It is possible
+to switch between the two UIs.&lt;/p&gt;
+&lt;p class="last"&gt;For instance, the official vantage6 UI is still used for the management of the
+collaborations and studies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;To accelerate development, I used &lt;a class="reference external" href="https://streamlit.io/"&gt;Streamlit&lt;/a&gt;. This framework
+brought the following advantages:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It minimizes the need to write front-end code as the front-end code, as it is
+generated from Python code.&lt;/li&gt;
+&lt;li&gt;It includes numerous built-in data science components like tables, graphs and
+controls.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, it introduces an additional backend component, the one that renders the front
+end. The app's appearance and components can be customized, however the customization
+is very different from front-end frameworks like React or Angular.&lt;/p&gt;
+&lt;p&gt;This newly developed UI aims to better support the researcher's workflow. The first
+thing after logging in is to select the collaboration and optionally the study it wants
+to work with. Once the collaboration/study is selected, the user can view the online
+organizations within the collaboration or study. The user is at this point able to
+create sub selections of the organizations it wants to work with.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="50%" /&gt;
+&lt;col width="50%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Collaboration &amp;amp; Study Selection&lt;/th&gt;
+&lt;th class="head"&gt;Node status&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can select their collaboration and study" src="https://franky.codes/images/sarcoma/collaboration_and_study.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Users first need to select the collaboration and optionally the study they
+want to work with. Some metadata is shown about the selected collaboration
+and study.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can check the status of the nodes" src="https://franky.codes/images/sarcoma/node_status_redacted.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Once the collaboration is selected, the user can view the online
+organizations. It is possible to create a sub selection of the organizations
+the user wants to work with.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;Once the organizations are selected, the system checks which cohorts are available for
+the selected organizations. The UI then determines automatically which cohorts are ready
+for analysis, it validates that:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;All the (online) organizations have the cohort available.&lt;/li&gt;
+&lt;li&gt;The minimal number of patients threshold is met at each organization.&lt;/li&gt;
+&lt;li&gt;All the organizations have the same variables and have the same value types for these
+variables.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By default, all the &lt;em&gt;healthy&lt;/em&gt; cohorts are selected. The user can also make a sub
+selection of the cohorts it wants to work with. It is also possible to create a new
+cohort based on the &lt;a class="reference external" href="https://atlas-demo.ohdsi.org/"&gt;ATLAS&lt;/a&gt; cohort definitions.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="50%" /&gt;
+&lt;col width="50%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Cohort selection&lt;/th&gt;
+&lt;th class="head"&gt;Cohort creation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can select the cohorts they want to work with" src="https://franky.codes/images/sarcoma/healthy_cohorts.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Users can select the cohorts they want to work with. By default, all the
+healthy cohorts are selected. In this case none of the cohorts are healthy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can create a new cohort" src="https://franky.codes/images/sarcoma/healthy_cohorts_2.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Before the user can continue all the selected organizations need to have the
+cohort available. The user is able to select the cohorts and from there
+automatically select the organizations that passed the validation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;Once the cohorts have been selected the user can continue to the analytics part of the
+application. The first analytics that is available is the summary statistics. This gives
+an overview of all selected cohorts and its variables. It reports some basic statistics
+like missing, mean, standard deviation, etc.&lt;/p&gt;
+&lt;p&gt;The second analytics that is available is the crosstabulation. This is a useful tool
+to compare the distribution of two categorical variables. The user can select the
+variables it wants to compare and the crosstabulation is calculated for all selected
+cohorts.&lt;/p&gt;
+&lt;p&gt;The third analytics that is available is the Kaplan-Meier curve. This is can be used
+to compare the survival between cohorts. The dataset contains the survival time and
+the event indicator, so these are already preselected.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Summary statistics&lt;/th&gt;
+&lt;th class="head"&gt;Crosstabulation&lt;/th&gt;
+&lt;th class="head"&gt;Kaplan-Meier curve&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can view the summary statistics of all selected cohorts" src="https://franky.codes/images/sarcoma/summary_stats.jpeg" style="width: 266px;" /&gt;
+&lt;p class="caption"&gt;Users can view the summary statistics of all selected cohorts. The summary
+statistics are calculated for all selected cohorts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can compare the distribution of two variables" src="https://franky.codes/images/sarcoma/crosstabs.jpeg" style="width: 266px;" /&gt;
+&lt;p class="caption"&gt;Users can compare the distribution of two variables. The crosstabulation is
+calculated for all selected cohorts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can compare the survival of two cohorts" src="https://franky.codes/images/sarcoma/kaplan_meier.jpeg" style="width: 266px;" /&gt;
+&lt;p class="caption"&gt;Users can compare the survival of two cohorts. The Kaplan-Meier curve is
+calculated for all selected cohorts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="future-work"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Future work&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This project is still in development throughout 2025. There are still several features
+that need to be added to the system. The following features are planned:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The current algorithms need to be extended to support additional features like
+stratification.&lt;/li&gt;
+&lt;li&gt;Currently in development are some more advanced analytics like the Cox proportional
+hazard model and the propensity score matching.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;In the future the &lt;a class="reference internal" href="#local-data-storage"&gt;Local Data Storage&lt;/a&gt; will be no longer be necessary as this
+feature will be build into the vantage6 core (This feature is called sessions and
+is available from &lt;a class="reference external" href="https://github.com/vantage6/vantage6/issues/943"&gt;version 5+&lt;/a&gt;).&lt;/p&gt;
+&lt;p class="last"&gt;This might be added to the final stages of the project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="vantage6"></category><category term="python"></category><category term="vantage6"></category><category term="OHDSI"></category><category term="streamlit"></category></entry></feed>

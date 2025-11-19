@@ -1,0 +1,1110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Franky.Codes</title><link href="https://franky.codes/" rel="alternate"></link><link href="https://franky.codes/feeds/all.atom.xml" rel="self"></link><id>https://franky.codes/</id><updated>2025-09-01T09:00:00+02:00</updated><entry><title>Atom Blog Theme</title><link href="https://franky.codes/atom-theme.html" rel="alternate"></link><published>2025-09-01T09:00:00+02:00</published><updated>2025-09-01T09:00:00+02:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2025-09-01:/atom-theme.html</id><summary type="html">&lt;p class="first last"&gt;I've made the theme that I created for this blog open source.&lt;/p&gt;
+</summary><content type="html">&lt;div class="contents topic" id="contents"&gt;
+&lt;p class="topic-title"&gt;Contents&lt;/p&gt;
+&lt;ul class="auto-toc simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#basic-settings" id="toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Basic settings&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#about" id="toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;About&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#menu-bar" id="toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Menu bar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#rss-and-atom-feed" id="toc-entry-4"&gt;4&amp;nbsp;&amp;nbsp;&amp;nbsp;RSS and Atom feed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#homepage-tiles" id="toc-entry-5"&gt;5&amp;nbsp;&amp;nbsp;&amp;nbsp;Homepage tiles&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;When I started this blog I first looked for a static site generator. A static
+website generator is useful for generating static html from text files. As I was
+already familiar with Python and
+&lt;a class="reference external" href="https://en.wikipedia.org/wiki/ReStructuredText"&gt;rst&lt;/a&gt; I found that
+&lt;a class="reference external" href="https://getpelican.com/"&gt;Pelican&lt;/a&gt; suited my needs. The only issue I had with
+it where the very basic themes which did not fit my brand. This is why I decided
+to write my own theme and why not share it with others.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="atom theme" src="https://raw.githubusercontent.com/pelican-themes/atom/main/showcase2.png" style="width: 600px;" /&gt;
+&lt;p class="caption"&gt;It's a responsive theme&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;In this short blogpost I will highlight the available options in the theme. You
+can find the source code of this theme on the official Pelican
+&lt;a class="reference external" href="https://github.com/pelican-themes/atom"&gt;Github&lt;/a&gt;, feel free to use and/or
+modify it.&lt;/p&gt;
+&lt;div class="section" id="basic-settings"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Basic settings&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These are the mandatory basic settings used by the theme, this can be combined
+with the
+&lt;a class="reference external" href="https://docs.getpelican.com/en/latest/settings.html#basic-settings"&gt;Pelican settings&lt;/a&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;
+&lt;span class="normal"&gt;24&lt;/span&gt;
+&lt;span class="normal"&gt;25&lt;/span&gt;
+&lt;span class="normal"&gt;26&lt;/span&gt;
+&lt;span class="normal"&gt;27&lt;/span&gt;
+&lt;span class="normal"&gt;28&lt;/span&gt;
+&lt;span class="normal"&gt;29&lt;/span&gt;
+&lt;span class="normal"&gt;30&lt;/span&gt;
+&lt;span class="normal"&gt;31&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Used by other settings and used to generate absolute paths for images, so&lt;/span&gt;
+&lt;span class="c1"&gt;# make sure this is the public site URL&lt;/span&gt;
+&lt;span class="n"&gt;SITEURL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;http://localhost:8000&amp;quot;&lt;/span&gt;
+
+
+&lt;span class="c1"&gt;# This theme supports writing you blog in multiple languages. This&lt;/span&gt;
+&lt;span class="c1"&gt;# specifies the default language when opening the blog for the first time.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_LANG&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;En&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Displayed as the title of the website both in the browser tab and in the&lt;/span&gt;
+&lt;span class="c1"&gt;# top menu bar of the blog.&lt;/span&gt;
+&lt;span class="n"&gt;SITENAME&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Franky.Codes&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# In case you want to show some ascii art in the left bar you can use the&lt;/span&gt;
+&lt;span class="c1"&gt;# following. You can see this blog post how to create such a picture&lt;/span&gt;
+&lt;span class="c1"&gt;# yourself:&lt;/span&gt;
+&lt;span class="c1"&gt;# https://franky.codes/ascii-picture.html&lt;/span&gt;
+&lt;span class="c1"&gt;# with open(&amp;#39;content/extra/me.txt&amp;#39;, &amp;#39;r&amp;#39;) as f:&lt;/span&gt;
+&lt;span class="c1"&gt;#     ASCII_PICTURE = f.read()&lt;/span&gt;
+
+&lt;span class="c1"&gt;# How many blog items should be displayed on the home page.&lt;/span&gt;
+&lt;span class="n"&gt;DEFAULT_PAGINATION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in embeddings when you share a link on social media and in the meta&lt;/span&gt;
+&lt;span class="c1"&gt;# data of your website. It is not shown anywhere in the frontend.&lt;/span&gt;
+&lt;span class="n"&gt;DESCRIPTION&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;hello world&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the copyright notification in the bottom bar, leaving it like this&lt;/span&gt;
+&lt;span class="c1"&gt;# will always use the year of the latest builds, however you are free to&lt;/span&gt;
+&lt;span class="c1"&gt;# define it statically.&lt;/span&gt;
+&lt;span class="n"&gt;YEAR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;date&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;today&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;year&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="about"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;About&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These are all the options for the about section of the blog. The about section
+is in the left bar. Containing a picture (or ASCII art), your name, a single
+line of text and some icons to link to your socials.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# In case ASCII_PICTURE is not defined you can also provide an image to be&lt;/span&gt;
+&lt;span class="c1"&gt;# shown in the left bar..&lt;/span&gt;
+&lt;span class="n"&gt;PICTURE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;images/me.jpg&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the left bar underneath the author image.&lt;/span&gt;
+&lt;span class="n"&gt;AUTHOR&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Frank Martin&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the left bar underneath the author&lt;/span&gt;
+&lt;span class="n"&gt;HEADLINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Biomedical Engineer &amp;amp;amp; Software Engineer&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Used in the left bar underneath the headline. It shows as a list of icons.&lt;/span&gt;
+&lt;span class="c1"&gt;# The keys of this dictionary are the names of font-awesome class names.&lt;/span&gt;
+&lt;span class="n"&gt;SOCIALS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;github&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://github.com/frankcorneliusmartin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;linkedin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;https://www.linkedin.com/in/frankcorneliusmartin&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;facebook&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s2"&gt;&amp;quot;pinterest&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="kc"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="menu-bar"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Menu bar&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;These settings control the top menu bar. You can create a link to basically
+anywhere. In the example bellow the default &lt;em&gt;tag&lt;/em&gt; and &lt;em&gt;category&lt;/em&gt; pages from
+pelican are shown.&lt;/p&gt;
+&lt;p&gt;By default a Franky Codes icon is shown in the menu bar, you can change this
+with a &lt;a class="reference external" href="https://fontawesome.com/"&gt;font-awesome&lt;/a&gt; or custom icon.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;
+&lt;span class="normal"&gt;21&lt;/span&gt;
+&lt;span class="normal"&gt;22&lt;/span&gt;
+&lt;span class="normal"&gt;23&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Setting this to true wil display the `SITENAME` in the header next to&lt;/span&gt;
+&lt;span class="c1"&gt;# the logo.&lt;/span&gt;
+&lt;span class="n"&gt;DISLAY_SITE_NAME_IN_HEADER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# The items shown in the top menu bar.&lt;/span&gt;
+&lt;span class="c1"&gt;# TAGS_URL = &amp;quot;tags.html&amp;quot;&lt;/span&gt;
+&lt;span class="c1"&gt;# CATEGORIES_URL = &amp;quot;categories.html&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;MENU_ITEMS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Projects&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Curriculum Vitae&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pages/curriculum-vitae.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Voorwaarden&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pages/terms-and-conditions.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+    &lt;span class="c1"&gt;# (&amp;#39;Topics&amp;#39;, f&amp;#39;{SITEURL}/{TAGS_URL}&amp;#39;),&lt;/span&gt;
+    &lt;span class="c1"&gt;# (&amp;#39;Categories&amp;#39;, f&amp;#39;{SITEURL}/{CATEGORIES_URL}&amp;#39;),&lt;/span&gt;
+    &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;Hire Me&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="sa"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="si"&gt;{&lt;/span&gt;&lt;span class="n"&gt;SITEURL&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;/pages/hire-me.html&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# By default the 32x32 favicon is used. In case you want to use a&lt;/span&gt;
+&lt;span class="c1"&gt;# different one, provide the path to a (square) image.&lt;/span&gt;
+&lt;span class="c1"&gt;# MENU_ICON = &amp;#39;images/me.jpg&amp;#39;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# In case you want a font-awesome icon to be displayed next to the menu&lt;/span&gt;
+&lt;span class="c1"&gt;# item, provide the name of the icon here.&lt;/span&gt;
+&lt;span class="c1"&gt;# FA_MENU_ICON = &amp;#39;home&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="rss-and-atom-feed"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-4"&gt;4&amp;nbsp;&amp;nbsp;&amp;nbsp;RSS and Atom feed&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;It is possible to define custom endpoints for your RSS and Atom feeds.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Relative urls to the generated atom feeds. ALL contains all blog post&lt;/span&gt;
+&lt;span class="c1"&gt;# and the CATEGORY and TAG contains filtered list of blogs linked to the&lt;/span&gt;
+&lt;span class="c1"&gt;# category or tag.&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/all.atom.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.atom.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;TAG_FEED_ATOM&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/tag.&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.atom.xml&amp;quot;&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Relative urls to the generated RSS feeds. ALL contains all blog post&lt;/span&gt;
+&lt;span class="c1"&gt;# and the CATEGORY and TAG contains filtered list of blogs linked to the&lt;/span&gt;
+&lt;span class="c1"&gt;# category or tag.&lt;/span&gt;
+&lt;span class="n"&gt;FEED_ALL_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/all.rss.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;CATEGORY_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.rss.xml&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;TAG_FEED_RSS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;feeds/tag.&lt;/span&gt;&lt;span class="si"&gt;{slug}&lt;/span&gt;&lt;span class="s2"&gt;.rss.xml&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="homepage-tiles"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-5"&gt;5&amp;nbsp;&amp;nbsp;&amp;nbsp;Homepage tiles&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Each blogpost gets a tile on the homepage. These tiles can be customized. For
+example each post can have an optional cover image with a certain hover effect.
+The category and all the tags can also be hidden on the tiles.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# Disable the use of tags, these are shown for each post on the index&lt;/span&gt;
+&lt;span class="c1"&gt;# pages (e.g home and the tags page) and shown above each post on the&lt;/span&gt;
+&lt;span class="c1"&gt;# post page.&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_TAGS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Disable the use of categories, these are shown for each post on the&lt;/span&gt;
+&lt;span class="c1"&gt;# index pages (e.g home and the tags page) and shown above each post on&lt;/span&gt;
+&lt;span class="c1"&gt;# the post page.&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_CATEGORIE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Show cover pictures in the blog index. This requires the use of the&lt;/span&gt;
+&lt;span class="c1"&gt;# `cover`` metadata in the post. In case you do not provide it a placeholder&lt;/span&gt;
+&lt;span class="c1"&gt;# will be shown.&lt;/span&gt;
+&lt;span class="n"&gt;SHOW_COVERS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;
+
+&lt;span class="c1"&gt;# Apply a css filter to the cover image. You can use &amp;quot;grayscale&amp;quot;,&lt;/span&gt;
+&lt;span class="c1"&gt;# &amp;quot;grayscale-75&amp;quot;, &amp;quot;grayscale-50&amp;quot; and &amp;quot;opacity&amp;quot;&lt;/span&gt;
+&lt;span class="n"&gt;COVER_FILTER&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;opacity&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="tech"></category><category term="python"></category><category term="pelican"></category><category term="html"></category></entry><entry><title>From Docker to Kubernetes</title><link href="https://franky.codes/from-docker-to-kubernetes.html" rel="alternate"></link><published>2025-02-13T09:00:00+01:00</published><updated>2025-02-13T09:00:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2025-02-13:/from-docker-to-kubernetes.html</id><summary type="html">&lt;p class="first last"&gt;Why we are moving from Docker to Kubernetes in version 5&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;The vantage6 infrastructure has a tight coupling with Docker since the beginning of vantage6 in 2017. The node component relies on the Docker API to start the containers that do the computation on the privacy sensitive data. At the time, Docker was a solid choice as it had development tooling and was free to use even for big commercial projects. Since then a few things have changed:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;Docker changed it license policy: in some cases, a license is now required to use Docker.&lt;/li&gt;
+&lt;li&gt;Alternative container technologies caught up with Docker in terms of functionality and tooling, for example, Podman and Singularity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Back in 2017 we also considered using the Kubernetes API instead of the Docker API for starting the computation containers. In this case, we still would have used the Docker engine for running the containers, but Kubernetes would be the interface for managing them (starting, stopping, etc.). This would have been a valid choice, however it was not implemented at the time as there were more pressing things on the roadmap.&lt;/p&gt;
+&lt;p&gt;Since 2017, vantage6 itself has also changed considerably. Where once every major component (client, node, server) consisted of one component it now consists of several. In the future, more components will be added in a similar way. Working with a microservice architecture has many advantages (if you are interested, they are listed &lt;a class="reference external" href="https://about.gitlab.com/blog/2022/09/29/what-are-the-benefits-of-a-microservices-architecture/"&gt;here&lt;/a&gt;).&lt;/p&gt;
+&lt;div class="section" id="challenges"&gt;
+&lt;h2&gt;Challenges&lt;/h2&gt;
+&lt;p&gt;While developing vantage6 further, we were starting to hit the limitations of Docker. We then created our own tooling, packages and features for use cases that were already supported in Kubernetes. Let us highlight a few important points.&lt;/p&gt;
+&lt;div class="section" id="security"&gt;
+&lt;h3&gt;Security&lt;/h3&gt;
+&lt;p&gt;In the vantage6 node, we mount the Docker socket so that we can create containers that perform the computation from the vantage6 node application. The Docker daemon process on the host runs as root. This effectively means that the vantage6 node has root access to the host machine. This security issue should be considered by data parties when setting up a vantage6 node.&lt;/p&gt;
+&lt;p&gt;The necessity for root access could be dropped by using Docker's &lt;a class="reference external" href="https://docs.docker.com/engine/security/rootless/"&gt;rootless mode&lt;/a&gt;, but that requires more complex configuration steps during node installation, and the vantage6 node will still have unlimited permissions to create containers.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;When moving to Kubernetes we no longer need the Docker socket, so the security model is much more transparent and can be controlled by configuring the Kubernetes API access.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="node-to-node-communication"&gt;
+&lt;h3&gt;Node-to-node communication&lt;/h3&gt;
+&lt;p&gt;There is a large community out there creating privacy enhancing (or maybe even preserving) algorithms. For example Flower, ScaleMamba, MPyC, Substra, and the list goes on. All these libraries are great and would it not be awesome if we could use them in vantage6 without modifying the libraries? In this scenario, vantage6 is the mechanism to use these libraries over distributed centers in a secure way.&lt;/p&gt;
+&lt;p&gt;However, all these libraries require addresses (IP + port) to communicate with the other parties. This is something that lacked in vantage6. In version 3, we have implemented a port and ip protocol using EduVPN. This worked perfectly (thanks Djura, Lourens and Bart), but we later realized that this mechanism, which essentially installs a VPN client in the node, could be considered a backdoor by system administrators.&lt;/p&gt;
+&lt;p&gt;To establish node-to-node communication, we therefore need a more transparent and manageable implementation.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Instead of implementing a complicated node-to-node VPN network protocol we can rely on service mesh solutions like Istio to handle secure mutual TLS traffic between algorithm containers in different centers. This would be transparent and much more reliable than building our own solution.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="specialized-computation-jobs"&gt;
+&lt;h3&gt;Specialized computation jobs&lt;/h3&gt;
+&lt;p&gt;Many different algorithms are used within vantage6, from traditional statistical models to machine learning and image processing. These require different computation resources. Vantage6 in its current form requires the computation to take place on the same machine as where the vantage6 node is running. This requires you to install the vantage6 node directly into the machine that has sufficient resources (GPU, CPU, RAM).&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Using Kubernetes and its capability to span multiple workers (HPC) we can start Kubernetes jobs (vantage6 algorithm computations) in different machines with different hardware configurations.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="external-data-sources"&gt;
+&lt;h3&gt;External data sources&lt;/h3&gt;
+&lt;p&gt;In early versions of vantage6, we could only connect to file-based databases which were copied into the node. In the past couple of releases of vantage6, we have worked on ways to connect the vantage6 node instance to external data sources. For this purpose we have released the SSH tunnel, whitelisting and docker-services features.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Even though these features work and provide the access, Kubernetes provides similar, though more advanced, functionality that is supported by a much larger community. Using such battle-tested and transparent technology should be accepted with more confidence by system administrators than an implementation built by a small team such as ours. Also, maintaining code around the Kubernetes communication protocols is less work managing these features ourselves in the vantage6 code base - giving us more time to work on other features.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="alternative-container-technologies"&gt;
+&lt;h3&gt;Alternative container technologies&lt;/h3&gt;
+&lt;p&gt;Docker containers are not always the most appropriate technology to run containers, especially when considering security and privacy. Describing the differences is outside of the scope of this blog post, but there are valid reasons to choose one from:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;WebAssembly&lt;/li&gt;
+&lt;li&gt;Apptainer (formely known as Singularity)&lt;/li&gt;
+&lt;li&gt;Podman&lt;/li&gt;
+&lt;li&gt;Docker&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Instead of implementing each container technology API separately we can use the Kubernetes API to start a container regardless of the underlying engine.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="container-health"&gt;
+&lt;h3&gt;Container Health&lt;/h3&gt;
+&lt;p&gt;We all hate dying nodes, it requires to visit the data station and diagnose what went wrong. Often, we just perform a restart and move on.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Kubernetes would allow us to check the health of a container (by our own defined health checks) and restart by policy if needed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="resource-management"&gt;
+&lt;h3&gt;Resource Management&lt;/h3&gt;
+&lt;p&gt;The vantage6 node will spin up unlimited containers until it starts breaking down, resulting in connection loss and a dead node.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;Kubernetes monitors resources and has mechanisms to deploy only when there is sufficient resources available. So this deadlock will be automatically prevented.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="simplified-deployment"&gt;
+&lt;h3&gt;Simplified Deployment&lt;/h3&gt;
+&lt;p&gt;Deploying a server in vantage6 can be quite cumbersome, there are many components that need to be installed and configured separately.&lt;/p&gt;
+&lt;p&gt;On the node, system administrators want to have a better insight in how containers interact with one another using a standardized tool.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;Using helm charts to deploy the server in Kubernetes should drastically simplify the server deployment process.&lt;/p&gt;
+&lt;p class="last"&gt;Kubernetes provides many tools for administrators for monitoring and managing the application. They therefore no longer require in-depth vantage6 knowledge to analyze container interaction.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="development-environment"&gt;
+&lt;h3&gt;Development environment&lt;/h3&gt;
+&lt;p&gt;Since we are dealing with many services, testing and developing changes became ever more difficult. We solved most of these issues by creating our own tooling to do so, but this requires effort to maintain and is not easily transferable to other developers.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;By using &lt;a class="reference external" href="https://devspace.sh/"&gt;devspace&lt;/a&gt; we can remove all our previous tooling for development and use a standardized way to share test and development environments.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="kubernetes"&gt;
+&lt;h2&gt;Kubernetes&lt;/h2&gt;
+&lt;p&gt;Now that we have established that Kubernetes is a must to continue the development of vantage6, we will explain why we will not support both options of using the Docker API and Kubernetes API.&lt;/p&gt;
+&lt;div class="section" id="why-not-keep-docker-api"&gt;
+&lt;h3&gt;Why not keep Docker (API)&lt;/h3&gt;
+&lt;p&gt;Kubernetes is not an alternative for Docker. We still need an engine to run containers, and we see that in many cases this still will be Docker. The functionality provided by the Kubernetes API is different and much more extensive than the one of docker. Think about networking boxed in services, replication of containers, self-healing when a container is unhealthy, etc.&lt;/p&gt;
+&lt;p&gt;In theory, we could implement these Kubernetes features ourselves, in fact, we did! For example, we have build a retry-mechanism to restart algorithm containers that have crashed. But we should not forget that we are a small development team with big ambitions. Why would we replicate something that is already out there, for free, created and maintained by 3760 contributors, used by the biggest companies in the world?&lt;/p&gt;
+&lt;p&gt;The effort to support a Docker-based node would be large. We would essentially be creating a second vantage6 node without the features described above, as well as a duplicate CLI to manage both Kubernetes and Docker configuration. Having two versions means that:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The entire vantage6 network needs to consider that there may be two different types of nodes&lt;/li&gt;
+&lt;li&gt;We maintain twice as much as code for the node and the CLI&lt;/li&gt;
+&lt;li&gt;Node features need to be implemented twice&lt;/li&gt;
+&lt;li&gt;Bug fixes may need to be applied in two places&lt;/li&gt;
+&lt;li&gt;Algorithm developers have to ensure their algorithm works on both a Docker node and a Kubernetes node&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;These disadvantages make that maintaining both Docker and Kubernetes is not a viable option.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="kubernetes-installation-data-stations"&gt;
+&lt;h3&gt;Kubernetes installation &amp;#64; Data Stations&lt;/h3&gt;
+&lt;p&gt;Kubernetes can be installed in many ways. At one end you have the fully managed multi cluster Kubernetes that hosts many enterprise applications and on the other end you can already run a single cluster instance directly from Docker Desktop.&lt;/p&gt;
+&lt;p&gt;When vantage6 is running using Kubernetes, it will be easy to support all of these scenarios. We consider a vantage6 node an edge device, so we don't need a big Kubernetes cluster. In its minimal form you install &lt;cite&gt;microk8s&lt;/cite&gt; + &lt;cite&gt;docker&lt;/cite&gt; in a VM, making the installation very similar to its current form.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="tech"></category><category term="kubernetes"></category><category term="docker"></category><category term="tech"></category><category term="vantage6"></category></entry><entry><title>A new approach for the BlueBerry registry using vantage6</title><link href="https://franky.codes/sarcoma-registry-update.html" rel="alternate"></link><published>2024-12-20T09:00:00+01:00</published><updated>2024-12-20T09:00:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2024-12-20:/sarcoma-registry-update.html</id><summary type="html">&lt;p class="first last"&gt;A new approach for the BlueBerry registry using vantage6&lt;/p&gt;
+</summary><content type="html">&lt;div class="contents topic" id="contents"&gt;
+&lt;p class="topic-title"&gt;Contents&lt;/p&gt;
+&lt;ul class="auto-toc simple"&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#local-data-storage" id="toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Local Data Storage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#researcher-user-interface" id="toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;Researcher User Interface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference internal" href="#future-work" id="toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Future work&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;a class="reference external" href="https://euracan.eu/registries/blueberry/"&gt;BlueBerry project&lt;/a&gt; was a two-year
+initiative to develop a blueprint for a sustainable, scalable, and impactful data
+infrastructure for rare cancers in Europe. In the context of
+&lt;a class="reference external" href="https://iknl.nl/en/news/blueberry-is-now-really-taking-off!-building-a-blu"&gt;IKNL&lt;/a&gt;, I
+have been involved in extending the &lt;a class="reference external" href="https://vantage6.ai"&gt;vantage6&lt;/a&gt; software to be
+able to connect to &lt;a class="reference external" href="https://www.ohdsi.org/data-standardization/"&gt;OMOP data sources&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;When the project finished in September 2024, it was decided to continue with the
+registry to use it for research. However, several challenges needed to be addressed
+before it could be used for research:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;The user interface that has been developed for vantage6 lacked the components that
+made working with the OMOP data source easy. It still required an engineer to operate
+the system.&lt;/li&gt;
+&lt;li&gt;The computation of the output was rather slow as the original data source was visited
+for each computation call. This included creating the cohort and querying the selected
+features.&lt;/li&gt;
+&lt;li&gt;Only &lt;a class="reference external" href="https://github.com/IKNL/v6-crosstab-on-ohdsi-py"&gt;Crosstabulation&lt;/a&gt; and
+&lt;a class="reference external" href="https://github.com/IKNL/v6-kaplan-meier-on-ohdsi-py"&gt;Kaplan-Meier curve&lt;/a&gt; have been
+extended to work in the registry. There were some experiments with the OHDSI tools,
+but these were difficult to operate.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I was asked to work together with &lt;a class="reference external" href="https://www.biomeris.it/en/"&gt;BIOMERIS&lt;/a&gt; on
+addressing these issues to enable researchers using the platform for gaining meaningful
+insights.&lt;/p&gt;
+&lt;p&gt;In this blog post, I will explain first how I address performance issue as this
+influences how the user interface is designed. Then, I will explain how the user
+interface is designed to support the workflow of the researcher.&lt;/p&gt;
+&lt;div class="section" id="local-data-storage"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-1"&gt;1&amp;nbsp;&amp;nbsp;&amp;nbsp;Local Data Storage&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Typically in vanilla vantage6, the data is fetched from the data source for each
+computation call. This made computations slow as the OMOP query was typically time
+consuming. To speed up the computations, I decided to fetch the data once for each
+cohort and store it local in the vantage6 node.&lt;/p&gt;
+&lt;div class="uml docutils container"&gt;
+&lt;pre class="code literal-block"&gt;
+┌──────────┐   ┌────────────┐   ┌────────────┐
+│ OMOP     │   │ Query      │   │ Local DB   │
+│ Database ├──►│ Algorithm  ├──►│ Parquet    │
+└──────────┘   └────────────┘   └────────────┘
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;The &lt;tt class="docutils literal"&gt;Query Algorithm&lt;/tt&gt; is a vantage6 algorithm that is responsible for fetching the
+data from the OMOP database. It creates the ATLAS cohort and reads the patient features.
+The data is stored by this algorithm in a &lt;a class="reference external" href="https://parquet.apache.org/"&gt;Parquet&lt;/a&gt; file.
+This Parquet file is then used by the other algorithms to perform the analytics.&lt;/p&gt;
+&lt;div class="uml docutils container"&gt;
+&lt;pre class="code literal-block"&gt;
+┌────────────┐   ┌────────────┐   ┌───────────┐
+│ Local DB   │   │ vantage6   │   │ Algorithm │
+│ Parquet    ├──►│ Algorithm  ├──►│ Output    │
+└────────────┘   └────────────┘   └───────────┘
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;In the future, I would like to extend the system so that these Parquet files can also be
+modified by the user. For example, the user can create new variables.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;There are some challenges with this approach:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;When a node is offline when a new cohort is created it will not be able to fetch the
+data. In this case, the node will create the cohort data it comes online. The user
+can work with the other nodes in the meantime.&lt;/li&gt;
+&lt;li&gt;When the data source is updated, the Parquet files need to be updated as well. This
+is currently a manual process as the user needs to trigger the Query Algorithm to
+fetch the data again.&lt;/li&gt;
+&lt;li&gt;The Parquet files need to have the same variables and the same value types for these
+variables. This should be guaranteed by the &lt;tt class="docutils literal"&gt;Query Algorithm&lt;/tt&gt;. Especially when the
+cohorts are not created at the same time (e.g. when a node was offline when it was
+created).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When a node is offline when a new cohort is created it will not be able to fetch the
+data. In this case, the node will create the cohort data it comes online. The user can
+work with the other nodes in the meantime.&lt;/p&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p class="last"&gt;An additional benefit of this approach is that algorithms do no longer have the
+logic to fetch the data from the OMOP database. So the vantage6 community algorithms
+can be used without (much) modification.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="researcher-user-interface"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-2"&gt;2&amp;nbsp;&amp;nbsp;&amp;nbsp;Researcher User Interface&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The official vantage6 User Interface (UI) is developed as a general-purpose vantage6 UI.&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="vantage6 user interface" src="https://franky.codes/images/sarcoma/screenshots-v6-ui.png" style="width: 800px;" /&gt;
+&lt;p class="caption"&gt;The official vantage6 user interface from vantage6 (from &lt;a class="reference external" href="https://vantage6.ai"&gt;https://vantage6.ai&lt;/a&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;If a new feature is to be added in this interface, it needs to be compatible with other
+projects from the community as well. This has two major disadvantages:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It feels overcomplicated for the user as it contains features that are not relevant
+for the BlueBerry registry and it is not tailored to the workflow of the researcher.&lt;/li&gt;
+&lt;li&gt;Adding new features to the UI is time-consuming as it needs to be compatible with
+other projects and requires approval from the vantage6 community.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For these two reasons, I decided it would be better to create a separate, dedicated UI
+for the BlueBerry registry. This way, I can tailor the workflow exactly as it should be
+and I don't have to consider other projects when adding new features.&lt;/p&gt;
+&lt;div class="admonition important"&gt;
+&lt;p class="first admonition-title"&gt;Important&lt;/p&gt;
+&lt;p&gt;As the proposed dedicated UI is aimed to support the workflow of the researcher, it
+is not going to contain all the features that the official vantage6 UI has. The
+official vantage6 UI is still available for the BlueBerry registry. It is possible
+to switch between the two UIs.&lt;/p&gt;
+&lt;p class="last"&gt;For instance, the official vantage6 UI is still used for the management of the
+collaborations and studies.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;To accelerate development, I used &lt;a class="reference external" href="https://streamlit.io/"&gt;Streamlit&lt;/a&gt;. This framework
+brought the following advantages:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It minimizes the need to write front-end code as the front-end code, as it is
+generated from Python code.&lt;/li&gt;
+&lt;li&gt;It includes numerous built-in data science components like tables, graphs and
+controls.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;However, it introduces an additional backend component, the one that renders the front
+end. The app's appearance and components can be customized, however the customization
+is very different from front-end frameworks like React or Angular.&lt;/p&gt;
+&lt;p&gt;This newly developed UI aims to better support the researcher's workflow. The first
+thing after logging in is to select the collaboration and optionally the study it wants
+to work with. Once the collaboration/study is selected, the user can view the online
+organizations within the collaboration or study. The user is at this point able to
+create sub selections of the organizations it wants to work with.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="50%" /&gt;
+&lt;col width="50%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Collaboration &amp;amp; Study Selection&lt;/th&gt;
+&lt;th class="head"&gt;Node status&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can select their collaboration and study" src="https://franky.codes/images/sarcoma/collaboration_and_study.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Users first need to select the collaboration and optionally the study they
+want to work with. Some metadata is shown about the selected collaboration
+and study.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can check the status of the nodes" src="https://franky.codes/images/sarcoma/node_status_redacted.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Once the collaboration is selected, the user can view the online
+organizations. It is possible to create a sub selection of the organizations
+the user wants to work with.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;Once the organizations are selected, the system checks which cohorts are available for
+the selected organizations. The UI then determines automatically which cohorts are ready
+for analysis, it validates that:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;All the (online) organizations have the cohort available.&lt;/li&gt;
+&lt;li&gt;The minimal number of patients threshold is met at each organization.&lt;/li&gt;
+&lt;li&gt;All the organizations have the same variables and have the same value types for these
+variables.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;By default, all the &lt;em&gt;healthy&lt;/em&gt; cohorts are selected. The user can also make a sub
+selection of the cohorts it wants to work with. It is also possible to create a new
+cohort based on the &lt;a class="reference external" href="https://atlas-demo.ohdsi.org/"&gt;ATLAS&lt;/a&gt; cohort definitions.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="50%" /&gt;
+&lt;col width="50%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Cohort selection&lt;/th&gt;
+&lt;th class="head"&gt;Cohort creation&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can select the cohorts they want to work with" src="https://franky.codes/images/sarcoma/healthy_cohorts.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Users can select the cohorts they want to work with. By default, all the
+healthy cohorts are selected. In this case none of the cohorts are healthy.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can create a new cohort" src="https://franky.codes/images/sarcoma/healthy_cohorts_2.jpeg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Before the user can continue all the selected organizations need to have the
+cohort available. The user is able to select the cohorts and from there
+automatically select the organizations that passed the validation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;p&gt;Once the cohorts have been selected the user can continue to the analytics part of the
+application. The first analytics that is available is the summary statistics. This gives
+an overview of all selected cohorts and its variables. It reports some basic statistics
+like missing, mean, standard deviation, etc.&lt;/p&gt;
+&lt;p&gt;The second analytics that is available is the crosstabulation. This is a useful tool
+to compare the distribution of two categorical variables. The user can select the
+variables it wants to compare and the crosstabulation is calculated for all selected
+cohorts.&lt;/p&gt;
+&lt;p&gt;The third analytics that is available is the Kaplan-Meier curve. This is can be used
+to compare the survival between cohorts. The dataset contains the survival time and
+the event indicator, so these are already preselected.&lt;/p&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;col width="33%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Summary statistics&lt;/th&gt;
+&lt;th class="head"&gt;Crosstabulation&lt;/th&gt;
+&lt;th class="head"&gt;Kaplan-Meier curve&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can view the summary statistics of all selected cohorts" src="https://franky.codes/images/sarcoma/summary_stats.jpeg" style="width: 266px;" /&gt;
+&lt;p class="caption"&gt;Users can view the summary statistics of all selected cohorts. The summary
+statistics are calculated for all selected cohorts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can compare the distribution of two variables" src="https://franky.codes/images/sarcoma/crosstabs.jpeg" style="width: 266px;" /&gt;
+&lt;p class="caption"&gt;Users can compare the distribution of two variables. The crosstabulation is
+calculated for all selected cohorts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="users can compare the survival of two cohorts" src="https://franky.codes/images/sarcoma/kaplan_meier.jpeg" style="width: 266px;" /&gt;
+&lt;p class="caption"&gt;Users can compare the survival of two cohorts. The Kaplan-Meier curve is
+calculated for all selected cohorts.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="future-work"&gt;
+&lt;h2&gt;&lt;a class="toc-backref" href="#toc-entry-3"&gt;3&amp;nbsp;&amp;nbsp;&amp;nbsp;Future work&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;This project is still in development throughout 2025. There are still several features
+that need to be added to the system. The following features are planned:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;The current algorithms need to be extended to support additional features like
+stratification.&lt;/li&gt;
+&lt;li&gt;Currently in development are some more advanced analytics like the Cox proportional
+hazard model and the propensity score matching.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="admonition note"&gt;
+&lt;p class="first admonition-title"&gt;Note&lt;/p&gt;
+&lt;p&gt;In the future the &lt;a class="reference internal" href="#local-data-storage"&gt;Local Data Storage&lt;/a&gt; will be no longer be necessary as this
+feature will be build into the vantage6 core (This feature is called sessions and
+is available from &lt;a class="reference external" href="https://github.com/vantage6/vantage6/issues/943"&gt;version 5+&lt;/a&gt;).&lt;/p&gt;
+&lt;p class="last"&gt;This might be added to the final stages of the project.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content><category term="vantage6"></category><category term="python"></category><category term="vantage6"></category><category term="OHDSI"></category><category term="streamlit"></category></entry><entry><title>Lego Alpaca</title><link href="https://franky.codes/lego-alpaca.html" rel="alternate"></link><published>2024-01-01T09:00:00+01:00</published><updated>2024-01-01T09:00:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2024-01-01:/lego-alpaca.html</id><summary type="html">&lt;p class="first last"&gt;A lego alpaca I reverse engineered and built.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;For the birthday of my girlfriend I was looking for a LEGO alpaca since she loves
+alpacas. (Un)fortunately, I could not find any LEGO alpaca set. (except for the
+&lt;a class="reference external" href="https://www.bricklink.com/v2/catalog/catalogitem.page?P=65405pb03&amp;amp;name=Alpaca%20/%20Llama,%20Friends%20with%20Dark%20Azure%20Eyes,%20Black%20Nose,%20and%20Tan%20Muzzle%20Pattern&amp;amp;category=%5BAnimal,%20Land%5D#T=C"&gt;minifig sized one&lt;/a&gt;,
+but that was not what I was looking for) So I decided to build one myself. Since I had
+limited time (her birthday was coming up), I decided to reverse engineer an
+existing alpaca. I found a good looking one on
+&lt;a class="reference external" href="https://www.reddit.com/r/lego/comments/lkb669/alpaca_forever/"&gt;Reddit&lt;/a&gt;:&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="Lego Alpaca" src="/images/lego-alpaca/alpaca1.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The original alpaca I found on Reddit.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;After some fiddling around with Lego studio, I came up with the following design:&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="My Lego Alpaca" src="/images/lego-alpaca/my-alpaca.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The alpaca I built.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;You can download the instructions and the LEGO studio file here:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://franky.codes/downloads/paca-lego.pdf"&gt;Instruction [PDF]&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="https://franky.codes/downloads/paca-lego.io"&gt;LEGO studio file [IO]&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content><category term="lego"></category><category term="lego"></category><category term="alpaca"></category><category term="design"></category></entry><entry><title>ASCII picture for this blog</title><link href="https://franky.codes/ascii-picture.html" rel="alternate"></link><published>2022-12-23T00:22:00+01:00</published><updated>2022-12-23T00:22:00+01:00</updated><author><name>Frank Martin</name></author><id>tag:franky.codes,2022-12-23:/ascii-picture.html</id><summary type="html">&lt;p class="first last"&gt;How I created the ascii picture using Python for this space.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;When I started designing my blog I wanted create a look and feel of a
+code editor. So instead of a regular picture I wanted to have a ascii
+version.&lt;/p&gt;
+&lt;p&gt;At first I used an online tool to generate the picture. While it was
+good enough to decide that I liked it, I felt it did not gave me enough
+control over the result. So I decided to write my own in Python.&lt;/p&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="original picture" src="https://franky.codes/images/me.jpg" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;Original picture that I want to convert to an ASCII version.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="algorithm"&gt;
+&lt;h2&gt;Algorithm&lt;/h2&gt;
+&lt;p&gt;I remembered an algorithm which I have seen during a computer vision
+course. Which computed the average intensity of a segment in the
+picture and then matched it to a character with the same intensity.&lt;/p&gt;
+&lt;p&gt;I used the Python package Pillow (which is an python implementation of
+PIL) for most of the image processing tasks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="preprocessing-the-image"&gt;
+&lt;h2&gt;Preprocessing the Image&lt;/h2&gt;
+&lt;p&gt;The identity box on my website is 220x220 pixels. The first step would
+be to crop the image to a square.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;input.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="c1"&gt;# I found this a nice cutout.&lt;/span&gt;
+&lt;span class="c1"&gt;# (left, upper, right, lower)&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;crop&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1500&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1100&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;We want a (single) intensity value per image segment. In a color image
+we have three values per pixel: red, green and blue. A first step would
+be to convert the image to a gray scale image. There are many ways to
+do this, but I decided to use the average intensity of the three color
+channels.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# convert to grayscale&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;convert&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;L&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Then, I normalized the gray scale image to use the full range 0-255 to
+maximize the contrast between segments.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;ImageOps&lt;/span&gt;
+&lt;span class="c1"&gt;# normalize the image&lt;/span&gt;
+&lt;span class="n"&gt;im&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageOps&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;autocontrast&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="scrollx docutils container"&gt;
+&lt;table border="1" class="docutils align-center"&gt;
+&lt;colgroup&gt;
+&lt;col width="25%" /&gt;
+&lt;col width="25%" /&gt;
+&lt;col width="25%" /&gt;
+&lt;col width="25%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Original&lt;/th&gt;
+&lt;th class="head"&gt;Cropped&lt;/th&gt;
+&lt;th class="head"&gt;Grayscale&lt;/th&gt;
+&lt;th class="head"&gt;Normalized&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="original picture" src="https://franky.codes/images/me.jpg" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The original loaded image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="cropped picture" src="https://franky.codes/images/cropped.png" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The square cropped image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="gray scale picture" src="https://franky.codes/images/grayscale.png" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The gray scale image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;div class="first last figure align-center"&gt;
+&lt;img alt="normalized picture" src="https://franky.codes/images/normalized.png" style="width: 180px;" /&gt;
+&lt;p class="caption"&gt;The normalized image&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="segmenting-the-picture"&gt;
+&lt;h2&gt;Segmenting the Picture&lt;/h2&gt;
+&lt;p&gt;Before we can compute the intensity per segment we need to split the
+image into segments. I decided to use a grid to use 110 segments in &lt;tt class="docutils literal"&gt;x&lt;/tt&gt;
+and &lt;tt class="docutils literal"&gt;y&lt;/tt&gt; direction. So every segment is 2x2 pixels in the final
+resulting ASCII-picture.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;110&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+&lt;span class="c1"&gt;# compute the width (and height since we have a square image) of a&lt;/span&gt;
+&lt;span class="c1"&gt;# segment&lt;/span&gt;
+&lt;span class="n"&gt;dw&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;width&lt;/span&gt; &lt;span class="o"&gt;//&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;The cropped image with the grid looks like this:&lt;/p&gt;
+&lt;div class="toggle docutils container"&gt;
+&lt;div class="header docutils container"&gt;
+&lt;strong&gt;Visualization code&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# make a copy of the image, as we do not want to have the&lt;/span&gt;
+&lt;span class="c1"&gt;# segmentation gizmo in the final image&lt;/span&gt;
+&lt;span class="n"&gt;im_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageDraw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Draw&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;im_&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_h&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;fill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;line&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_h&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;fill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;im_processed2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="Segmented picture" src="https://franky.codes/images/segmented-image.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The original image with the segmentation grid.&lt;/p&gt;
+&lt;/div&gt;
+&lt;p&gt;I used the &lt;tt class="docutils literal"&gt;crop&lt;/tt&gt; function of the &lt;tt class="docutils literal"&gt;Image&lt;/tt&gt; class to split the image
+into segments:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt;1&lt;/span&gt;
+&lt;span class="normal"&gt;2&lt;/span&gt;
+&lt;span class="normal"&gt;3&lt;/span&gt;
+&lt;span class="normal"&gt;4&lt;/span&gt;
+&lt;span class="normal"&gt;5&lt;/span&gt;
+&lt;span class="normal"&gt;6&lt;/span&gt;
+&lt;span class="normal"&gt;7&lt;/span&gt;
+&lt;span class="normal"&gt;8&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;im_part&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;im&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;segments&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="n"&gt;segments&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
+            &lt;span class="n"&gt;im_part&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;crop&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;,(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;dw&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+      &lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="toggle docutils container"&gt;
+&lt;div class="header docutils container"&gt;
+&lt;strong&gt;Draw images segments&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;display_many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;List&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+           &lt;span class="n"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;tuple&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+
+   &lt;span class="k"&gt;assert&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dim&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;Thats not a grid&amp;#39;&lt;/span&gt;
+   &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dim&lt;/span&gt;
+   &lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;_&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;
+
+   &lt;span class="n"&gt;new_image&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;L&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+      &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;j&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+            &lt;span class="n"&gt;idx&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;m&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+            &lt;span class="n"&gt;new_image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;paste&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;images&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;idx&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;j&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;img_w&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;)))&lt;/span&gt;
+
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;new_image&lt;/span&gt;
+
+&lt;span class="n"&gt;display_many&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;segments&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;div class="figure align-center"&gt;
+&lt;img alt="Segmented picture" src="https://franky.codes/images/segmented-image2.png" style="width: 400px;" /&gt;
+&lt;p class="caption"&gt;The segmented pictures displayed in a grid.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="computing-letter-intensities"&gt;
+&lt;h2&gt;Computing Letter Intensities&lt;/h2&gt;
+&lt;p&gt;Before we can match the each segment to a character we need to compute the
+intensity for each character. This intensity is dependant on the font that is
+used. I used the &lt;a class="reference external" href="https://fonts.google.com/specimen/Ubuntu+Mono"&gt;Ubunto Mono font&lt;/a&gt;,
+which is the same font as this website. This code only works for
+mono-spaced fonts. If the font is not mono-spaced the algorithm will
+be much more complicated, as the final ASCII image is not a grid in that case.&lt;/p&gt;
+&lt;p&gt;The font size is not important when computing the intensities for each character, as
+we are computing the average pixel intensity of the character box.&lt;/p&gt;
+&lt;div class="toggle docutils container"&gt;
+&lt;div class="header docutils container"&gt;
+&lt;strong&gt;compute_letter_intensity(letter: str)&lt;/strong&gt;&lt;/div&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;compute_letter_intensity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nb"&gt;float&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+   &lt;span class="n"&gt;img_dims2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;font_size&lt;/span&gt;&lt;span class="o"&gt;//&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;font_size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;img&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;new&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;L&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;img_dims2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;color&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;black&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageDraw&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;Draw&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;d&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;text&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;letter&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;font&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;fnt&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;fill&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;align&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;center&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+   &lt;span class="n"&gt;data&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getdata&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+   &lt;span class="n"&gt;n_of_pixels&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;math&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;prod&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;img_dims2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+   &lt;span class="n"&gt;avg_intensity&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;sum&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;n_of_pixels&lt;/span&gt;
+   &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;avg_intensity&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The function &lt;tt class="docutils literal"&gt;compute_letter_intensity&lt;/tt&gt; returns the average pixel
+intensity of a character. In other words, it sums the pixel values and divides
+them by the number of pixels that are in the character box.&lt;/p&gt;
+&lt;p&gt;We want to match every segment in our preprocessed image to a character.
+So we need to compute the letter intensity for all characters we want to
+use in out final ASCII image.&lt;/p&gt;
+&lt;p&gt;I used a selection of letters, digits and symbols. Symbols like &lt;tt class="docutils literal"&gt;&amp;quot;&lt;/tt&gt;,
+&lt;tt class="docutils literal"&gt;'&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;/&lt;/tt&gt; are not included, as they have a meaning within HTML. Another option
+would be to escape these characters, but I decided to leave them out.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;
+&lt;span class="normal"&gt;16&lt;/span&gt;
+&lt;span class="normal"&gt;17&lt;/span&gt;
+&lt;span class="normal"&gt;18&lt;/span&gt;
+&lt;span class="normal"&gt;19&lt;/span&gt;
+&lt;span class="normal"&gt;20&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# define the characters to use&lt;/span&gt;
+&lt;span class="n"&gt;charactersList&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ascii_letters&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;string&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;digits&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; \
+   &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;!&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;?&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;.&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;:&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;(&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;)&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;[&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;]&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;{&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;}&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;/&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;|&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;-&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;=&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;+&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;amp;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;^&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+      &lt;span class="s1"&gt;&amp;#39;%&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;$&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;#&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;@&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;~&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;`&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="c1"&gt;# load the mono-spaced font&lt;/span&gt;
+&lt;span class="n"&gt;fnt&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;ImageFont&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;truetype&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;fonts/UbuntuMono-Regular.ttf&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                         &lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;font_size&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# compute the intensity of each letter&lt;/span&gt;
+&lt;span class="n"&gt;intensities&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{}&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;char&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;charactersList&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+   &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;compute_letter_intensity&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# normalize values between 0 - 1&lt;/span&gt;
+&lt;span class="n"&gt;low&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
+&lt;span class="n"&gt;high&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;values&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+   &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;k&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;v&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;low&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt; &lt;span class="n"&gt;high&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="match-letters-to-segments"&gt;
+&lt;h2&gt;Match letters to segments&lt;/h2&gt;
+&lt;p&gt;For each segment we match the letter with the most similar intensity:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;&lt;span class="normal"&gt; 1&lt;/span&gt;
+&lt;span class="normal"&gt; 2&lt;/span&gt;
+&lt;span class="normal"&gt; 3&lt;/span&gt;
+&lt;span class="normal"&gt; 4&lt;/span&gt;
+&lt;span class="normal"&gt; 5&lt;/span&gt;
+&lt;span class="normal"&gt; 6&lt;/span&gt;
+&lt;span class="normal"&gt; 7&lt;/span&gt;
+&lt;span class="normal"&gt; 8&lt;/span&gt;
+&lt;span class="normal"&gt; 9&lt;/span&gt;
+&lt;span class="normal"&gt;10&lt;/span&gt;
+&lt;span class="normal"&gt;11&lt;/span&gt;
+&lt;span class="normal"&gt;12&lt;/span&gt;
+&lt;span class="normal"&gt;13&lt;/span&gt;
+&lt;span class="normal"&gt;14&lt;/span&gt;
+&lt;span class="normal"&gt;15&lt;/span&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;chars&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;objective&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;segment_average&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+   &lt;span class="n"&gt;chosen_char&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;*&amp;#39;&lt;/span&gt;
+   &lt;span class="n"&gt;distance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;
+   &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;char&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;intensity&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;intensities&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;items&lt;/span&gt;&lt;span class="p"&gt;():&lt;/span&gt;
+       &lt;span class="n"&gt;di&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;abs&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;objective&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;intensity&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+       &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;di&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&lt;/span&gt; &lt;span class="n"&gt;distance&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+           &lt;span class="n"&gt;chosen_char&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;char&lt;/span&gt;
+           &lt;span class="n"&gt;distance&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;di&lt;/span&gt;
+   &lt;span class="n"&gt;chars&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;append&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chosen_char&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c1"&gt;# merge chars into strings of length n_segments&lt;/span&gt;
+&lt;span class="n"&gt;result_string&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;&amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;chars&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;n&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;n_segments&lt;/span&gt;
+&lt;span class="n"&gt;lines&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;result_string&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;result_string&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;n&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;
+&lt;p&gt;Making our final result:&lt;/p&gt;
+&lt;div class="identity align-center"&gt;
+&lt;pre class="picture gray"&gt;
+rrrrr++r++++++*****==============??????????????????||||?||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrr+++++++++*********==========??????????????????|?|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrrr++++++++*****===========????????????????????????|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrr++++++++**+***=*=====?====??????????????????==*??|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrr+++++++++**+*==========??=????????????????+++=*+rr=||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrr++++++++*****=========????????????=*+++^:!:::::!!!r?|????|||||||||||||||||||||||||||||||||||||||||||||||
+rrrr++++++++++***=*========????????????==+r;:,,..,~~~~:!!!r^^*?|||||||||||||||||||||||||||||||||||||||||||||||
+rrr+r++++*++++***=*=======?=???????????=r!,....,.,_,~,,~_!!:::*|||||||||||||||||ii||||||||i|||||||||||||||||||
+r+r++++++*+********=====?===??????????=!,.-````----...,~~~::~,!=?||||||||||i||i||i||||||i||||||i||||||||||||||
+r+++++++++**+**=*=*======????????????+!.``````````-..,,::_:::,:+=*||||||ii|||||||iiii||iii||||i|||||||||||||||
+r++++++++*****=*=*=======??????????*^:.`````````-......,,~:!!!:~!:=??|||iiiiiii|i|iiiii|i|iii|iiii||i|||||i|||
+r+++r++++*+***=*=========?????????=!.`````````````-.,,,,~:!::^!:::r?|?||iiiiiiii||iiiiiiiiiiiiiiiiii|i|i||||||
+++++++++******==========?????????*~-``````````````-..,,:::~,~!r^:,,!++^=iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii|||
+++++++++******======????=???????+,````````````````-.,...,,::~,:::!,._:::|||iiiiiiiiiiiiiiiiiiiiiiiii|iiii|i|||
+r++++++******=======?=?=???????r,```````-````--....,.,,~,.,::_:!!,:~._,,r|||iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
++++++++***=*=*========???????=+,````````````---`-.,,,,,,,:~~,,,,:*_~:,::_||||iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+++++*+****==*=======????????*+:-``````````....```-.,,~:::_::::::,_^:,:,~:!?i|iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii|
++++++*****==*=====?????????==^.``````````..-`````-.,~!+=??|||i??*!,!~,,.,,+i|iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+++++*****=*=======????????=?*,`````````-.,``````..,:!=|/7i/Tzzxxz(r~:,-.,.:riiiiiLiiiiLiiLiiiiiiiiiiiiiiiiiiii
++++******========??????????=~```````` `...````...,~!*|ivliiTxlxsfjn?~:..,._?|iiiiiiiiiLiLLLLiiiiiiL/Liiiiiiiii
++****=*=======?=??????????=,```  ``` `.--,``-..,,,:;=i/77/|)tYIjySwS|:_..,::=|iiLiL/LLLL//LLLLLLiL//LiiLLiiiii
+++****=*===?=?????????????:```   ``  -.-.~-..,,,,:!+|)7lx)/zJ{y5emhhSl!,...,!?iii///L/L///L/L/LLLL//LLL/LLiLii
+******======?????????????r-``       `..-~...,,:::!^?i(c(viTJ{j54khhkmaJ:,..,,!*|ii/)/)L//L////////////L/i/iLii
+*******=======??????????*.``        `-`.,..,~_:!:^=|)v)/vxtfjoSeEAAEEEmc,...,.:+iiL))/)/)L///L//)///)//////iLL
+****=*======?????????|?=!``         `-`...,,~::!^+?|c7vTzzIj3ZmhUU6UUU64*.--.,,!|///())(////)///)()))/)/)/////
+*****========??????????r:`         ````..,,,::!^+=|iv7v1Juy4mEAAqKKKpKKE5_---...r|/ccccc)())c()))c)))))())))//
+*=*=======??????????|??+,`         ```-..,,~::!r?|i)vTzIuySmEU69KKdbdddKA|.-.....+icccc))c((vcc)cvvcc/ccc(/(/(
+***======??????????||??r-``        ```..,,,~:!!r?|iLTxFuj5VkE66qKKdODOOdUj:.-..-.~?vcv7c(cvv7vvv7vvvc)(cccc)/(
+=*======?????????|||||?~`         ```-..,,,~:!!r=|/lxtfjy5whhE6qKdODMMROdm?,`..-.,:)vvvvv77777TTv77vvvvvvccccc
+*=======?????????|||||=.         ```-..,,,,~:!;r*|ilzt[y5SeemXAqdHRRWgWRHEl:.-..-~,!7777777TTTTTT7TTTvv7vcvvvv
+=======????????|?|||||!`        ``-..,,,,,,~!!!^*|/lxJ[jyyyy5kUKdRMMg08MDh1^,-..-.:~vTlvl77TlllTT7TTTvTT7vv77v
+======?????????||||||?:`        `..,,,,,,,,~!!^^+|cxx1n[{ssj5hUdDRM0NN00MAJ?^..,.-,!LlllTllllllllTlTlTT77TTTTT
+====????????|||||||||!,        `-.,,,,,,,,,~:!r+*|cxxzIsxt{5kUdDDMgN&amp;&amp;&amp;NgKs|r,-,...!|TlllxxlxxxlxlllllTllTTlTT
+=====????????|||||||?,`   ``  ``..,,,,,,,,,,:;+=?7xzxzx11C5mUdDMRM0&amp;&amp;&amp;&amp;&amp;ND5=r!-....++Tlxllxxxxxxxllllxxlllllll
+===?????????|?||||||*:````    ``.,,,,,,,,,,~:^+?izJYtzl1I5kUKOg000&amp;&amp;&amp;&amp;&amp;&amp;&amp;86i:!.-...r+7xzxxxxxxxxlxxxxxxlllllll
+=?=????????|||||||||+;``` `   ``.,,,,,,,,,,,:^+=c1{{[11tok6dHRN#####NN0&amp;NNOt:~,....;?Lxxxzzxxzxxxxxxxxxxxlxllx
+=???????????||||||||r!`-` `   ``.,,,,,,,,,,,:^r=)1jjysJ{wUdOH0&amp;###&amp;0g0ggNN8k:.,...,!|cxxzzzzxzzzzxxxxxzxxlxxxl
+???????????|||||||||=!`-``    ``.,,,,,,,,,,,:^r=i1jS5js[mEKddMMM8RRdAhK80&amp;gd^.,.,.,!|7xzzzzzzzzzzxxxxxxxxzxxxx
+?????????|||||||||||?!`-```   `-.,,,,....,,,:!r?i1[Z5y{s2kkZmEj7i|i11x15dN0D=-.-...!ixzzzzzzzzzzzzzxzxzzzzzzxx
+????????|||||||||||||;.```    `...,,..-----.~!^r|)t5jyytj5ySyjirr;r;r|itnURD=``..,,;Tzzzz11zzzzzzzzzzxzxzzzzxz
+?????????||||||||||||=~````   `....-````````-.,:r?LnC[ys[Syntx?:!ri[S4jzLiKR|-`,.~,?lzzz1111zz11zzzzzzzzzzzzzz
+???????|||||||||||||||^-```   `....`````---`---,~;=|xCSSyjj5[r?tY11yKDMOdkzG1`-,.:!?xzz1111111111zzzzzzzzzzzzz
+??????|?|||||||||||||||,```   `...-``..~:_~,,,,.-,:!r1mmjmh{rYi^^=cnjPKOOdh{1`.:.!:|xzzz11111111111zzzzzzzzzzz
+???????|||||||||||||iii!```   `..---.....,:_,..,.-...~:::+Sr1+~:!!!*it5mU9Gm*,^:,;,izz111111111t11z1zzzzzzzzzz
+????????||||||||||||iii!```   `..-....--.,,::,-...``.r[1AK!|r~!!_,,!+*^|JjSm*~+r,:,?x111t11111t111zzzzzzzzzzzz
+????????||||||||||||iii;```   `-.....---````.,.-..,,,?kkmD|Y!r^!:,.I=mc?kdRW{:!^,,.+z11111t11111111z1zzzzzzzzz
+??????|||||||||||||||iir```   ``.,,..--.-``.,.`-...,,=ZKkH7ux|:!:!_^YE4IER&amp;Nj=|:,.-!zz1111t11z1111111zzz1xzzzz
+??????|||||||||||||iiii*````  `.,,,..`-.-.```.`-..-.,?odKXTuv^!+?=?IEmEAdMNNyJ*!,-`:x111t11t11111111zzzz1zzzzz
+????||?||||||||||||iiii?.```  `..,,,.--...--..`-..`-~?jOW5v!|^!^*|{e6AdORW&amp;Njk;,.``,x11111111t111111z1zzzzz1zz
+?????|||||||||||||iiiii|~``` ``..~,,.........-`--.`.:?SONEj^J|rr?z[kU6ORM0NNjd!,-``,/z1111tt1t1111111z1zzzzzzz
+?????|?|||||||||||iiiiii!``````,.,,,,.......-``--.`.~?5Kg05TXj1vcJjemqR0ggNph%^.``-.i11111tt111t11111111zzzzz1
+????|||||||||||||||iiiii?.`````,,,,,.......-------`.,=2qRNR{Y6SySmEp6R&amp;NNgNjgR=,`-,,v111t111t1111111z1111zzzzz
+??????|?||||||||||||iiii|~````-,,.,,.,.....----..`..,r5KD0NAlP9EEA6K6DNgggAP0%L..,!!zzz11t111111tt11z1zz111z11
+??????|?||||||||||i|iiiii;````-,,.,,,,,..........-..,^yKHRNgjiAKqUq9kdRMMEyN0Dx-,;**z1111111t11111t1z1zz1zzzzz
+?????|?||||||||||||iiiiii?.````,,,.,,,,,........-...,^[UdR8&amp;Hti5qAhE4qOdnk&amp;NNRl,+{itz11t111t1t1t1111111zzzzzzz
+??????||||||||||||i|iiiii|,-```,,,,.,,,........`...,,;FEKORg0KCi|)xxv1s28&amp;&amp;&amp;N%z=1kj5z1t1tt11tt1ttt11111z11zzzz
+?????|?||||||||||iiiiiiiii~.```,,,,,........---....,,^zEKHHR08HEwS4X6b%M0NNN0D4ElSdPt111tttt1ttt1t111111z1zzzz
+????|?|||||||||||iiiiiiiii_.```,,,,,,,....--.......,,rzEdOHHR%bKKKKddDM0N&amp;#&amp;NOdHvGgKt11ttttt1ttttttt1111zz1zzz
+????|?||||||||||i|iiiiiiii,.``..,,,,,,,,,..........,~=zkMOROHdqUKKddHM0##&amp;&amp;&amp;NDDK)K0d11ttttt1ttttttt1t1111111zz
+???|?||||||||||i||iiiiiiii,.`-,.,,,,,,,,.,,........,~?tmdddRH$hXEUdHRg&amp;##&amp;N&amp;0DMG9gMdtttttttttttt1tttt1111z11zz
+??|??||||||||||||iiiiiiiii~,.`,,,,,,,,,,,,,.....-...,?sZA^*$O6hkXUbDMNN##&amp;&amp;Ng%WKRNMUttttttttttttttttt111t111zz
+??|??||||||||||||iiiiiiiiL:.,..,,,,,,,,,,,,.....-.- `!13t.,3OhEUAUdDMNN##&amp;&amp;NgDD#B#getttttJttttJtttttt1z1t1111z
+??||||||||||||||iiiiiiiiii^,,,.,,,,,,,,,,,,.....-.-``,?3El?5pmAdbKd%RgN&amp;&amp;NNNRRg#B&amp;MCtttttJtJtttttttttt1ttt111z
+??|||||||||||||iiiiiiiiLLi|,,,,,,,,,,,,,,,,......--`..;xliJm4mqDRDO%RM0NNNN0MDNB#NXJttttJttJJJtJttttttttttt11z
+?|?|?||||||||i||iiiiiiLiLLi!,,,,,,,,,,,,,........-`-,:!::!|iJ36ORMRRRgNNNNNNWORNgEJttttttJttttJJJttttt11ttt1zz
+???|?|||||||||||iiiiiiiiL/L|_,,,,,,,,,,,,.......-``-.,...:+?i146dRMMW00N000N8DyyntJttttttJJtJJttJttttttt11tt1z
+???|||||||||||iiiiiiiiiiLL/)|:,,,,,,,,,.,......-```--.,-.~^!!i1nkUdM880N0N&amp;NgDsJJJJttttJtJJJJJJJJJttttttttt111
+?||||||||||||||iiiiiiiiiLL////|r~,,,,,,,,....-``````-,.-.!^r^||TFjmKRg0NNNNNgHJJJJttJJJttJJJYJtJJttttt1tttt111
+|??|||||||||||iiiiiiiiiiLiLL)/L|r,,,,,,,...-```````.,:_~!/xi*r=l)7jXKgN&amp;NNNg8dJttJJtJJttJtJJJJJtJJJJttttttt111
+|?|||||||||||||iiiiiiiiiLL/)/)))/!,,,,,,,.-``````-..,:^i7tnj[sxtl||z2d0&amp;&amp;NN0M6JtJJtJJJJtJJJJJJJttJJJttttttt111
+||||||||||||iiiiiiiiLiLLLL/)/))/)+,,,,,,,.`````-......_=?(JuIJj5ji||yd0NN008MkJttttJJtttJJJJJJJJJJJJttttttt11t
+?|??|||||||||iiiiiiiiiLiL////)()ci,,,,,,,.-``------...~**iJyjFnIi:^|Z%gNN00WRoJttJJJJJtJJtJJJJJJJtJJJtttttt111
+|||||||||||iiiiiiiiiiLL/L///))))(c:,,,,,,..-``````--.,!:!^is3jjSey^76%000NgMOFttJJJJttJJJJJJtJJJJJJtttttttt111
+||||||||||||iiiiiiiiiLL///(/))(/ccr,,,,,,,..-..---..~;?=?LI4k4wEDD5J6OW000M%htttJtJYttJJJJJtJJJJJJJJJttttttt11
+?|||||||||||iiiiiiiiiLiLLL/)))vvcci,,,,,,,........-.,!+*?Ts55ZEdDRKEpdRWWgRbjJJJtJtJtJtJJJJJJJtJttJttttttttt11
+|||||||||||||iiiiiiiiLLL////c(cvcvv!,,,,,,,..........:!r*izjZX9bD%OKKHDRMDOEJttttJJJJJJJJJJJJJJJttJtJtttttt111
+?|||||||||||iiiiiiiiiL////))())ccv7|,,,,,,,......-`-.,,,:!*|x{6ODDOHddO%RHKEJJJttJJJJJJJJJJJJJJJJJJJttJtttt11t
+?|||||||||||iiiiiiiiLiLL///)()cc(cvc~,,,,,,.......-```-.,.:?nEqOODR%OHOD%KK6YttJJJJJJJJJYJJtJJJJJJJJtttt1tt1t1
+||||||||||||iiiiiiiiLLL///)))(cc(cvv!,,,,,,...,,,...--`-.:=jApdD%DRRDOH%dKD9JJtJJJJJJJJJJYYJJJJtJJJtJtJttttt1t
+||||||||||||iiiiiiiLLL/////))cccccvv!,,,,,,...,,......,~^|IEKdHO%RMMR%OHpORKsJtJJJJJJJJJJJtJJJJJJJJttJttt111t1
+||||||||||iiiiiiiiiiLL///)))cvvcvvvvr,,,,,,,.,,......,!*|x2UKH%DRMMRROdqHRMKJJJJtJJJJYtJJJJJtJJJJJJJJJJttttttt
+||||||||||i|iiiiiiiiLL///)()vccccvvT=,,,,,,,,,,,....,~;+?ty54UdMM8ROOd9KRMWdYJttJtJJJYYJJJYJJYJJJJJJJJtJtt1ttt
+|||||||||||iiiiiiiii/L//)//cccvcvvvv?,,,,,,,,,.,..-..~:!+?tn5SqKOHKdqU9%WggOYttJJJJJJJJYJYJJYYJJJtJJJJJtJtt11t
+|||||||||i|iiiiiiiii/////)/))(ccvvv7|,,,,,,,......`-.,,_;+i1JykE6PXUhAHM800DYJJYYJJJJYYJsJJJJYJJJYJJJtJttttttt
+|||||||||i|iiiiiiiiiL///)())c)ccvcvvi,,,,,,,..----``.,.,:!+=?z353J2kEK%g0N0DstJYJYJJJJJYYsJJJJJtJJJJJttJJtJtt1
+|||||||||i||iiiiiiL/L/)//)c(c(cvvvvv/,,,,,,,,.---````.,,,:!*?|)1i=lhqbRW00gDIJJYJYJYJJJYYYJYYJYJJJJJJJJJJJtt1t
+||||||||||ii|iiiiiLiL////))cvvcvcvvTc,,,,,,,,,..--```-...,:;;*rr^i4UKOW0NNg%nJJJJYJJJJYJJYJJsJJJJJJJYJJJJttttt
+|||||||||||iiiiiiiiiLL///((c)vvvvv77v,,,,,,,,,,..--`---.-.~:::!rce6KOR8gNN0RfYYJJJJJJJJJJYJJYJtJJJtJJJJJJtJt1t
+|||||||||i|iiiiiiiLi////)))))vcvcTv7v~,,,,,,,,,.,..-......,,!+?J4E$dRWg00NgRjYYsYJYYJJJJJYYYYJJJJJJJJJtttJJt11
+|||||||||iiiiiiiLiLiL/)))(c)c(c77v7TT:,,,,,,,,,,,,,,,,,,,_:^|YjVEUKDMWg00NgR3JJsYsYJJJYJJYYJJJJJJJJYJJtJJttttt
+|||||||||i|iiiiiLiLL/L)))cv(ccv77Tv77:,,,,,,,,,,,,,,,,~:!^=ctn5hUdORWWgg000MmYsYYYsJJYYJJJJJJYJJYJJJJJJJJttttt
+|||||||||iiiiiiiiiLLL////(c)ccv7TvTlT:,,,,,,,,,,,,,,,,~:!r|ljZEqdDRMRgg0M8gMEYYJJYJYYYJJYJJJJJJJJJYYJJJJtJtttt
+|||||||||i|iiiiiiLiL////)c(cvcvv777TT:,,,,,,,,,,,,,,,~:!r?T{ShKORRMWM0000N08KssYYsYYYJJJsJJJJJJJJJYYJJJtJJtttt
+|||||||||iiiiiiiLiiiL//)ccccvccvTcTT7:,,,,,,,,,,,,,,,:!*)s3k6d%MWMW8gg00NN0gOssYYssYYJYYYYJJJJJJYJYYYJJtJttttt
+|||||||||iiiiiiiiLLL//L))ccvvvvv7vTTl_,,,,,,,,,,,,,,_!*vC2G$dDM8gggMRggg0NNNMjsYssJYYYYsYJJJYJJJJJYYYJtJJJtttt
+|||||||||iiiiiiiiiiLL//))(cvcvvcvv77T_,,,,,,,,,,,,,,:^|tykUdDRMg00gWMWW0NN&amp;NWA[lltJYsYJJYJJYJYJJJJJJtJJtJttttJ
+||||||||||iiiiiiiiL/////)c)cvvcc7v)?;,,,,,,,,,,,,,,~!*)CSPKORgg000gMRM8gNNN&amp;gdEj!!itYYJYJJJJJYYJtJJJJJJJJJtttJ
+||||||||||iiiiiiiiLL//////)(ccv/?!.` .,,,,,,,,,,,,,~!?lfVEdRg0g0g08MRRgg0N&amp;&amp;0OpUXi,!lttYYJJJJJJJJJJJJJtJJttttt
+||||||||iiiiiiiiiii///////((ci!.-`  -,,,,,,,,,,,,,,:^?vjmAdRWgg00gMRRRW80N&amp;&amp;NRdp6EY.izxxtJJJJJtJJJJJYJJttttttt
+|||||||||iiiiiiLiLLLLL/)/)/i;.--`  -,,,,,,,,,,,,,,,,!?TuV6HRRMM88MR%%RMWgN&amp;NNMHdK9E!i11T?^)1JJJJJtJJJYJJtttttt
+|||||||||i|iiiiiiiiLi/L/LL^.``````-.,,,,,,,,,,,,,,,,:=LYSUODDRRRRR%ODRM8g00NNgOHKKA^i1txi:|7x1tttJJJJJJttttttt
+||||||||||iiiiiiiLiiL///i:-```````-.,,,,,,,,,,,,,,,,,^|zZKHHO%DRDDOODRMggg0NNgDHdKkrcztzc^LlllxtJJJJJJJttttttt
+||||||||||||iiiiiiiiiL/?,-````````-.,,,,,,,,,,,,,,,,,:+cSKdddOO%DOHOORMW8800N0RObdt|zzt1i?vz1zxlzttJtJtttttt1t
+||||||||||||iiiiiiiLii!.```````````..,,,,,,,,,,,,,,,,,^iVKdKdO%%DHddHDRMgM8g0gROdK|vzz11?izz1zxxlTzttJtttJt1tt
+|||||||||||||iiiiiii=,`````````````..,,,,,,,,,,,,,,,,,:?y9KdHDRDOdddODbRMMWMgMRHOIilxxzz=l1ttzzxTvTx1ttttttttt
+|||||||||||i|iiiii|:.```````````````..,,,,,,,,,,,,,,,,_rsk6KdODDHdKdHddORMMMMRRH5ivlxlzL|zttt11zzxxl7lztttt1tt
+||||||||||||i||ii^.-````````````````-.,,,,,,,,,,,,,,,,~^zSh9KHOOdKKKddHODRRRRRRe|cllTcx=l1t1t11zxxllllTx111111
+|||||||||||||||+,-```````````````````-..,,,,,,,,,,,,,,:rxyk6KdHHKKKKKdddOOODD%m|/TTTTT||zYJt11zxxllxzxllvTzz11
+?||||||||||||?:-``````````````````````-..,,,,,,,,,,,,,:rlymEqdddKKKpKKKddOOOOy|i/()vl7=?^Ytt1zxxxxxlllTlll7vlz
+??||||||||||;.-````````````````````````-..,,,,,,,,,,,~!+ljwE9ddKKKKKKpppKdH6z|||iicv7?i:~1t1zzxzxxllxllllll7cv
+&lt;/pre&gt;
+&lt;/div&gt;
+
+Funny enough, I did not use this image in the final version of this website. But I
+ still like it, so I decided to include it here.&lt;/div&gt;
+</content><category term="tech"></category><category term="www"></category><category term="python"></category><category term="ascii"></category><category term="image processing"></category></entry></feed>

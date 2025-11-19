@@ -1,0 +1,540 @@
+<!--
+    TODO
+        - dynamic open graph and twitter metadata, based on articles and pages
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Franky.Codes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=hello world>
+
+        <!-- open graph metadata for facebook/twitter -->
+
+        <meta property="og:title" content="Franky.Codes" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://franky.codes" />
+        <meta property="og:description" content="hello world" />
+        <meta property="og:image" content="https://franky.codes/images/me.jpg" />
+
+
+        <!-- styles -->
+        <link rel="stylesheet" href="https://franky.codes/theme/css/ubuntu-mono.min.css?5329fd52">
+
+        <link rel="stylesheet" href="https://franky.codes/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://franky.codes/theme/css/main.min.css?802a27f9">
+
+
+
+        <!-- fav icons -->
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link rel="apple-touch-icon" sizes="180x180" href="https://franky.codes/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://franky.codes/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://franky.codes/favicon/favicon-16x16.png">
+        <link rel="manifest" href="https://franky.codes/favicon/site.webmanifest">
+
+        <link
+            href="https://franky.codes/feeds/all.atom.xml"
+            type="application/atom+xml" rel="alternate" title="Franky.Codes Atom Feed" />
+        <link
+            href="https://franky.codes/feeds/all.rss.xml"
+            type="application/rss+xml" rel="alternate" title="Franky.Codes RSS Feed" />
+
+    </head>
+    <body class="">
+
+        <!-- top navigation -->
+        <header>
+            <nav class="navigation">
+                <i class="fa-solid">
+                    <img src="https://franky.codes/favicon/favicon-32x32.png"
+                         alt="menu icon"
+                         class="menu-icon"
+                         width="16"
+                         height="16">
+                </i>
+
+                <span class="site-name">
+                    Franky.Codes
+                </span>
+
+                <!-- hamburger menu -->
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                    <span class='menu-button'></span>
+                </label>
+                <ul class="menu">
+                    <li><a href="https://franky.codes" title="Projects">Projects</a></li>
+                    <li><a href="https://franky.codes/pages/curriculum-vitae.html" title="Curriculum Vitae">Curriculum Vitae</a></li>
+                    <li><a href="https://franky.codes/pages/hire-me.html" title="Hire Me">Hire Me</a></li>
+                </ul>
+                <ul class="feeds tablet-hidden">
+                    <li>
+                        <a href="https://franky.codes/feeds/all.atom.xml"
+                           type="application/atom+xml"
+                           title="Franky.Codes Atom Feed">
+                            <i class="fa-solid fa-atom"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://franky.codes/feeds/all.rss.xml"
+                           type="application/rss+xml"
+                           title="Franky.Codes RSS Feed">
+                            <i class="fa-solid fa-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <main>
+            <!-- mini map scroll bar -->
+            <canvas id="map"></canvas>
+            <div class="wrapper">
+                <article class="identity">
+                    <img
+                        src="https://franky.codes/images/me.jpg"
+                        alt="picture of Frank Martin"
+                        class="profile-picture">
+                    <h1>Frank Martin</h1>
+                    <p>Biomedical Engineer &amp; Software Engineer</p>
+
+                    <nav class="social">
+                        <a
+                            rel="external"
+                            href="https://github.com/frankcorneliusmartin"
+                            title="My github page">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            rel="external"
+                            href="https://www.linkedin.com/in/frankcorneliusmartin"
+                            title="My linkedin page">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </nav>
+                </article>
+                <div id="content" class="content page">
+    <!-- TODO: make this a template html element -->
+    <div id="template" class="generated-page">
+        <div class="page-divider up">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+                <a href="#">previous page</a>
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+        <div class="dynamic-content"></div>
+        <div class="page-divider down">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+                <a href="#">next page</a>
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+    </div>
+    <div id="hidden-wrapper">
+<header>
+<h1 class="purple">
+    <a href="https://franky.codes/pages/curriculum-vitae.html" id="page-title">Curriculum Vitae</a>
+</h1>
+</header>
+<article>
+    <p><em>I am a software engineer specialized in privacy enhanching techniques.
+I have a passion for both the technical and creative sides of
+problem-solving, and enjoy building with legos in my free time.</em></p>
+<div class="contents topic" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="auto-toc simple">
+<li><a class="reference internal" href="#personal-details" id="toc-entry-1">1&nbsp;&nbsp;&nbsp;Personal Details</a></li>
+<li><a class="reference internal" href="#experience" id="toc-entry-2">2&nbsp;&nbsp;&nbsp;Experience</a></li>
+<li><a class="reference internal" href="#publications" id="toc-entry-3">3&nbsp;&nbsp;&nbsp;Publications</a></li>
+<li><a class="reference internal" href="#education" id="toc-entry-4">4&nbsp;&nbsp;&nbsp;Education</a></li>
+</ul>
+</div>
+<div class="section" id="personal-details">
+<h2><a class="toc-backref" href="#toc-entry-1">1&nbsp;&nbsp;&nbsp;Personal Details</a></h2>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">name:</th><td class="field-body"><strong>F.C. (Frank) Martin</strong></td>
+</tr>
+<tr class="field"><th class="field-name">location:</th><td class="field-body">Eindhoven, The Netherlands</td>
+</tr>
+<tr class="field"><th class="field-name">github:</th><td class="field-body"><a class="reference external" href="https://github.com/frankcorneliusmartin">github/frankcorneliusmartin</a></td>
+</tr>
+<tr class="field"><th class="field-name">linkedIn:</th><td class="field-body"><a class="reference external" href="https://www.linkedin.com/in/frankcorneliusmartin/">linkedin/frankcorneliusmartin</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="experience">
+<h2><a class="toc-backref" href="#toc-entry-2">2&nbsp;&nbsp;&nbsp;Experience</a></h2>
+<div class="cv-item docutils container">
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://franky.codes">Franky.Codes</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2023 - present</td>
+</tr>
+<tr class="field"><th class="field-name">postion:</th><td class="field-body">Owner</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">Freelance software engineer</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://iknl.nl">Integraal Kankercentrum Nederland (IKNL)</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2021 - present</td>
+</tr>
+<tr class="field"><th class="field-name">postion:</th><td class="field-body">Software Designer / Research Software Engineer</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">Developer lead for the <a class="reference external" href="https://vantage6.ai">vantage6</a> project.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2018 - 2021</td>
+</tr>
+<tr class="field"><th class="field-name">position:</th><td class="field-body">Software Developer</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">Developer for the <a class="reference external" href="https://vantage6.ai">vantage6</a> project.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://tue.nl">Technische Universiteit Eindhoven (TU/e)</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2016 - 2019</td>
+</tr>
+<tr class="field"><th class="field-name">postion:</th><td class="field-body">Scientific Programmer</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">Developer for the <a class="reference external" href="https://lieanalysis.nl">LieAnalysis</a> project.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first">Grafikus</p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2009 - 2019</td>
+</tr>
+<tr class="field"><th class="field-name">postion:</th><td class="field-body">Owner/Graphic Designer</td>
+</tr>
+<tr class="field"><th class="field-name">description:</th><td class="field-body">Graphic designer for various clients</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="publications">
+<h2><a class="toc-backref" href="#toc-entry-3">3&nbsp;&nbsp;&nbsp;Publications</a></h2>
+<blockquote>
+<!-- #. `Privacy Preserving Federated Deep Learning Infrastructure for ARGOS: ARtificial intelligence for Gross tumor vOlume Segmentation. (Preprint) <https://doi.org/10.2196/preprints.60847>`_ -->
+<!-- .. container:: cv-table -->
+<!-- :journal: Preprints -->
+<!-- :date: Jan, 2024 -->
+</blockquote>
+<div class="cv-item docutils container">
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://www.esmoopen.com/article/S2059-7029(25)00260-1/fulltext">77P Innovative solutions for harmonising data for observational studies on sarcomas</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">ESMO Open</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">March , 2025</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://ai.jmir.org/2025/1/e60847">Advancing Privacy-Preserving Healthcare Analytics: Implementation of the Personal Health Train for Federated Deep Learning (Preprint)</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">JMIR Artificial Intelligence</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">May, 2024</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2023.1219111/full">Head and neck cancers survival in Europe, Taiwan, and Japan: results from RARECAREnet Asia based on a privacy-preserving federated infrastructure</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">Frontiers in Oncology</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Sep, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.nature.com/articles/s41538-023-00220-3">Applying federated learning to combat food fraud in food supply chains</a></p>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">Nature Food</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Sep, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.ejcancer.com/article/S0959-8049(23)00112-0/fulltext">A federated approach to identify women with early-stage cervical cancer at low risk of lymph node metastases</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">European Journal of Cancer</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Feb, 2023</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://ijgc.bmj.com/content/31/Suppl_3/A364.2">1180 Identifying predictors of lymph node metastases in early-stage cervical cancer by transferring prediction models across international registries</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">International Journal of Gynecological Cancer</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Oct, 2022</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://doi.org/10.3390/a15070243">A federated generalized linear model for privacy-preserving analysis</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">Algorithms</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Jul, 2022</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://doi.org/10.3233/shti220682">An Improved Infrastructure for Privacy-Preserving Analysis of Patient Data</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">Studies in Health Technology and Informatics</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Jun, 2022</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8075508/">VANTAGE6: an open source priVAcy preserviNg federaTed leArninG infrastructurE for Secure Insight eXchange</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">AMIA</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">Jan, 2021</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="http://dx.doi.org/10.1007/978-3-319-58771-4_51">The Hessian of axially symmetric functions on SE (3) and application in 3D image analysis</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">journal:</th><td class="field-body">SSVM</td>
+</tr>
+<tr class="field"><th class="field-name">date:</th><td class="field-body">May, 2017</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="education">
+<h2><a class="toc-backref" href="#toc-entry-4">4&nbsp;&nbsp;&nbsp;Education</a></h2>
+<div class="cv-item docutils container">
+<ol class="arabic">
+<li><p class="first"><a class="reference external" href="https://tue.nl">Technische Universiteit Eindhoven (TU/e)</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2014 - 2016</td>
+</tr>
+<tr class="field"><th class="field-name">program:</th><td class="field-body">BioMedical Engineering (MSc.)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2010 - 2014</td>
+</tr>
+<tr class="field"><th class="field-name">program:</th><td class="field-body">Biomedical Engineering (BSc.)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://fontys.nl">Fontys Hogescholen</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2009 - 2010</td>
+</tr>
+<tr class="field"><th class="field-name">program:</th><td class="field-body">Applied Science (Propedeuse)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+<li><p class="first"><a class="reference external" href="https://deltion.nl">Deltion College</a></p>
+<blockquote>
+<div class="cv-table docutils container">
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">date:</th><td class="field-body">2005 - 2009</td>
+</tr>
+<tr class="field"><th class="field-name">program:</th><td class="field-body">Graphic Design (MBO)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+</article>
+    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="column align-left">
+                    <a
+                        href="https://github.com/pelican-themes/atom"
+                        title="Source code of this Pelican theme">
+                        <i class="fa-brands fa-github"></i>
+                        Atom theme
+                    </a>
+                </div>
+                <div class="column">
+                    <i class="fa-solid fa-copyright"></i>
+                    2025 <span class="mobile-hidden">Franky.Codes</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/pagemap-1.4.0.js"></script>
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/main.js"></script>
+        <!-- todo minify -->
+
+    </body>
+</html>

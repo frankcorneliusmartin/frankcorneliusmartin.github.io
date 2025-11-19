@@ -1,0 +1,650 @@
+<!--
+    TODO
+        - dynamic open graph and twitter metadata, based on articles and pages
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Franky.Codes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=hello world>
+
+        <!-- open graph metadata for facebook/twitter -->
+
+<meta property="og:title" content="ASCII picture for this blog" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://franky.codes/ascii-picture.html" />
+<meta property="og:image" content="https://franky.codes/theme/images/not-found.png" />
+<meta property="og:description" content="How I created the ascii picture using Python for this space." />
+
+
+        <!-- styles -->
+        <link rel="stylesheet" href="https://franky.codes/theme/css/ubuntu-mono.min.css?5329fd52">
+
+        <link rel="stylesheet" href="https://franky.codes/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://franky.codes/theme/css/main.min.css?802a27f9">
+
+
+        <!-- canonical url of the current page -->
+        <link rel="canonical" href="https://franky.codes/ascii-picture.html" />
+
+        <!-- fav icons -->
+        <!-- https://favicon.io/favicon-converter/ -->
+        <link rel="apple-touch-icon" sizes="180x180" href="https://franky.codes/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://franky.codes/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://franky.codes/favicon/favicon-16x16.png">
+        <link rel="manifest" href="https://franky.codes/favicon/site.webmanifest">
+
+        <link
+            href="https://franky.codes/feeds/all.atom.xml"
+            type="application/atom+xml" rel="alternate" title="Franky.Codes Atom Feed" />
+        <link
+            href="https://franky.codes/feeds/all.rss.xml"
+            type="application/rss+xml" rel="alternate" title="Franky.Codes RSS Feed" />
+
+    </head>
+    <body class="">
+
+        <!-- top navigation -->
+        <header>
+            <nav class="navigation">
+                <i class="fa-solid">
+                    <img src="https://franky.codes/favicon/favicon-32x32.png"
+                         alt="menu icon"
+                         class="menu-icon"
+                         width="16"
+                         height="16">
+                </i>
+
+                <span class="site-name">
+                    Franky.Codes
+                </span>
+
+                <!-- hamburger menu -->
+                <input id="menu-toggle" type="checkbox" />
+                <label class='menu-button-container' for="menu-toggle">
+                    <span class='menu-button'></span>
+                </label>
+                <ul class="menu">
+                    <li><a href="https://franky.codes" title="Projects">Projects</a></li>
+                    <li><a href="https://franky.codes/pages/curriculum-vitae.html" title="Curriculum Vitae">Curriculum Vitae</a></li>
+                    <li><a href="https://franky.codes/pages/hire-me.html" title="Hire Me">Hire Me</a></li>
+                </ul>
+                <ul class="feeds tablet-hidden">
+                    <li>
+                        <a href="https://franky.codes/feeds/all.atom.xml"
+                           type="application/atom+xml"
+                           title="Franky.Codes Atom Feed">
+                            <i class="fa-solid fa-atom"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://franky.codes/feeds/all.rss.xml"
+                           type="application/rss+xml"
+                           title="Franky.Codes RSS Feed">
+                            <i class="fa-solid fa-rss"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- main content -->
+        <main>
+            <!-- mini map scroll bar -->
+            <canvas id="map"></canvas>
+            <div class="wrapper">
+                <article class="identity">
+                    <img
+                        src="https://franky.codes/images/me.jpg"
+                        alt="picture of Frank Martin"
+                        class="profile-picture">
+                    <h1>Frank Martin</h1>
+                    <p>Biomedical Engineer &amp; Software Engineer</p>
+
+                    <nav class="social">
+                        <a
+                            rel="external"
+                            href="https://github.com/frankcorneliusmartin"
+                            title="My github page">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a
+                            rel="external"
+                            href="https://www.linkedin.com/in/frankcorneliusmartin"
+                            title="My linkedin page">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                    </nav>
+                </article>
+                <div id="content" class="content ">
+    <!-- TODO: make this a template html element -->
+    <div id="template" class="generated-page">
+        <div class="page-divider up">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+                <a href="#">previous page</a>
+                <i class="fa-sharp fa-solid fa-circle-up"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+        <div class="dynamic-content"></div>
+        <div class="page-divider down">
+            <span class="line"></span>
+            <span class="text">
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+                <a href="#">next page</a>
+                <i class="fa-sharp fa-solid fa-circle-down"></i>
+            </span>
+            <span class="line"></span>
+        </div>
+    </div>
+    <div id="hidden-wrapper">
+<header>
+<h1 class="purple">
+    <a href="https://franky.codes/ascii-picture.html" id="page-title">ASCII picture for this blog</a>
+</h1>
+</header>
+<article>
+    <p>When I started designing my blog I wanted create a look and feel of a
+code editor. So instead of a regular picture I wanted to have a ascii
+version.</p>
+<p>At first I used an online tool to generate the picture. While it was
+good enough to decide that I liked it, I felt it did not gave me enough
+control over the result. So I decided to write my own in Python.</p>
+<div class="figure align-center">
+<img alt="original picture" src="https://franky.codes/images/me.jpg" style="width: 400px;" />
+<p class="caption">Original picture that I want to convert to an ASCII version.</p>
+</div>
+<div class="section" id="algorithm">
+<h2>Algorithm</h2>
+<p>I remembered an algorithm which I have seen during a computer vision
+course. Which computed the average intensity of a segment in the
+picture and then matched it to a character with the same intensity.</p>
+<p>I used the Python package Pillow (which is an python implementation of
+PIL) for most of the image processing tasks.</p>
+</div>
+<div class="section" id="preprocessing-the-image">
+<h2>Preprocessing the Image</h2>
+<p>The identity box on my website is 220x220 pixels. The first step would
+be to crop the image to a square.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;input.jpg&quot;</span><span class="p">)</span>
+<span class="c1"># I found this a nice cutout.</span>
+<span class="c1"># (left, upper, right, lower)</span>
+<span class="n">im</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="mi">500</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">1100</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+<p>We want a (single) intensity value per image segment. In a color image
+we have three values per pixel: red, green and blue. A first step would
+be to convert the image to a gray scale image. There are many ways to
+do this, but I decided to use the average intensity of the three color
+channels.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># convert to grayscale</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+<p>Then, I normalized the gray scale image to use the full range 0-255 to
+maximize the contrast between segments.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">ImageOps</span>
+<span class="c1"># normalize the image</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ImageOps</span><span class="o">.</span><span class="n">autocontrast</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+<div class="scrollx docutils container">
+<table border="1" class="docutils align-center">
+<colgroup>
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+<col width="25%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Original</th>
+<th class="head">Cropped</th>
+<th class="head">Grayscale</th>
+<th class="head">Normalized</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><div class="first last figure align-center">
+<img alt="original picture" src="https://franky.codes/images/me.jpg" style="width: 180px;" />
+<p class="caption">The original loaded image</p>
+</div>
+</td>
+<td><div class="first last figure align-center">
+<img alt="cropped picture" src="https://franky.codes/images/cropped.png" style="width: 180px;" />
+<p class="caption">The square cropped image</p>
+</div>
+</td>
+<td><div class="first last figure align-center">
+<img alt="gray scale picture" src="https://franky.codes/images/grayscale.png" style="width: 180px;" />
+<p class="caption">The gray scale image</p>
+</div>
+</td>
+<td><div class="first last figure align-center">
+<img alt="normalized picture" src="https://franky.codes/images/normalized.png" style="width: 180px;" />
+<p class="caption">The normalized image</p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="segmenting-the-picture">
+<h2>Segmenting the Picture</h2>
+<p>Before we can compute the intensity per segment we need to split the
+image into segments. I decided to use a grid to use 110 segments in <tt class="docutils literal">x</tt>
+and <tt class="docutils literal">y</tt> direction. So every segment is 2x2 pixels in the final
+resulting ASCII-picture.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">n_segments</span> <span class="o">=</span> <span class="mi">110</span>
+<span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">size</span>
+<span class="c1"># compute the width (and height since we have a square image) of a</span>
+<span class="c1"># segment</span>
+<span class="n">dw</span> <span class="o">=</span> <span class="n">width</span> <span class="o">//</span> <span class="n">n_segments</span>
+</pre></div></td></tr></table></div>
+<p>The cropped image with the grid looks like this:</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<strong>Visualization code</strong></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># make a copy of the image, as we do not want to have the</span>
+<span class="c1"># segmentation gizmo in the final image</span>
+<span class="n">im_</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">im_</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n_segments</span><span class="p">):</span>
+   <span class="n">d</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="n">dw</span><span class="p">,</span> <span class="n">img_h</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="n">dw</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+   <span class="n">d</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="n">i</span><span class="o">*</span><span class="n">dw</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="o">*</span><span class="n">dw</span><span class="p">,</span> <span class="n">img_h</span><span class="p">),</span> <span class="n">fill</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">im_processed2</span><span class="p">)</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="figure align-center">
+<img alt="Segmented picture" src="https://franky.codes/images/segmented-image.png" style="width: 400px;" />
+<p class="caption">The original image with the segmentation grid.</p>
+</div>
+<p>I used the <tt class="docutils literal">crop</tt> function of the <tt class="docutils literal">Image</tt> class to split the image
+into segments:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">im_part</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="n">segments</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">):</span>
+   <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_segments</span><span class="p">):</span>
+      <span class="n">segments</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">im_part</span><span class="o">.</span><span class="n">crop</span><span class="p">((</span><span class="n">j</span><span class="o">*</span><span class="n">dw</span><span class="p">,</span><span class="n">i</span><span class="o">*</span><span class="n">dw</span><span class="p">,(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dw</span><span class="p">,(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">dw</span><span class="p">))</span>
+      <span class="p">)</span>
+</pre></div></td></tr></table></div>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<strong>Draw images segments</strong></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">display_many</span><span class="p">(</span><span class="n">images</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">],</span>
+           <span class="n">dim</span><span class="p">:</span> <span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-&gt;</span> <span class="n">Image</span><span class="o">.</span><span class="n">Image</span><span class="p">:</span>
+
+   <span class="k">assert</span> <span class="n">math</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="s1">&#39;Thats not a grid&#39;</span>
+   <span class="n">n</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">dim</span>
+   <span class="n">img_w</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">size</span>
+
+   <span class="n">new_image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="p">((</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">img_w</span><span class="o">+</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">m</span><span class="p">)</span><span class="o">*</span><span class="n">img_w</span><span class="o">+</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="mi">255</span><span class="p">)</span>
+
+   <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+      <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">m</span> <span class="o">+</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">new_image</span><span class="o">.</span><span class="n">paste</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="p">((</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">img_w</span><span class="o">+</span><span class="p">(</span><span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">img_w</span><span class="o">+</span><span class="p">(</span><span class="n">i</span><span class="p">)))</span>
+
+   <span class="k">return</span> <span class="n">new_image</span>
+
+<span class="n">display_many</span><span class="p">(</span><span class="n">segments</span><span class="p">,</span> <span class="p">(</span><span class="n">n_segments</span><span class="p">,</span> <span class="n">n_segments</span><span class="p">))</span>
+</pre></div></td></tr></table></div>
+<div class="figure align-center">
+<img alt="Segmented picture" src="https://franky.codes/images/segmented-image2.png" style="width: 400px;" />
+<p class="caption">The segmented pictures displayed in a grid.</p>
+</div>
+</div>
+</div>
+<div class="section" id="computing-letter-intensities">
+<h2>Computing Letter Intensities</h2>
+<p>Before we can match the each segment to a character we need to compute the
+intensity for each character. This intensity is dependant on the font that is
+used. I used the <a class="reference external" href="https://fonts.google.com/specimen/Ubuntu+Mono">Ubunto Mono font</a>,
+which is the same font as this website. This code only works for
+mono-spaced fonts. If the font is not mono-spaced the algorithm will
+be much more complicated, as the final ASCII image is not a grid in that case.</p>
+<p>The font size is not important when computing the intensities for each character, as
+we are computing the average pixel intensity of the character box.</p>
+<div class="toggle docutils container">
+<div class="header docutils container">
+<strong>compute_letter_intensity(letter: str)</strong></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><span class="k">def</span> <span class="nf">compute_letter_intensity</span><span class="p">(</span><span class="n">letter</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+   <span class="n">img_dims2</span> <span class="o">=</span> <span class="p">(</span><span class="n">font_size</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="n">font_size</span><span class="p">)</span>
+   <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="n">img_dims2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+   <span class="n">d</span> <span class="o">=</span> <span class="n">ImageDraw</span><span class="o">.</span><span class="n">Draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+   <span class="n">d</span><span class="o">.</span><span class="n">text</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">letter</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">fnt</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+   <span class="n">data</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">getdata</span><span class="p">()</span>
+
+   <span class="n">n_of_pixels</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">img_dims2</span><span class="p">)</span>
+   <span class="n">avg_intensity</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="o">/</span><span class="n">n_of_pixels</span>
+   <span class="k">return</span> <span class="n">avg_intensity</span>
+</pre></div></td></tr></table></div>
+</div>
+<p>The function <tt class="docutils literal">compute_letter_intensity</tt> returns the average pixel
+intensity of a character. In other words, it sums the pixel values and divides
+them by the number of pixels that are in the character box.</p>
+<p>We want to match every segment in our preprocessed image to a character.
+So we need to compute the letter intensity for all characters we want to
+use in out final ASCII image.</p>
+<p>I used a selection of letters, digits and symbols. Symbols like <tt class="docutils literal">&quot;</tt>,
+<tt class="docutils literal">'</tt> and <tt class="docutils literal">/</tt> are not included, as they have a meaning within HTML. Another option
+would be to escape these characters, but I decided to leave them out.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><span class="c1"># define the characters to use</span>
+<span class="n">charactersList</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">ascii_letters</span> <span class="o">+</span> <span class="n">string</span><span class="o">.</span><span class="n">digits</span> <span class="p">)</span> \
+   <span class="o">+</span> <span class="p">[</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;!&#39;</span><span class="p">,</span> <span class="s1">&#39;?&#39;</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="s1">&#39;(&#39;</span><span class="p">,</span> <span class="s1">&#39;)&#39;</span><span class="p">,</span> <span class="s1">&#39;[&#39;</span><span class="p">,</span> <span class="s1">&#39;]&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;{&#39;</span><span class="p">,</span> <span class="s1">&#39;}&#39;</span><span class="p">,</span> <span class="s1">&#39;/&#39;</span> <span class="p">,</span> <span class="s1">&#39;|&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;&amp;&#39;</span><span class="p">,</span> <span class="s1">&#39;^&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;%&#39;</span><span class="p">,</span> <span class="s1">&#39;$&#39;</span><span class="p">,</span> <span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="s1">&#39;@&#39;</span><span class="p">,</span> <span class="s1">&#39;~&#39;</span><span class="p">,</span> <span class="s1">&#39;`&#39;</span><span class="p">]</span>
+
+<span class="c1"># load the mono-spaced font</span>
+<span class="n">fnt</span> <span class="o">=</span> <span class="n">ImageFont</span><span class="o">.</span><span class="n">truetype</span><span class="p">(</span><span class="s2">&quot;fonts/UbuntuMono-Regular.ttf&quot;</span><span class="p">,</span>
+                         <span class="n">size</span><span class="o">=</span><span class="n">font_size</span><span class="p">)</span>
+
+<span class="c1"># compute the intensity of each letter</span>
+<span class="n">intensities</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">charactersList</span><span class="p">:</span>
+   <span class="n">intensities</span><span class="p">[</span><span class="n">char</span><span class="p">]</span> <span class="o">=</span> <span class="n">compute_letter_intensity</span><span class="p">(</span><span class="n">char</span><span class="p">)</span>
+
+<span class="c1"># normalize values between 0 - 1</span>
+<span class="n">low</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">intensities</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">high</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">intensities</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="n">low</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">intensities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+   <span class="n">intensities</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">v</span> <span class="o">-</span> <span class="n">low</span><span class="p">)</span> <span class="o">/</span> <span class="n">high</span>
+</pre></div></td></tr></table></div>
+</div>
+<div class="section" id="match-letters-to-segments">
+<h2>Match letters to segments</h2>
+<p>For each segment we match the letter with the most similar intensity:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><span class="n">chars</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">objective</span> <span class="ow">in</span> <span class="n">segment_average</span><span class="p">:</span>
+   <span class="n">chosen_char</span> <span class="o">=</span> <span class="s1">&#39;*&#39;</span>
+   <span class="n">distance</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">for</span> <span class="n">char</span><span class="p">,</span> <span class="n">intensity</span> <span class="ow">in</span> <span class="n">intensities</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+       <span class="n">di</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">objective</span> <span class="o">-</span> <span class="n">intensity</span><span class="p">)</span>
+       <span class="k">if</span> <span class="n">di</span> <span class="o">&lt;</span> <span class="n">distance</span><span class="p">:</span>
+           <span class="n">chosen_char</span> <span class="o">=</span> <span class="n">char</span>
+           <span class="n">distance</span> <span class="o">=</span> <span class="n">di</span>
+   <span class="n">chars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chosen_char</span><span class="p">)</span>
+
+<span class="c1"># merge chars into strings of length n_segments</span>
+<span class="n">result_string</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">chars</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">n_segments</span>
+<span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="n">result_string</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">n</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_string</span><span class="p">),</span> <span class="n">n</span><span class="p">)]</span>
+</pre></div></td></tr></table></div>
+<p>Making our final result:</p>
+<div class="identity align-center">
+<pre class="picture gray">
+rrrrr++r++++++*****==============??????????????????||||?||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrr+++++++++*********==========??????????????????|?|||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrrr++++++++*****===========????????????????????????|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrr++++++++**+***=*=====?====??????????????????==*??|||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrr+++++++++**+*==========??=????????????????+++=*+rr=||||||||||||||||||||||||||||||||||||||||||||||||||||||
+rrrrrr++++++++*****=========????????????=*+++^:!:::::!!!r?|????|||||||||||||||||||||||||||||||||||||||||||||||
+rrrr++++++++++***=*========????????????==+r;:,,..,~~~~:!!!r^^*?|||||||||||||||||||||||||||||||||||||||||||||||
+rrr+r++++*++++***=*=======?=???????????=r!,....,.,_,~,,~_!!:::*|||||||||||||||||ii||||||||i|||||||||||||||||||
+r+r++++++*+********=====?===??????????=!,.-````----...,~~~::~,!=?||||||||||i||i||i||||||i||||||i||||||||||||||
+r+++++++++**+**=*=*======????????????+!.``````````-..,,::_:::,:+=*||||||ii|||||||iiii||iii||||i|||||||||||||||
+r++++++++*****=*=*=======??????????*^:.`````````-......,,~:!!!:~!:=??|||iiiiiii|i|iiiii|i|iii|iiii||i|||||i|||
+r+++r++++*+***=*=========?????????=!.`````````````-.,,,,~:!::^!:::r?|?||iiiiiiii||iiiiiiiiiiiiiiiiii|i|i||||||
+++++++++******==========?????????*~-``````````````-..,,:::~,~!r^:,,!++^=iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii|||
+++++++++******======????=???????+,````````````````-.,...,,::~,:::!,._:::|||iiiiiiiiiiiiiiiiiiiiiiiii|iiii|i|||
+r++++++******=======?=?=???????r,```````-````--....,.,,~,.,::_:!!,:~._,,r|||iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
++++++++***=*=*========???????=+,````````````---`-.,,,,,,,:~~,,,,:*_~:,::_||||iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+++++*+****==*=======????????*+:-``````````....```-.,,~:::_::::::,_^:,:,~:!?i|iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii|
++++++*****==*=====?????????==^.``````````..-`````-.,~!+=??|||i??*!,!~,,.,,+i|iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii
+++++*****=*=======????????=?*,`````````-.,``````..,:!=|/7i/Tzzxxz(r~:,-.,.:riiiiiLiiiiLiiLiiiiiiiiiiiiiiiiiiii
++++******========??????????=~```````` `...````...,~!*|ivliiTxlxsfjn?~:..,._?|iiiiiiiiiLiLLLLiiiiiiL/Liiiiiiiii
++****=*=======?=??????????=,```  ``` `.--,``-..,,,:;=i/77/|)tYIjySwS|:_..,::=|iiLiL/LLLL//LLLLLLiL//LiiLLiiiii
+++****=*===?=?????????????:```   ``  -.-.~-..,,,,:!+|)7lx)/zJ{y5emhhSl!,...,!?iii///L/L///L/L/LLLL//LLL/LLiLii
+******======?????????????r-``       `..-~...,,:::!^?i(c(viTJ{j54khhkmaJ:,..,,!*|ii/)/)L//L////////////L/i/iLii
+*******=======??????????*.``        `-`.,..,~_:!:^=|)v)/vxtfjoSeEAAEEEmc,...,.:+iiL))/)/)L///L//)///)//////iLL
+****=*======?????????|?=!``         `-`...,,~::!^+?|c7vTzzIj3ZmhUU6UUU64*.--.,,!|///())(////)///)()))/)/)/////
+*****========??????????r:`         ````..,,,::!^+=|iv7v1Juy4mEAAqKKKpKKE5_---...r|/ccccc)())c()))c)))))())))//
+*=*=======??????????|??+,`         ```-..,,~::!r?|i)vTzIuySmEU69KKdbdddKA|.-.....+icccc))c((vcc)cvvcc/ccc(/(/(
+***======??????????||??r-``        ```..,,,~:!!r?|iLTxFuj5VkE66qKKdODOOdUj:.-..-.~?vcv7c(cvv7vvv7vvvc)(cccc)/(
+=*======?????????|||||?~`         ```-..,,,~:!!r=|/lxtfjy5whhE6qKdODMMROdm?,`..-.,:)vvvvv77777TTv77vvvvvvccccc
+*=======?????????|||||=.         ```-..,,,,~:!;r*|ilzt[y5SeemXAqdHRRWgWRHEl:.-..-~,!7777777TTTTTT7TTTvv7vcvvvv
+=======????????|?|||||!`        ``-..,,,,,,~!!!^*|/lxJ[jyyyy5kUKdRMMg08MDh1^,-..-.:~vTlvl77TlllTT7TTTvTT7vv77v
+======?????????||||||?:`        `..,,,,,,,,~!!^^+|cxx1n[{ssj5hUdDRM0NN00MAJ?^..,.-,!LlllTllllllllTlTlTT77TTTTT
+====????????|||||||||!,        `-.,,,,,,,,,~:!r+*|cxxzIsxt{5kUdDDMgN&&&NgKs|r,-,...!|TlllxxlxxxlxlllllTllTTlTT
+=====????????|||||||?,`   ``  ``..,,,,,,,,,,:;+=?7xzxzx11C5mUdDMRM0&&&&&ND5=r!-....++Tlxllxxxxxxxllllxxlllllll
+===?????????|?||||||*:````    ``.,,,,,,,,,,~:^+?izJYtzl1I5kUKOg000&&&&&&&86i:!.-...r+7xzxxxxxxxxlxxxxxxlllllll
+=?=????????|||||||||+;``` `   ``.,,,,,,,,,,,:^+=c1{{[11tok6dHRN#####NN0&NNOt:~,....;?Lxxxzzxxzxxxxxxxxxxxlxllx
+=???????????||||||||r!`-` `   ``.,,,,,,,,,,,:^r=)1jjysJ{wUdOH0&###&0g0ggNN8k:.,...,!|cxxzzzzxzzzzxxxxxzxxlxxxl
+???????????|||||||||=!`-``    ``.,,,,,,,,,,,:^r=i1jS5js[mEKddMMM8RRdAhK80&gd^.,.,.,!|7xzzzzzzzzzzxxxxxxxxzxxxx
+?????????|||||||||||?!`-```   `-.,,,,....,,,:!r?i1[Z5y{s2kkZmEj7i|i11x15dN0D=-.-...!ixzzzzzzzzzzzzzxzxzzzzzzxx
+????????|||||||||||||;.```    `...,,..-----.~!^r|)t5jyytj5ySyjirr;r;r|itnURD=``..,,;Tzzzz11zzzzzzzzzzxzxzzzzxz
+?????????||||||||||||=~````   `....-````````-.,:r?LnC[ys[Syntx?:!ri[S4jzLiKR|-`,.~,?lzzz1111zz11zzzzzzzzzzzzzz
+???????|||||||||||||||^-```   `....`````---`---,~;=|xCSSyjj5[r?tY11yKDMOdkzG1`-,.:!?xzz1111111111zzzzzzzzzzzzz
+??????|?|||||||||||||||,```   `...-``..~:_~,,,,.-,:!r1mmjmh{rYi^^=cnjPKOOdh{1`.:.!:|xzzz11111111111zzzzzzzzzzz
+???????|||||||||||||iii!```   `..---.....,:_,..,.-...~:::+Sr1+~:!!!*it5mU9Gm*,^:,;,izz111111111t11z1zzzzzzzzzz
+????????||||||||||||iii!```   `..-....--.,,::,-...``.r[1AK!|r~!!_,,!+*^|JjSm*~+r,:,?x111t11111t111zzzzzzzzzzzz
+????????||||||||||||iii;```   `-.....---````.,.-..,,,?kkmD|Y!r^!:,.I=mc?kdRW{:!^,,.+z11111t11111111z1zzzzzzzzz
+??????|||||||||||||||iir```   ``.,,..--.-``.,.`-...,,=ZKkH7ux|:!:!_^YE4IER&Nj=|:,.-!zz1111t11z1111111zzz1xzzzz
+??????|||||||||||||iiii*````  `.,,,..`-.-.```.`-..-.,?odKXTuv^!+?=?IEmEAdMNNyJ*!,-`:x111t11t11111111zzzz1zzzzz
+????||?||||||||||||iiii?.```  `..,,,.--...--..`-..`-~?jOW5v!|^!^*|{e6AdORW&Njk;,.``,x11111111t111111z1zzzzz1zz
+?????|||||||||||||iiiii|~``` ``..~,,.........-`--.`.:?SONEj^J|rr?z[kU6ORM0NNjd!,-``,/z1111tt1t1111111z1zzzzzzz
+?????|?|||||||||||iiiiii!``````,.,,,,.......-``--.`.~?5Kg05TXj1vcJjemqR0ggNph%^.``-.i11111tt111t11111111zzzzz1
+????|||||||||||||||iiiii?.`````,,,,,.......-------`.,=2qRNR{Y6SySmEp6R&NNgNjgR=,`-,,v111t111t1111111z1111zzzzz
+??????|?||||||||||||iiii|~````-,,.,,.,.....----..`..,r5KD0NAlP9EEA6K6DNgggAP0%L..,!!zzz11t111111tt11z1zz111z11
+??????|?||||||||||i|iiiii;````-,,.,,,,,..........-..,^yKHRNgjiAKqUq9kdRMMEyN0Dx-,;**z1111111t11111t1z1zz1zzzzz
+?????|?||||||||||||iiiiii?.````,,,.,,,,,........-...,^[UdR8&Hti5qAhE4qOdnk&NNRl,+{itz11t111t1t1t1111111zzzzzzz
+??????||||||||||||i|iiiii|,-```,,,,.,,,........`...,,;FEKORg0KCi|)xxv1s28&&&N%z=1kj5z1t1tt11tt1ttt11111z11zzzz
+?????|?||||||||||iiiiiiiii~.```,,,,,........---....,,^zEKHHR08HEwS4X6b%M0NNN0D4ElSdPt111tttt1ttt1t111111z1zzzz
+????|?|||||||||||iiiiiiiii_.```,,,,,,,....--.......,,rzEdOHHR%bKKKKddDM0N&#&NOdHvGgKt11ttttt1ttttttt1111zz1zzz
+????|?||||||||||i|iiiiiiii,.``..,,,,,,,,,..........,~=zkMOROHdqUKKddHM0##&&&NDDK)K0d11ttttt1ttttttt1t1111111zz
+???|?||||||||||i||iiiiiiii,.`-,.,,,,,,,,.,,........,~?tmdddRH$hXEUdHRg&##&N&0DMG9gMdtttttttttttt1tttt1111z11zz
+??|??||||||||||||iiiiiiiii~,.`,,,,,,,,,,,,,.....-...,?sZA^*$O6hkXUbDMNN##&&Ng%WKRNMUttttttttttttttttt111t111zz
+??|??||||||||||||iiiiiiiiL:.,..,,,,,,,,,,,,.....-.- `!13t.,3OhEUAUdDMNN##&&NgDD#B#getttttJttttJtttttt1z1t1111z
+??||||||||||||||iiiiiiiiii^,,,.,,,,,,,,,,,,.....-.-``,?3El?5pmAdbKd%RgN&&NNNRRg#B&MCtttttJtJtttttttttt1ttt111z
+??|||||||||||||iiiiiiiiLLi|,,,,,,,,,,,,,,,,......--`..;xliJm4mqDRDO%RM0NNNN0MDNB#NXJttttJttJJJtJttttttttttt11z
+?|?|?||||||||i||iiiiiiLiLLi!,,,,,,,,,,,,,........-`-,:!::!|iJ36ORMRRRgNNNNNNWORNgEJttttttJttttJJJttttt11ttt1zz
+???|?|||||||||||iiiiiiiiL/L|_,,,,,,,,,,,,.......-``-.,...:+?i146dRMMW00N000N8DyyntJttttttJJtJJttJttttttt11tt1z
+???|||||||||||iiiiiiiiiiLL/)|:,,,,,,,,,.,......-```--.,-.~^!!i1nkUdM880N0N&NgDsJJJJttttJtJJJJJJJJJttttttttt111
+?||||||||||||||iiiiiiiiiLL////|r~,,,,,,,,....-``````-,.-.!^r^||TFjmKRg0NNNNNgHJJJJttJJJttJJJYJtJJttttt1tttt111
+|??|||||||||||iiiiiiiiiiLiLL)/L|r,,,,,,,...-```````.,:_~!/xi*r=l)7jXKgN&NNNg8dJttJJtJJttJtJJJJJtJJJJttttttt111
+|?|||||||||||||iiiiiiiiiLL/)/)))/!,,,,,,,.-``````-..,:^i7tnj[sxtl||z2d0&&NN0M6JtJJtJJJJtJJJJJJJttJJJttttttt111
+||||||||||||iiiiiiiiLiLLLL/)/))/)+,,,,,,,.`````-......_=?(JuIJj5ji||yd0NN008MkJttttJJtttJJJJJJJJJJJJttttttt11t
+?|??|||||||||iiiiiiiiiLiL////)()ci,,,,,,,.-``------...~**iJyjFnIi:^|Z%gNN00WRoJttJJJJJtJJtJJJJJJJtJJJtttttt111
+|||||||||||iiiiiiiiiiLL/L///))))(c:,,,,,,..-``````--.,!:!^is3jjSey^76%000NgMOFttJJJJttJJJJJJtJJJJJJtttttttt111
+||||||||||||iiiiiiiiiLL///(/))(/ccr,,,,,,,..-..---..~;?=?LI4k4wEDD5J6OW000M%htttJtJYttJJJJJtJJJJJJJJJttttttt11
+?|||||||||||iiiiiiiiiLiLLL/)))vvcci,,,,,,,........-.,!+*?Ts55ZEdDRKEpdRWWgRbjJJJtJtJtJtJJJJJJJtJttJttttttttt11
+|||||||||||||iiiiiiiiLLL////c(cvcvv!,,,,,,,..........:!r*izjZX9bD%OKKHDRMDOEJttttJJJJJJJJJJJJJJJttJtJtttttt111
+?|||||||||||iiiiiiiiiL////))())ccv7|,,,,,,,......-`-.,,,:!*|x{6ODDOHddO%RHKEJJJttJJJJJJJJJJJJJJJJJJJttJtttt11t
+?|||||||||||iiiiiiiiLiLL///)()cc(cvc~,,,,,,.......-```-.,.:?nEqOODR%OHOD%KK6YttJJJJJJJJJYJJtJJJJJJJJtttt1tt1t1
+||||||||||||iiiiiiiiLLL///)))(cc(cvv!,,,,,,...,,,...--`-.:=jApdD%DRRDOH%dKD9JJtJJJJJJJJJJYYJJJJtJJJtJtJttttt1t
+||||||||||||iiiiiiiLLL/////))cccccvv!,,,,,,...,,......,~^|IEKdHO%RMMR%OHpORKsJtJJJJJJJJJJJtJJJJJJJJttJttt111t1
+||||||||||iiiiiiiiiiLL///)))cvvcvvvvr,,,,,,,.,,......,!*|x2UKH%DRMMRROdqHRMKJJJJtJJJJYtJJJJJtJJJJJJJJJJttttttt
+||||||||||i|iiiiiiiiLL///)()vccccvvT=,,,,,,,,,,,....,~;+?ty54UdMM8ROOd9KRMWdYJttJtJJJYYJJJYJJYJJJJJJJJtJtt1ttt
+|||||||||||iiiiiiiii/L//)//cccvcvvvv?,,,,,,,,,.,..-..~:!+?tn5SqKOHKdqU9%WggOYttJJJJJJJJYJYJJYYJJJtJJJJJtJtt11t
+|||||||||i|iiiiiiiii/////)/))(ccvvv7|,,,,,,,......`-.,,_;+i1JykE6PXUhAHM800DYJJYYJJJJYYJsJJJJYJJJYJJJtJttttttt
+|||||||||i|iiiiiiiiiL///)())c)ccvcvvi,,,,,,,..----``.,.,:!+=?z353J2kEK%g0N0DstJYJYJJJJJYYsJJJJJtJJJJJttJJtJtt1
+|||||||||i||iiiiiiL/L/)//)c(c(cvvvvv/,,,,,,,,.---````.,,,:!*?|)1i=lhqbRW00gDIJJYJYJYJJJYYYJYYJYJJJJJJJJJJJtt1t
+||||||||||ii|iiiiiLiL////))cvvcvcvvTc,,,,,,,,,..--```-...,:;;*rr^i4UKOW0NNg%nJJJJYJJJJYJJYJJsJJJJJJJYJJJJttttt
+|||||||||||iiiiiiiiiLL///((c)vvvvv77v,,,,,,,,,,..--`---.-.~:::!rce6KOR8gNN0RfYYJJJJJJJJJJYJJYJtJJJtJJJJJJtJt1t
+|||||||||i|iiiiiiiLi////)))))vcvcTv7v~,,,,,,,,,.,..-......,,!+?J4E$dRWg00NgRjYYsYJYYJJJJJYYYYJJJJJJJJJtttJJt11
+|||||||||iiiiiiiLiLiL/)))(c)c(c77v7TT:,,,,,,,,,,,,,,,,,,,_:^|YjVEUKDMWg00NgR3JJsYsYJJJYJJYYJJJJJJJJYJJtJJttttt
+|||||||||i|iiiiiLiLL/L)))cv(ccv77Tv77:,,,,,,,,,,,,,,,,~:!^=ctn5hUdORWWgg000MmYsYYYsJJYYJJJJJJYJJYJJJJJJJJttttt
+|||||||||iiiiiiiiiLLL////(c)ccv7TvTlT:,,,,,,,,,,,,,,,,~:!r|ljZEqdDRMRgg0M8gMEYYJJYJYYYJJYJJJJJJJJJYYJJJJtJtttt
+|||||||||i|iiiiiiLiL////)c(cvcvv777TT:,,,,,,,,,,,,,,,~:!r?T{ShKORRMWM0000N08KssYYsYYYJJJsJJJJJJJJJYYJJJtJJtttt
+|||||||||iiiiiiiLiiiL//)ccccvccvTcTT7:,,,,,,,,,,,,,,,:!*)s3k6d%MWMW8gg00NN0gOssYYssYYJYYYYJJJJJJYJYYYJJtJttttt
+|||||||||iiiiiiiiLLL//L))ccvvvvv7vTTl_,,,,,,,,,,,,,,_!*vC2G$dDM8gggMRggg0NNNMjsYssJYYYYsYJJJYJJJJJYYYJtJJJtttt
+|||||||||iiiiiiiiiiLL//))(cvcvvcvv77T_,,,,,,,,,,,,,,:^|tykUdDRMg00gWMWW0NN&NWA[lltJYsYJJYJJYJYJJJJJJtJJtJttttJ
+||||||||||iiiiiiiiL/////)c)cvvcc7v)?;,,,,,,,,,,,,,,~!*)CSPKORgg000gMRM8gNNN&gdEj!!itYYJYJJJJJYYJtJJJJJJJJJtttJ
+||||||||||iiiiiiiiLL//////)(ccv/?!.` .,,,,,,,,,,,,,~!?lfVEdRg0g0g08MRRgg0N&&0OpUXi,!lttYYJJJJJJJJJJJJJtJJttttt
+||||||||iiiiiiiiiii///////((ci!.-`  -,,,,,,,,,,,,,,:^?vjmAdRWgg00gMRRRW80N&&NRdp6EY.izxxtJJJJJtJJJJJYJJttttttt
+|||||||||iiiiiiLiLLLLL/)/)/i;.--`  -,,,,,,,,,,,,,,,,!?TuV6HRRMM88MR%%RMWgN&NNMHdK9E!i11T?^)1JJJJJtJJJYJJtttttt
+|||||||||i|iiiiiiiiLi/L/LL^.``````-.,,,,,,,,,,,,,,,,:=LYSUODDRRRRR%ODRM8g00NNgOHKKA^i1txi:|7x1tttJJJJJJttttttt
+||||||||||iiiiiiiLiiL///i:-```````-.,,,,,,,,,,,,,,,,,^|zZKHHO%DRDDOODRMggg0NNgDHdKkrcztzc^LlllxtJJJJJJJttttttt
+||||||||||||iiiiiiiiiL/?,-````````-.,,,,,,,,,,,,,,,,,:+cSKdddOO%DOHOORMW8800N0RObdt|zzt1i?vz1zxlzttJtJtttttt1t
+||||||||||||iiiiiiiLii!.```````````..,,,,,,,,,,,,,,,,,^iVKdKdO%%DHddHDRMgM8g0gROdK|vzz11?izz1zxxlTzttJtttJt1tt
+|||||||||||||iiiiiii=,`````````````..,,,,,,,,,,,,,,,,,:?y9KdHDRDOdddODbRMMWMgMRHOIilxxzz=l1ttzzxTvTx1ttttttttt
+|||||||||||i|iiiii|:.```````````````..,,,,,,,,,,,,,,,,_rsk6KdODDHdKdHddORMMMMRRH5ivlxlzL|zttt11zzxxl7lztttt1tt
+||||||||||||i||ii^.-````````````````-.,,,,,,,,,,,,,,,,~^zSh9KHOOdKKKddHODRRRRRRe|cllTcx=l1t1t11zxxllllTx111111
+|||||||||||||||+,-```````````````````-..,,,,,,,,,,,,,,:rxyk6KdHHKKKKKdddOOODD%m|/TTTTT||zYJt11zxxllxzxllvTzz11
+?||||||||||||?:-``````````````````````-..,,,,,,,,,,,,,:rlymEqdddKKKpKKKddOOOOy|i/()vl7=?^Ytt1zxxxxxlllTlll7vlz
+??||||||||||;.-````````````````````````-..,,,,,,,,,,,~!+ljwE9ddKKKKKKpppKdH6z|||iicv7?i:~1t1zzxzxxllxllllll7cv
+</pre>
+</div>
+
+Funny enough, I did not use this image in the final version of this website. But I
+ still like it, so I decided to include it here.</div>
+
+</article>
+
+<p id="post-share-links" class="social call-out">
+
+    <span class="share-label">Share this post</span>
+
+    <a href="mailto:?subject=ASCII%20picture%20for%20this%20blog&amp;body=https%3A//franky.codes/ascii-picture.html" title="Share via Email">
+        <i class="fa fa-envelope"></i>
+    </a>
+
+    <a href="https://sharetodiaspora.github.io/?title=ASCII%20picture%20for%20this%20blog&url=https%3A//franky.codes/ascii-picture.html" title="Share on Diaspora">
+        <i class="fa-brands fa-diaspora"></i>
+    </a>
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//franky.codes/ascii-picture.html" title="Share on Facebook">
+        <i class="fa-brands fa-facebook"></i>
+    </a>
+
+    <a href="https://news.ycombinator.com/submitlink?t=ASCII%20picture%20for%20this%20blog&u=https%3A//franky.codes/ascii-picture.html" title="Share on Hacker News">
+        <i class="fa-brands fa-hacker-news"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3A//franky.codes/ascii-picture.html&title=ASCII%20picture%20for%20this%20blog&summary=How%20I%20created%20the%20ascii%20picture%20using%20Python%20for%20this%20space.&source=https%3A//franky.codes/ascii-picture.html" title="Share on LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+    </a>
+
+    <a href="https://toot.kytta.dev/?text=ASCII%20picture%20for%20this%20blog%0D%0Ahttps%3A//franky.codes/ascii-picture.html%0D%0A%23www %23python %23ascii %23imageprocessing" title="Share on Mastodon">
+        <i class="fa-brands fa-mastodon"></i>
+    </a>
+
+    <a href="https://www.reddit.com/submit?url=https%3A//franky.codes/ascii-picture.html&title=ASCII%20picture%20for%20this%20blog" title="Share via Reddit">
+        <i class="fa-brands fa-reddit"></i>
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?text=ASCII%20picture%20for%20this%20blog&url=https%3A//franky.codes/ascii-picture.html&hashtags=www,python,ascii,image-processing" title="Share on Twitter">
+        <i class="fa-brands fa-twitter"></i>
+    </a>
+
+</p>    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="inner">
+                <div class="column align-left">
+                    <a
+                        href="https://github.com/pelican-themes/atom"
+                        title="Source code of this Pelican theme">
+                        <i class="fa-brands fa-github"></i>
+                        Atom theme
+                    </a>
+                </div>
+                <div class="column">
+                    <i class="fa-solid fa-copyright"></i>
+                    2025 <span class="mobile-hidden">Franky.Codes</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Javascript -->
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/pagemap-1.4.0.js"></script>
+        <script type="text/javascript" src="https://franky.codes/theme/javascript/main.js"></script>
+        <!-- todo minify -->
+
+    </body>
+</html>
