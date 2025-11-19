@@ -69,8 +69,29 @@ Experience
 
 Publications
 ------------
+    .. #. `Privacy Preserving Federated Deep Learning Infrastructure for ARGOS: ARtificial intelligence for Gross tumor vOlume Segmentation. (Preprint) <https://doi.org/10.2196/preprints.60847>`_
+
+    ..     .. container:: cv-table
+
+    ..         :journal: Preprints
+    ..         :date: Jan, 2024
+
 
 .. container:: cv-item
+
+    #. `77P Innovative solutions for harmonising data for observational studies on sarcomas <https://www.esmoopen.com/article/S2059-7029(25)00260-1/fulltext>`_
+
+        .. container:: cv-table
+
+            :journal: ESMO Open
+            :date: March , 2025
+
+    #. `Advancing Privacy-Preserving Healthcare Analytics: Implementation of the Personal Health Train for Federated Deep Learning (Preprint) <https://ai.jmir.org/2025/1/e60847>`_
+
+        .. container:: cv-table
+
+            :journal: JMIR Artificial Intelligence
+            :date: May, 2024
 
     #. `Head and neck cancers survival in Europe, Taiwan, and Japan: results from RARECAREnet Asia based on a privacy-preserving federated infrastructure <https://www.frontiersin.org/journals/oncology/articles/10.3389/fonc.2023.1219111/full>`_
 
